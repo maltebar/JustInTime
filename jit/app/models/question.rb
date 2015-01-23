@@ -1,5 +1,4 @@
 class Question < ActiveRecord::Base
-	belongs_to :user #?
-	has_many :comments #?
-	has_many :evaluations #?
+	belongs_to :user
+	has_many :evaluations #for ranking?
 end
