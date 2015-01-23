@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+#THIS IS RELATED TO THE HOME CONTROLLER STUFF I WANTED TO DO... 
 #def isPromoter
 #    current_user == "promoter"
 #end

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root to: "questions#index"
+  root to: "questions#index" #THIS IS OUR HOMEPAGE; THERE ARE PROBLEMS WITH THIS, THAT I WAS TRYING TO FIX IN HOME_CONTROLLER
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
