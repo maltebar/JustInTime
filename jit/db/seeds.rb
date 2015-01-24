@@ -8,3 +8,5 @@
 
 
 # test data
+
+User.create!(name: 'Maria Altebarmakian', email:'m.altebarmakian@gmail.com', password: '12345678', admin: 'true')

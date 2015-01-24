@@ -3,8 +3,13 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
+
   def index
-    @questions = Question.all
+    if current_user.admin?
+      @questions = Question.all
+    else
+      @questions = Question.where(:user_id => current_user)
+    end
     respond_with(@questions)
   end
 

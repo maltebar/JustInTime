@@ -3,12 +3,24 @@
  <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 <head>
-  <title>Jit</title>
+  <title>Just In Time Teaching</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   '#' %></li>
+            <li><a <%=link_to 'Sign out', destroy_user_session_path %>></a></li>
+            <%# add links for header here%>
+
+          </ul>
+        </nav>
+      </div>
+    </header>
 
 <div class="container">
 	<%= yield %>

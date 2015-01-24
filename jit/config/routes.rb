@@ -16,7 +16,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root to: "questions#index" #THIS IS OUR HOMEPAGE; THERE ARE PROBLEMS WITH THIS, THAT I WAS TRYING TO FIX IN HOME_CONTROLLER
+  root to: "users#index" #THIS IS OUR HOMEPAGE; THERE ARE PROBLEMS WITH THIS, THAT I WAS TRYING TO FIX IN HOME_CONTROLLER
+  #I think, eventually, we want this to route to the login page but I couldn't figure out how to access that
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
