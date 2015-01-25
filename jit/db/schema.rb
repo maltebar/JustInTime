@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150125162745) do
     t.datetime "promoter_due"
   end
 
-  create_table "groups", force: true do |t| #do we need this if we have role field in user table (see below)?
+  create_table "groups", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
