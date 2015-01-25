@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123212543) do
+ActiveRecord::Schema.define(version: 20150125162745) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "writer_due"
+    t.datetime "promoter_due"
   end
 
-  create_table "groups", force: true do |t|
+  create_table "groups", force: true do |t| #do we need this if we have role field in user table (see below)?
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,7 +53,6 @@ ActiveRecord::Schema.define(version: 20150123212543) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "type"
     t.boolean  "admin"
     t.string   "role"
   end

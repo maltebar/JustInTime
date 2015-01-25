@@ -1,3 +1,6 @@
+# classes are simply a convenient way to organize functions (also called methods): methods are located within the controller
+
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 

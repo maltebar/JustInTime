@@ -1,6 +1,8 @@
 <%= form_for(@assignment) do |f| %>
   <% if @assignment.errors.any? %>
+
     <div id="error_explanation">
+
       <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
 
       <ul>
@@ -8,18 +10,34 @@
         <li><%= message %></li>
       <% end %>
       </ul>
-    </div>
-  <% end %>
 
+    </div>
+
+  <% end %> <%# closes error dealings from above%>
+
+
+  <%#displays form table for entering new assignment details%>
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %><br> <%#automatically capitalizes labels%>
     <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  <div class="field">
+    <%= f.label :writing_due %><br>
+    <%= f.datetime_select :writer_due %>
+  </div>
+  <div class="field">
+    <%= f.label :promoting_due %><br>
+    <%= f.datetime_select :promoter_due %>
+  </div>
+
+<br></br>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

@@ -1,3 +1,7 @@
+# this file defines the correspondence between URLs and web pages
+
+
+
 Rails.application.routes.draw do
 
   resources :memberships
@@ -15,7 +19,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'welcome#index' 
   root to: "users#index" #THIS IS OUR HOMEPAGE; THERE ARE PROBLEMS WITH THIS, THAT I WAS TRYING TO FIX IN HOME_CONTROLLER
   #I think, eventually, we want this to route to the login page but I couldn't figure out how to access that
 
