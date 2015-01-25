@@ -3,7 +3,9 @@
  <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 <head>
-  <title>Just In Time Teaching</title>
+
+  <title>Just In Time</title> <%# Internet tab title %>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,8 +13,24 @@
 <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
+
+
+
+        <div class="navbar-header">
+          <a class="navbar-brand" >Just in Time Teaching</a> 
+          <a class="navbar-nickname" >Logged in as: <%= 
+            if current_user.nil?
+              "not logged in"
+              else
+                current_user.name 
+            end %></a> 
+        </div>
+
+
+
+        <nav> <%# navigation bar %>
+          <ul class="nav navbar-nav navbar-right"> <%# ul/li tag used for unordered lists? %>
+            <li><a href="#">Role: current_user.role?</a></li> <%# must fix, obviously %>
             <li><%= link_to "Home",   '#' %></li>
             <li><a <%=link_to 'Sign out', destroy_user_session_path %>></a></li>
             <%# add links for header here%>
