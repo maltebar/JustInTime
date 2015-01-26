@@ -1,20 +1,20 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json # for web-service support; on respond_to/with.... http://www.justinweiss.com/blog/2014/11/03/respond-to-without-all-the-pain/
+
+  # re: .html and .json responses... http://stackoverflow.com/questions/20188047/rails-respond-to-json-and-html
+  # but what does above/below /do/, in English? 
 
   def index
     @assignments = Assignment.all
-    respond_with(@assignments)
   end
 
   def show
-    respond_with(@assignment)
   end
 
   def new
     @assignment = Assignment.new
-    respond_with(@assignment)
   end
 
   def edit
@@ -22,24 +22,16 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = Assignment.new(assignment_params)
-    
-    respond_to do |format|
-      if @assignment.save #if all went well, assignment now saved
-        format.html { redirect_to @assignment, notice: 'Assignment created. Well done!' } #where are Edit | Back buttons manipulated on this page?
-        format.json { render :show, status: :created, location: @assignment }
-      else  #otherwise, assignment not saved: throw error
-        format.html { render :new }
-        format.json { render json: @assignment.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "Assignment created. [Applause]!" if @assignment.save
+    respond_with(@assignment)
   end
 
-  def update
+  def update # could this action/method also be shortened to the above format? how/why?
     respond_to do |format|
       if @assignment.update(assignment_params) #if all went well, assignment now updated
-        format.html { redirect_to @assignment, notice: 'Assignment updated. Well done!' }
+        format.html { redirect_to @assignment, notice: 'Assignment updated. [Applause]!' }
         format.json { render :show, status: :ok, location: @assignment }
-      else #otherwise, assignment not updated: throw error
+      else # otherwise, assignment not updated: throw error
         format.html { render :edit }
         format.json { render json: @assignment.errors, status: :unprocessable_entity }
       end
@@ -49,12 +41,12 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to assignments_url, notice: 'Assignment destroyed. You monster.' }
-      format.json { head :no_content }
+      format.html { redirect_to assignments_url, notice: 'Assignment destroyed. You monster!' } #doesn't show! why not?
+      format.json { head :no_content } # what's this for again?
   end
 end
 
-  private
+  private # why?
     def set_assignment
       @assignment = Assignment.find(params[:id])
     end

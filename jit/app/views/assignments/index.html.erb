@@ -11,6 +11,7 @@
       <th>Content</th>
       <th>Writing Due</th>
       <th>Promoting Due</th>
+      <th>Groups</th>
       <%#necessary evil: couldn't figure out how to extend "Editing Buttons" row to end of table...
 
       <th>Editing Buttons</th>
@@ -28,9 +29,11 @@
         <td><%= assignment.description %></td>
         <td><%= assignment.writer_due %></td>
         <td><%= assignment.promoter_due %></td>
+        <td><%= "link to users' roles" %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'For real?' } %></td> <%# why does it ask me to confirm "For real?" twice (but not always? %>
+        <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'For real?' } %></td> 
+        <%# why does it ask me to confirm "For real?" several times (but not always? %>
       </tr>
     <% end %>
   </tbody>

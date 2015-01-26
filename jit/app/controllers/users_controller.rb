@@ -4,11 +4,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-#THIS IS RELATED TO THE HOME CONTROLLER STUFF I WANTED TO DO... 
-#def isPromoter
-#    current_user == "promoter"
-#end
-
   # GET /users
   # GET /users.json
   def index
@@ -50,7 +45,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User updated. [Applauds]!' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -64,7 +59,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'User destroyed. You monster!' }
       format.json { head :no_content }
     end
   end
@@ -77,6 +72,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require[:user].permit[:name, :email, :role] #ADDED ROLE
+      params.require[:user].permit[:name, :email, :role] # added role
     end
 end

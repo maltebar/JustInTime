@@ -4,6 +4,10 @@
 
 Rails.application.routes.draw do
 
+  devise_for :users
+
+  resources :users
+
   resources :memberships
 
   resources :groups
@@ -12,15 +16,12 @@ Rails.application.routes.draw do
 
   resources :questions
 
-  devise_for :users
-  resources :users
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index' 
-  root to: "users#index" #THIS IS OUR HOMEPAGE; THERE ARE PROBLEMS WITH THIS, THAT I WAS TRYING TO FIX IN HOME_CONTROLLER
+  root to: "users#new" #THIS IS OUR HOMEPAGE; THERE ARE PROBLEMS WITH THIS, THAT I WAS TRYING TO FIX IN HOME_CONTROLLER
   #I think, eventually, we want this to route to the login page but I couldn't figure out how to access that
 
 
