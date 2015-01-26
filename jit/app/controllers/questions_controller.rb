@@ -29,8 +29,6 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @post.user_id = current_user.id #?
     @post.user_name = current_user.name #?
-
-    #BELOW WAS AUTOMATICALLY GENERATED
     @question.save
     respond_with(@question)
   end

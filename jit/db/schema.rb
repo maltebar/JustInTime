@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150125162745) do
   end
 
   create_table "groups", force: true do |t|
+    t.boolean  "writer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,7 +55,6 @@ ActiveRecord::Schema.define(version: 20150125162745) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin"
-    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

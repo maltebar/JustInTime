@@ -5,6 +5,9 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  get 'sessions/new'
+  post 'sessions/create'
+  delete 'sessions/destroy'
 
   resources :users
 
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index' 
-  root to: "users#new" #THIS IS OUR HOMEPAGE; THERE ARE PROBLEMS WITH THIS, THAT I WAS TRYING TO FIX IN HOME_CONTROLLER
+  root to: "home#index" #homepage
   #I think, eventually, we want this to route to the login page but I couldn't figure out how to access that
 
 
