@@ -53,6 +53,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :content) #WILL CHANGE EVENTUALLY, BUT TO WHAT?
+      params.require(:question).permit(:title, :content) 
     end
 end

@@ -31,9 +31,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        
-        @group = Group.sample
-        @group.users << @user 
+
+        if !current_user.admin? # to exclude admins from two groups ????????????is this right?????????????????
+          @group = Group.sample # assigns each new user a group for duration of semester
+          @group.users << @user # groups will switch on assignment basis
+        end
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
@@ -68,6 +70,14 @@ class UsersController < ApplicationController
     end
   end
 
+   def is_writer
+    if current_user.group.writer?
+      puts "writer"
+    else
+      puts "promoter"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -76,6 +86,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require[:user].permit[:name, :email] 
+      params.require[:user].permit[:name, :email, :group_id] 
     end
 end

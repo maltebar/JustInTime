@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150125162745) do
 
   create_table "groups", force: true do |t|
     t.boolean  "writer"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
