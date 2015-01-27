@@ -5,13 +5,17 @@ class QuestionsController < ApplicationController
 
 
   def index
+    #this will give admin a view of all the questions
+    #the else statment has to be changed
+    #in fact, this entire thing may need to be moved to the view files but I'm not sure yet
     if current_user.admin?
       @questions = Question.all
     else
-      @questions = Question.where(:user_id => current_user)
+      @questions = Question.where(:user_id=>current_user.id)
     end
     respond_with(@questions)
   end
+
 
   def show
     respond_with(@question)

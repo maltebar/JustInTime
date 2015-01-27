@@ -11,3 +11,4 @@
 
 User.create!(name: 'Maria Altebarmakian', email:'m.altebarmakian@gmail.com', password: '12345678', admin: 'true')
 User.create!(name: 'Anna Yatskar', email:'anyatskar@gmail.com', password: '12345678', admin: 'true')
+User.create!(name: 'Billy Bob', email: 'billybob@gmail.com', password: '12345678', admin: 'false')
