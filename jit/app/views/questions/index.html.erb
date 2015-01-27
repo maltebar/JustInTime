@@ -2,6 +2,14 @@
 <br></br>
 <h2>Welcome to the "dashboard"</h2>
 
+<%= if current_user.group.writer?
+      render 'writer' 
+    else
+      render 'promoter'
+    end %>
+
+<%# we need to account for ADMIN here too, I think%>
+
 <%= link_to 'New Question', new_question_path %>
 
 <br> <%# Just for spacing! %>
@@ -34,7 +42,7 @@
 
 
 
-//if currentuser?
+<%#//if currentuser?
   render writer
   else
   render reader
@@ -52,4 +60,5 @@
   Questions index view: check for reader/writer 
   render partial views
 
-  Questions index view also has an admin view
+  Questions index view also has an admin view%>
+
