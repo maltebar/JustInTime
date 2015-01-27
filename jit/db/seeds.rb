@@ -12,11 +12,11 @@
 # users
 User.create!(name: 'Maria Altebarmakian', email:'m.altebarmakian@gmail.com', password: '12345678', admin: 'true')
 User.create!(name: 'Anna Yatskar', email:'anyatskar@gmail.com', password: '12345678', admin: 'true')
-User.create!(name: 'Billy Bob', email: 'billybob@gmail.com', group_name: 'Group 1', password: '12345678', admin: 'false')
-User.create!(name: 'Jane Jean', email: 'janejean@gmail.com', group_name: 'Group 1', password: '12345678', admin: 'false')
-User.create!(name: 'Sally Sue', email: 'sallysue@gmail.com', group_name: 'Group 1', password: '12345678', admin: 'false')
-User.create!(name: 'Bonnie Parker', email: 'bonnieparker@gmail.com', group_name: 'Group 2', password: '12345678', admin: 'false')
-User.create!(name: 'Clyde Barrow', email: 'clydebarrow@gmail.com', group_name: 'Group 2', password: '12345678', admin: 'false')
+User.create!(name: 'Billy Bob', email: 'billybob@gmail.com', password: '12345678', admin: 'false')
+User.create!(name: 'Jane Jean', email: 'janejean@gmail.com', password: '12345678', admin: 'false')
+User.create!(name: 'Sally Sue', email: 'sallysue@gmail.com', password: '12345678', admin: 'false')
+User.create!(name: 'Bonnie Parker', email: 'bonnieparker@gmail.com', password: '12345678', admin: 'false')
+User.create!(name: 'Clyde Barrow', email: 'clydebarrow@gmail.com', password: '12345678', admin: 'false')
 
 Group.create(name: "Group 1")
 Group.create(name: "Group 2")

@@ -1,3 +1,12 @@
+<%# this page is for Writer's only %>
+<%# or maybe we should organize it as I described in other note... I now think that's better %>
+
+
+<%# note: should only display the current user's question %>
+
+<%# need some sort of if statement to guard against above %>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -11,4 +20,4 @@
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to 'Back to question index', questions_path %>
