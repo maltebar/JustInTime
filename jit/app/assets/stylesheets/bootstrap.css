@@ -12,6 +12,10 @@ html {
 }
 body {
   margin: 0;
+  background-color: #000;
+  }
+body {
+   background: #ECF2F7 !important; /* changes background colour; very light blue colour */
 }
 article,
 aside,
@@ -247,7 +251,7 @@ th {
   }
   .btn > .caret,
   .dropup > .btn > .caret {
-    border-top-color: #000 !important;
+    border-top-color: #000 !important; 
   }
   .label {
     border: 1px solid #000;
@@ -1336,7 +1340,7 @@ a.text-primary:hover {
   color: #3c763d;
 }
 a.text-success:hover {
-  color: #2b542c;
+  color: #655F80; /* changes colour of success message (old green) */
 }
 .text-info {
   color: #31708f;
@@ -2297,7 +2301,7 @@ th {
 .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
-.table-striped > tbody > tr:nth-of-type(odd) {
+.table-striped > tbody > tr:nth-of-type(odd) { /* :nth-child(odd) { */
   background-color: #f9f9f9;
 }
 .table-hover > tbody > tr:hover {
