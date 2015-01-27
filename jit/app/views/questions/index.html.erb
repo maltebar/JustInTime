@@ -1,19 +1,22 @@
 <h1>Question(s)</h1>
 <br></br>
-<h2>Welcome to the "dashboard"</h2>
+<h2>Welcome to the "dashboard"!</h2> <%# just for testing purposes %>
 
-<%= if current_user.group.writer?
+
+<%# check for reader/writer - render partial views (in questions view)%>
+<%= if current_user.admin?
+      render 'admin'
+    elsif current_user.group.writer?
       render 'writer' 
     else
       render 'promoter'
     end %>
 
-<%# we need to account for ADMIN here too, I think%>
+
 
 <%= link_to 'New Question', new_question_path %>
 
 <br> <%# Just for spacing! %>
-
 <br>
 
 <table>
@@ -42,23 +45,15 @@
 
 
 
-<%#//if currentuser?
-  render writer
-  else
-  render reader
+<%#
 
+Notes (overview)
 
-  then we'll have partials for them in the questions view 
-
-
-
-
-//notes (overview)
-
-  Homeindex.html.erb view will check if admin/not admin (redirect)
+  Homeindex.html.erb view will check if admin/not admin (redirect) CHECK-ISH??????????
   
   Questions index view: check for reader/writer 
-  render partial views
+  render partial views CHECK
 
-  Questions index view also has an admin view%>
+  Questions index view also has an admin view CHECK
 
+  %>
