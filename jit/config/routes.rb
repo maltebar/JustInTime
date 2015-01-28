@@ -9,11 +9,18 @@ Rails.application.routes.draw do
   post 'sessions/create'
   delete 'sessions/destroy'
 
-  resources :users
+  resources :users do
+    resources :memberships
+    resources :groups
+  end
 
   resources :memberships
 
-  resources :groups
+
+  resources :groups do
+    resources :memberships
+    resources :users
+  end
 
   resources :assignments
 

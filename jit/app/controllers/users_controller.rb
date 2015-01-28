@@ -32,9 +32,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        if !current_user.admin? # to exclude admins from two groups ????????????is this right?????????????????
-          @group = Group.sample # assigns each new user a group for duration of semester
+        if !@user.admin? # I changed this to @user instead of current_user because this is at creation
+          #I believe there isn't a current user until a session is started and that's after they log in/after creation
+          @group = Group.all.sample # assigns each new user a group for duration of semester
+          @user.update(:group_id => @group.id)
           @group.users << @user # groups will switch on assignment basis
+          #The above line errors out because there is no "GROUP_ID" column in membership
+
         end
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }
