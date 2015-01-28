@@ -53,6 +53,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:content) 
+      params.require(:question).permit(:content, :user_id, :user_name) 
     end
 end
