@@ -1,23 +1,4 @@
-<%# this page is for Writer's only %>
-<%# or maybe we should organize it as I described in other note... I now think that's better %>
+<%# no idea when this'll be used and for whom... %>
 
+<%# used to have render show in _writer partial view, but then needing to place if statements into show to find out which show-view to present to which role seemed to beat purpose of partial views... %>
 
-<%# note: should only display the current user's question %>
-
-<%# need some sort of if statement to guard against above %>
-
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @question.content %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back to question index', questions_path %>

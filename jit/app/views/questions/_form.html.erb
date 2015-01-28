@@ -1,4 +1,6 @@
-<%# this page is for Writer's only %>
+<%# Writers only %>
+
+<%# page shows form to fill out when creating/editing question %>
 
 
 <%= form_for(@question) do |f| %>
@@ -14,10 +16,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
+
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>

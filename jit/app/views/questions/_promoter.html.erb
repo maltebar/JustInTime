@@ -1,3 +1,45 @@
 <h1>Promoter view</h1>
 
-<%# will contain list of all questions to rate with radio buttons attached%>
+<%# will contain list of all questions to rate, with radio buttons %>
+
+<%# we also wanted the questions already rated to grey out/be placed at bottom; better yet, to disappear altogether %>
+
+<%# unless we want to call render show here, and (if even possible) insert if statement into show page to reveal different things to different users (i.e. writers/promoters); it'd make sense, beause one would be writiing questions and the other ranking them, and all that would be present in one place - namely, show %>
+
+
+<h1>List of Questions</h1>
+
+<br></br>
+
+
+<div class="row">
+<div class="col-md-12">
+<div style="margin-left:0%">
+      
+<h1>Assignments </h1>
+
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  <thead> <%#table header%>
+    <tr>
+      <th>Question</th>
+      <th>Editing Buttons</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %> <%#table content: each row contains...%>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>"> <%# what's this again? %>
+        <td><%= question.content %></td>
+
+        <%# insert radio buttons %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+<br>

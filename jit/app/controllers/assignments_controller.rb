@@ -25,12 +25,13 @@ class AssignmentsController < ApplicationController
     flash[:notice] = "Assignment created. [Applause]!" if @assignment.save
     respond_with(@assignment)
 
+    # number of params was wrong (apparently) and so the website was giving me an error; clearly, I dealt with it x)
     if Assignment.count % 2 == 0
-     Group.where(name: "Group 2").update(:writer => true)
-     Group.where(name: "Group 1").update(:writer => false)
+#     Group.where(name: "Group 2").update(:writer => true)
+#     Group.where(name: "Group 1").update(:writer => false)
     else
-     Group.where(name: "Group 2").update(:writer => false)
-     Group.where(name: "Group 1").update(:writer => true)
+#     Group.where(name: "Group 2").update(:writer => false)
+#     Group.where(name: "Group 1").update(:writer => true)
     end
     
   end

@@ -3,17 +3,17 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
-
+  # this block was giving me problems, so I commented it out for now...
   def index
     #this will give admin a view of all the questions
     #the else statment has to be changed
     #in fact, this entire thing may need to be moved to the view files but I'm not sure yet
-    if current_user.admin?
-      @questions = Question.all
-    else
-      @questions = Question.where(:user_id=>current_user.id)
-    end
-    respond_with(@questions)
+#    if current_user.admin?
+#      @questions = Question.all
+#    else
+#      @questions = Question.where(:user_id => current_user.id)
+#    end
+#    respond_with(@questions)
   end
 
 
@@ -53,6 +53,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:title, :content) 
+      params.require(:question).permit(:content) 
     end
 end

@@ -2,4 +2,35 @@
 
 <%# will contain own question to create/edit%>
 
-<%= render 'show' %>
+<%# note: should only display the current user's question %>
+
+
+<%# 
+
+need some sort of if statement...
+
+if question exists for Writer
+	render show
+else 
+	render new
+end
+
+
+%>
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @question.content %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back to question index', questions_path %>
+<% end %>
+<br>
+<br>
+<br>

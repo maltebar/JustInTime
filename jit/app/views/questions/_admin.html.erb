@@ -1,3 +1,43 @@
 <h1>Admin view</h1>
 
 <%# will contain list of all questions submitted for assignment%>
+
+<%# view will look suspiciously similar to Promotor View, except admin has names attached to questions and no ranking buttons %>
+
+<h1>note: Admin view</h1>
+
+<br></br>
+
+
+<div class="row">
+<div class="col-md-12">
+<div style="margin-left:0%">
+      
+<h1><h1>Questions Submitted by Students</h1> </h1>
+
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  <thead> <%#table header%>
+    <tr>
+      <th>Student Name</th>
+      <th>Question</th>
+      <%# whatever else we want to add here %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %> <%#table content: each row contains...%>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>"> <%# what's this again? %>
+      	<td><%= user.name, but that which is associated with question %></td> 
+        <td><%= question.content %></td>
+		<%# whatever else we end up adding here %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+<br>

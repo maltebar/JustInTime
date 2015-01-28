@@ -1,15 +1,24 @@
-<%# check for reader/writer - render partial views (in questions view)%>
+<%# all types of humans will be sent here first... depending on below results, next subsequent view will appear%>
+
+<%# check for reader/writer - render partial views (in questions view)
+
+	note: current_user.group.writer isn't correct, because there's no field in user called group to call upon!
+%>
+
 <%= if current_user.admin?
       render 'admin'
-    elsif current_user.group.writer?
+    elsif current_user.group(:writer)?
       render 'writer' 
     else
       render 'promoter'
-    end %>
+    end 
+%>
 
 
 <%# this page should be empty (i.e. not display anything), huh, because it just redirects... doesn't it? %>
 
-<%# or could this also double as the page the writers see when they rank the questions? no, that should probably be show, the way I'm thinking about it now: the latter makes sense because the Writer sees their personal question in show and the Promoter seeing the list of questions they must rank! %>
 
-<%# where to put inactive views? how to time them out? %>
+<%# where to put inactive views? how to time them out - a simple if statement comparing current time to admin-set writing and promoting phases? 
+
+
+%>
