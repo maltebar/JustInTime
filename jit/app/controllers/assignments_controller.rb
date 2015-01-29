@@ -25,9 +25,6 @@ class AssignmentsController < ApplicationController
     flash[:notice] = "Assignment created. [Applause]!" if @assignment.save
     respond_with(@assignment)
 
-    # number of params was wrong (apparently) and so the website was giving me an error; clearly, I dealt with it x)
-
-    #BELOW IS FIXED! The update method needs the group itself passed in because it requires the group id
     if Assignment.count % 2 == 0
      Group.update(Group.where(name: 'Group 2'), :writer => true)
      Group.update(Group.where(name: 'Group 1'), :writer => false)
