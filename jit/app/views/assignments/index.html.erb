@@ -36,25 +36,6 @@
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
         <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'For real?' } %></td> 
         <%# why does it ask me to confirm "For real?" several times (but not always? %>
-
-
-
-        <div>
-          <%# sample radio buttons %>
-         <label class="radio-inline">
-         <input id="inlineRadioDiscuss" name= "rating" type="radio" value="discuss"> Discuss
-         </label>
-
-         <label class="radio-inline">
-         <input id="inlineRadioPass" name= "rating" type="radio" value="pass"> Pass
-         </label>
-        </div>
-
-
-
-
-
-
         
       </tr>
     <% end %>
