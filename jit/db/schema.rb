@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20150125162745) do
   end
 
   create_table "memberships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,7 +46,6 @@ ActiveRecord::Schema.define(version: 20150125162745) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
