@@ -7,7 +7,7 @@
 
 <%= if current_user.admin?
       render 'admin'
-    elsif current_user.group(:writer)?
+    elsif current_user.group.writer?
       render 'writer' 
     else
       render 'promoter'
