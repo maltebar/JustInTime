@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150125162745) do
 
   create_table "users", force: true do |t|
     t.string   "name"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false

@@ -36,9 +36,9 @@ class UsersController < ApplicationController
           #I believe there isn't a current user until a session is started and that's after they log in/after creation
           @group = Group.all.sample # assigns each new user a group for duration of semester
           Membership.create(user_id: @user.id, group_id: @group.id)
-         # @user.update(:group_id => @group.id)
-          #@group.users << @user # groups will switch on assignment basis
-          #The above line errors out because there is no "GROUP_ID" column in membership
+          @user.update(:group_id => @group.id)
+         # @group.users << @user # groups will switch on assignment basis
+        
 
         end
 
