@@ -5,9 +5,9 @@
 	note: current_user.group.writer isn't correct, because there's no field in user called group to call upon!
 %>
 
-<%= if current_user.admin?
+<%= if @user.admin?
       render 'admin'
-    elsif current_user.group.writer?
+    elsif @user.group.writer?
       render 'writer' 
     else
       render 'promoter'

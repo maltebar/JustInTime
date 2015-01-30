@@ -6,10 +6,10 @@ class QuestionsController < ApplicationController
   # this block was giving me problems, so I commented it out for now...
   def index
     #this will give admin a view of all the questions
-    #the else statment has to be changed
-    #in fact, this entire thing may need to be moved to the view files but I'm not sure yet
+    #this needs to be updated
 #    if current_user.admin?
-#      @questions = Question.all
+      @questions = Question.all
+      @user = current_user
 #    else
 #      @questions = Question.where(:user_id => current_user.id)
 #    end
