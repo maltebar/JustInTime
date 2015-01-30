@@ -10,13 +10,15 @@ class QuestionsController < ApplicationController
 #    if current_user.admin?
       @questions = Question.all
       @user = current_user
-      @question = Question.find(1)
+      # @question = Question.where(user_id: @user.id)
+      # case where user hasn't written question yet
+      # figure out multiple HW assignments (Question field for assignment OR question model can account for that - belong to assingnment)
+
 #    else
 #      @questions = Question.where(:user_id => current_user.id)
 #    end
 #    respond_with(@questions)
   end
-
 
   def show
     respond_with(@question)
