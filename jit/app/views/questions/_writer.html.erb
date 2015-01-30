@@ -22,15 +22,14 @@ end
 
 
 <p id="notice"><%= notice %></p>
-
+  <%= @question.content %>
 <p>
   <strong>Content:</strong>
-  <%= @question.content %>
+
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back to question index', questions_path %>
-<% end %>
 <br>
 <br>
 <br>

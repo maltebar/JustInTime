@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
 #    if current_user.admin?
       @questions = Question.all
       @user = current_user
+      @question = Question.find(1)
 #    else
 #      @questions = Question.where(:user_id => current_user.id)
 #    end
