@@ -9,6 +9,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= if current_user.nil?
+        @first_entry = ''
+        @second_entry = ''
+      elsif current_user.admin?
+        @first_link = '/users/'
+        @first_entry = 'List of Users'
+        @second_link = '/assignments/'
+        @second_entry = 'List of Assignments'
+        @last_entry = ''
+        #for some reason the last thing in here is printing to the page so I added just a space to hide it
+        #How do we hide that the real way??
+      else
+        @first_entry = ''
+        @second_entry = ''
+      end%>
+
+  <link href="assets/custom.css.scss" rel="stylesheet">
 </head>
 <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
@@ -20,7 +37,7 @@
           <a class="navbar-brand" >Just in Time Teaching</a> 
           <a class="navbar-nickname" >Logged in as: <%= 
             if current_user.nil?
-              "nobody"
+              "not logged in"
               else
                 current_user.name 
             end %></a> 
@@ -40,7 +57,7 @@
                   #end 
                   #IS_WRITER STILL DOESN'T WORK RIGHT BUT ON THE RIGHT TRACK
                   %></a></li> <%# must fix, obviously!!!!!!!!!!! %>
-            <li><%= link_to "Home",   '#' %></li>
+            <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
             <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%>></a></li>
             <%# add links for header here%>
 
@@ -49,7 +66,23 @@
       </div>
     </header>
 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style='position:fixed;'>
+          <ul class="nav nav-sidebar">
+            <li><a href="<%= @first_link %>"><%= @first_entry %></a></li>
+            <li><a href="<%= @second_link %>"><%= @second_entry %></a></li>
+          </ul>
+        </div>
+        
+      </div>
+</div>
+
 <div class="container">
+  <div class="row">
+      <div class="col-md-12">
+    <div style="margin-left:15%">
+
 	<%= yield %>
 
 </div>
