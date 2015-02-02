@@ -80,13 +80,13 @@ class UsersController < ApplicationController
     end
   end
 
-   def is_writer
-    if current_user.group.writer?
-      puts "writer"
-    else
-      puts "promoter"
-    end
-  end
+#   def is_writer
+#    if current_user.group.writer?
+#      puts "writer"
+#    else
+#      puts "promoter"
+#    end
+#  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
