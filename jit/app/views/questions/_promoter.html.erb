@@ -1,28 +1,43 @@
-<h1>Promoter view</h1>
+<h2>(Promoter view)</h2>
+<br></br>
 
 <%# will contain list of all questions to rate, with radio buttons %>
 
-<%# we also wanted the questions already rated to grey out/be placed at bottom; better yet, to disappear altogether %>
-
-<%# unless we want to call render show here, and (if even possible) insert if statement into show page to reveal different things to different users (i.e. writers/promoters); it'd make sense, beause one would be writiing questions and the other ranking them, and all that would be present in one place - namely, show %>
+<%# we also wanted the questions already rated to grey-out/be placed at bottom; better yet, to disappear altogether %>
 
 
-<h1>List of Questions</h1>
+<%= form_for(@rating) do |f| %>
+  <% if @rating.errors.any? %>
+    <div id="error_explanation">
+
+      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+
+      <ul>
+      <% @rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+
+
+
+<h1>Questions to Evaluate</h1>
 
 <br></br>
-
 
 <div class="row">
 <div class="col-md-12">
 <div style="margin-left:0%">
       
-<h1>Assignments </h1>
-
 <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+
   <thead> <%#table header%>
     <tr>
       <th>Question</th>
-      <th>Editing Buttons</th>
+      <th>Rating Buttons</th>
     </tr>
   </thead>
 
@@ -36,6 +51,7 @@
       </tr>
     <% end %>
   </tbody>
+
 </table>
 
 </div>
@@ -43,3 +59,27 @@
 </div>
 
 <br>
+
+
+
+
+<h4>Evaluation Example</h4>
+<h6>How interesting was the example/quote that the student chose to editorialize about? </h6>
+<h5>Rating:</h5>
+ <%= f.radio_button :rate, 'Discuss' %>
+ <%= label :rate_l, 'Discuss' %> <%# I don't know what :rate_l is just yet... %>
+ <%= f.radio_button :rate, 'Pass' %>
+ <%= label :rate_l, 'Pass' %>
+
+<br>
+<br>
+
+  <% if !current_user.admin? %>
+  <div class="actions">
+    <%= f.submit 'Save Ratings'%>
+  </div>
+  <% end %>
+<% end %>
+
+<br>
+

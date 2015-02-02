@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
-	belongs_to :user
-	has_many :evaluations #needed for ranking, or no?
+	belongs_to :user 
+	belongs_to :assignment
+	has_many :ratings 
 end

@@ -3,19 +3,22 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
+  #THIS WHOLE METHOD NEEDS TO BE FIXED URGENTLY!
   def index
-    #THIS NEEDS TO BE FIXED URGENTLY!
 #    if current_user.admin?
       @questions = Question.all
       @user = current_user
-      # @question = Question.where(user_id: @user.id)
-      # case where user hasn't written question yet
-      # figure out multiple HW assignments (Question field for assignment OR question model can account for that - belong to assingnment)
+
 #    else
 #      @questions = Question.where(:user_id => current_user.id)
 #    end
 #    respond_with(@questions)
   end
+
+# To do...
+  # 1. need to deal with case where user hasn't written question yet... i.e. if question nil
+  # 2. figure out multiple HW assignments: question model can account for that, i.e. question belongs_to assignment)
+
 
   def show
     respond_with(@question)

@@ -4,6 +4,8 @@
 
 Rails.application.routes.draw do
 
+  resources :ratings
+
   devise_for :users
   get 'sessions/new'
   post 'sessions/create'
