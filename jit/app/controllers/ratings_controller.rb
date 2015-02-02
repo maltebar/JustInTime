@@ -11,7 +11,7 @@ class RatingsController < ApplicationController
   end
 
   def show
-    @rating = Rating.find(params[:id])
+    @rating = Rating.where(:user_id => current_user.id)
     @question = Question.where(:id=>@rating.question_id)
     respond_with(@rating)
   end
