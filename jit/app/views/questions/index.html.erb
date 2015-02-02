@@ -1,15 +1,9 @@
 <%# all types of humans will be sent here first... depending on below results, next subsequent view will appear%>
 
-<%# check for reader/writer - render partial views (in questions view)
-
-	note: current_user.group.writer isn't correct, because there's no field in user called group to call upon!
-%>
-
 <%#
-IT'S RENDERING CORRECTLY NOW! There are errors with the writer view but we can fix that later. 
-There is also an issue checking the dates but I think I have it kinda right.
-I commented it out so that it doesn't throw errors when we try to play with things
-
+IT'S RENDERING CORRECTLY NOW! There are errors with the writer view, but we can fix that later. 
+There is also an issue checking the dates, but I think I have it kinda right.
+I commented it out so that it doesn't throw errors when we try to play with things.
 %>
 
 <%= if @user.admin?
@@ -34,6 +28,4 @@ I commented it out so that it doesn't throw errors when we try to play with thin
 
 
 <%# where to put inactive views? how to time them out - a simple if statement comparing current time to admin-set writing and promoting phases? 
-
-
 %>

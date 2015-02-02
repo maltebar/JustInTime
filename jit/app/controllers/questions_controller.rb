@@ -3,9 +3,7 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
-  # this block was giving me problems, so I commented it out for now...
   def index
-    #this will give admin a view of all the questions
     #this needs to be updated
 #    if current_user.admin?
       @questions = Question.all
@@ -13,7 +11,6 @@ class QuestionsController < ApplicationController
       # @question = Question.where(user_id: @user.id)
       # case where user hasn't written question yet
       # figure out multiple HW assignments (Question field for assignment OR question model can account for that - belong to assingnment)
-
 #    else
 #      @questions = Question.where(:user_id => current_user.id)
 #    end
