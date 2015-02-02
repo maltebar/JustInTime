@@ -47,15 +47,18 @@
 
         <nav> <%# navigation bar %>
           <ul class="nav navbar-nav navbar-right"> <%# ul/li tag used for unordered lists? %>
-            <li><a href="#">Role: WRITER OR PROMOTER
-              <%=#if current_user.nil?
-                  #  "not logged in"
-                  #elsif current_user.admin?
-                  #  "admin"
-                  #else
-                  #  current_user.is_writer
-                  #end 
-                  #IS_WRITER STILL DOESN'T WORK RIGHT BUT ON THE RIGHT TRACK
+            <li><a href="#">Role: 
+              <%=if current_user.nil?
+                    "Not Logged In"
+                  elsif current_user.admin?
+                    "Admin"
+                  else
+                    if current_user.group.writer?
+                      "Writer"
+                    else
+                      "Promoter"
+                    end
+                  end 
                   %></a></li> <%# must fix, obviously!!!!!!!!!!! %>
             <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
             <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
