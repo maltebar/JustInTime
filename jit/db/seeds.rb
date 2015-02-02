@@ -35,4 +35,3 @@ Question.create(content: 'Test', user_id: '2', user_name: 'Jane Jean')
 Question.create(content: 'Test', user_id: '3', user_name: 'Sally Sue')
 Question.create(content: 'Test', user_id: '4', user_name: 'Bonnie Parker')
 Question.create(content: 'Test', user_id: '5', user_name: 'Clyde Barrow')
-
