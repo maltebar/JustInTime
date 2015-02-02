@@ -9,23 +9,20 @@
 
 # test data 
 
-# users
-User.create!(name: 'Maria Altebarmakian', email:'m.altebarmakian@gmail.com', password: '12345678', admin: 'true')
-User.create!(name: 'Anna Yatskar', email:'anyatskar@gmail.com', password: '12345678', admin: 'true')
-User.create!(name: 'Billy Bob', email: 'billybob@gmail.com', password: '12345678', admin: 'false')
-User.create!(name: 'Jane Jean', email: 'janejean@gmail.com', password: '12345678', admin: 'false')
-User.create!(name: 'Sally Sue', email: 'sallysue@gmail.com', password: '12345678', admin: 'false')
-User.create!(name: 'Bonnie Parker', email: 'bonnieparker@gmail.com', password: '12345678', admin: 'false')
-User.create!(name: 'Clyde Barrow', email: 'clydebarrow@gmail.com', password: '12345678', admin: 'false')
+Assignment.create(title: 'Testing', description: 'This is just a test', writer_due: '2015-03-01', promoter_due: '2015-04-01')
 
 Group.create(name: "Group 1")
 Group.create(name: "Group 2")
 
-Question.create(content: 'Test', user_id: '1', user_name: 'Billy Bob')
-Question.create(content: 'Test', user_id: '2', user_name: 'Jane Jean')
-Question.create(content: 'Test', user_id: '3', user_name: 'Sally Sue')
-Question.create(content: 'Test', user_id: '4', user_name: 'Bonnie Parker')
-Question.create(content: 'Test', user_id: '5', user_name: 'Clyde Barrow')
+# users
+User.create(name: 'Maria Altebarmakian', email:'m.altebarmakian@gmail.com', password: '12345678', admin: 'true')
+User.create(name: 'Anna Yatskar', email:'anyatskar@gmail.com', password: '12345678', admin: 'true')
+User.create(name: 'Billy Bob', email: 'billybob@gmail.com', password: '12345678', admin: 'false')
+User.create(name: 'Jane Jean', email: 'janejean@gmail.com', password: '12345678', admin: 'false')
+User.create(name: 'Sally Sue', email: 'sallysue@gmail.com', password: '12345678', admin: 'false')
+User.create(name: 'Bonnie Parker', email: 'bonnieparker@gmail.com', password: '12345678', admin: 'false')
+User.create(name: 'Clyde Barrow', email: 'clydebarrow@gmail.com', password: '12345678', admin: 'false')
+
 
 Question.create(content: 'Test', user_id: '1', user_name: 'Billy Bob')
 Question.create(content: 'Test', user_id: '2', user_name: 'Jane Jean')
@@ -33,4 +30,9 @@ Question.create(content: 'Test', user_id: '3', user_name: 'Sally Sue')
 Question.create(content: 'Test', user_id: '4', user_name: 'Bonnie Parker')
 Question.create(content: 'Test', user_id: '5', user_name: 'Clyde Barrow')
 
-Assignment.create(title: 'Testing', description: 'This is just a test', writer_due: '2015-01-01', promoter_due: '2015-02-01')
+Question.create(content: 'Test', user_id: '1', user_name: 'Billy Bob')
+Question.create(content: 'Test', user_id: '2', user_name: 'Jane Jean')
+Question.create(content: 'Test', user_id: '3', user_name: 'Sally Sue')
+Question.create(content: 'Test', user_id: '4', user_name: 'Bonnie Parker')
+Question.create(content: 'Test', user_id: '5', user_name: 'Clyde Barrow')
+

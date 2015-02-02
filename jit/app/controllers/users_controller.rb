@@ -2,7 +2,8 @@
 
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]  
+  before_action :after_database_authentication
 
   # GET /users
   # GET /users.json
@@ -29,18 +30,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+
     respond_to do |format|
       if @user.save
-
-        if !@user.admin? # I changed this to @user instead of current_user because this is at creation
-          #I believe there isn't a current user until a session is started and that's after they log in/after creation
-          @group = Group.all.sample # assigns each new user a group for duration of semester
-          Membership.create(user_id: @user.id, group_id: @group.id)
-          @user.update(:group_id => @group.id)
-         # @group.users << @user # groups will switch on assignment basis
-        
-
-        end
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
@@ -50,6 +42,19 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def after_database_authentication
+    if !current_user.admin?
+      if current_user.group.nil?
+        @user = current_user
+        @group = Group.all.sample
+        @user.update(:group_id => @group.id)
+        Membership.create(user_id: @user.id, group_id: @group.id)
+      end
+    end
+  end
+
+
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json

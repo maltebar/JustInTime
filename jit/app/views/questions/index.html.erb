@@ -5,12 +5,27 @@
 	note: current_user.group.writer isn't correct, because there's no field in user called group to call upon!
 %>
 
+<%#
+IT'S RENDERING CORRECTLY NOW! There are errors with the writer view but we can fix that later. 
+There is also an issue checking the dates but I think I have it kinda right.
+I commented it out so that it doesn't throw errors when we try to play with things
+
+%>
+
 <%= if @user.admin?
       render 'admin'
     elsif @user.group.writer?
-      render 'writer' 
+    #  if @assignment.writer_due < Date.now 
+     # 	render 'writer' 
+     # else 
+      	render 'inactive'
+     # end
     else
-      render 'promoter'
+     # if @assignment.promoter_due < Date.now && Date.now < @assignment.writer_due
+      	render 'promoter' 
+     # else 
+     # 	render 'inactive'
+     # end
     end 
 %>
 
