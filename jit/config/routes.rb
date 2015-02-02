@@ -1,10 +1,11 @@
 # this file defines the correspondence between URLs and web pages
 
 
-
 Rails.application.routes.draw do
 
   resources :ratings
+
+  get 'ratings/show' => 'ratings#show'
 
   devise_for :users
   get 'sessions/new'
@@ -28,13 +29,14 @@ Rails.application.routes.draw do
 
   resources :questions
 
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index' 
   root to: "home#index" #homepage
-  #I think, eventually, we want this to route to the login page but I couldn't figure out how to access that
 
 
   # Example of regular route:
