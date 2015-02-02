@@ -55,7 +55,7 @@ class AssignmentsController < ApplicationController
   end
 end
 
-  private # why?
+  private 
     def set_assignment
       @assignment = Assignment.find(params[:id])
     end
