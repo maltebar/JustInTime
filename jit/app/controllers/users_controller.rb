@@ -3,7 +3,7 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]  
-  before_action :after_database_authentication
+#  before_action :after_database_authentication
 
   # GET /users
   # GET /users.json
@@ -43,16 +43,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def after_database_authentication
+#  def after_database_authentication
    # if !current_user.admin?
-      if current_user.group.nil?
-        @user = current_user
-        @group = Group.all.sample
-        @user.update(:group_id => @group.id)
-        Membership.create(user_id: @user.id, group_id: @group.id)
-      end
+#      if current_user.group.nil?
+#        @user = current_user
+#        @group = Group.all.sample
+#        @user.update(:group_id => @group.id)
+#        Membership.create(user_id: @user.id, group_id: @group.id)
+#      end
    # end
-  end
+#  end
 
 
 
