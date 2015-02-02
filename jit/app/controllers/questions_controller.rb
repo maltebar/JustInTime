@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   respond_to :html
 
   def index
-    #this needs to be updated
+    #THIS NEEDS TO BE FIXED URGENTLY!
 #    if current_user.admin?
       @questions = Question.all
       @user = current_user
@@ -31,8 +31,6 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @post.user_id = current_user.id #?
-    @post.user_name = current_user.name #?
     @question.save
     respond_with(@question)
   end
