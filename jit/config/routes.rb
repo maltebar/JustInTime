@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   root to: "home#index" #homepage
 
 
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
