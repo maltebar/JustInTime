@@ -16,7 +16,7 @@ I commented it out so that it doesn't throw errors when we try to play with thin
      # end
     else
      # if @assignment.promoter_due < Date.now && Date.now < @assignment.writer_due
-      	redirect_to(ratings_show)
+      	render 'ratings/show'
      # else 
      # 	render 'inactive'
      # end
