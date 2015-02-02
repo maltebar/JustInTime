@@ -44,14 +44,14 @@ class UsersController < ApplicationController
   end
 
   def after_database_authentication
-    if !current_user.admin?
+   # if !current_user.admin?
       if current_user.group.nil?
         @user = current_user
         @group = Group.all.sample
         @user.update(:group_id => @group.id)
         Membership.create(user_id: @user.id, group_id: @group.id)
       end
-    end
+   # end
   end
 
 
