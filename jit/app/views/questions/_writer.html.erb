@@ -18,18 +18,19 @@ end
 
 %>
 
+<%= if @question.nil? 
+	 link_to 'New', new_question_path #don't want to link but redirect...
+	else%>
+		<p id="notice"><%= notice %></p>
+  			<%= @question.content %>
+		<p>
+  		<strong>Content:</strong>
 
+		</p>
 
-
-<p id="notice"><%= notice %></p>
-  <%= @question.content %>
-<p>
-  <strong>Content:</strong>
-
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back to question index', questions_path %>
-<br>
-<br>
-<br>
+		<%= link_to 'Edit', edit_question_path(@question) %> |
+		<%= link_to 'Back to question index', questions_path %>
+		<br>
+		<br>
+		<br>
+	<%= end %>
