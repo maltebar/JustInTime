@@ -10,11 +10,6 @@
 			<% @questions.each do |question| %>
 			<td><%= question.content %></td>
 			<td>
-<<<<<<< HEAD
-				<% @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
-				<%= radio_button_tag :discuss, true %> Discuss</p>
-				<%= radio_button_tag :discuss, false %> Pass</p>
-=======
 				<%= form_for(question) do |f| %>
 				<%# @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
 
@@ -34,7 +29,6 @@
             		
             		
             	<%end%>
->>>>>>> radiobuttons
 			</td>
 
 		</tbody>
