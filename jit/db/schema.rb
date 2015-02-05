@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150204203516) do
   create_table "assignments", force: true do |t|
     t.string   "title"
     t.text     "description"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "writer_due"
