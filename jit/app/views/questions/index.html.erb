@@ -1,4 +1,4 @@
-<%# all types of humans will be sent here first... depending on below results, next subsequent view will appear%>
+<%# all types of humans will be sent here first; depending on below results, next subsequent view will appear%>
 
 <%#
 IT'S RENDERING CORRECTLY NOW! There are errors with the writer view, but we can fix that later. 
@@ -16,18 +16,9 @@ I commented it out so that it doesn't throw errors when we try to play with thin
      # end
     else
      # if @assignment.promoter_due < Date.now && Date.now < @assignment.writer_due
-
       	render 'promoter'
-
      # else 
      # 	render 'inactive'
      # end
     end 
-%>
-
-
-<%# this page should be empty (i.e. not display anything), huh, because it just redirects... doesn't it? %>
-
-
-<%# where to put inactive views? how to time them out - a simple if statement comparing current time to admin-set writing and promoting phases? 
 %>

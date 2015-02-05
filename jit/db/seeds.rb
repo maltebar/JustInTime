@@ -24,11 +24,11 @@ User.create(name: 'Bonnie Parker', email: 'bonnieparker@gmail.com', password: '1
 User.create(name: 'Clyde Barrow', email: 'clydebarrow@gmail.com', password: '12345678', admin: 'false')
 
 
-Question.create(content: 'Test', user_id: '1', user_name: 'Billy Bob')
-Question.create(content: 'Test', user_id: '2', user_name: 'Jane Jean')
-Question.create(content: 'Test', user_id: '3', user_name: 'Sally Sue')
-Question.create(content: 'Test', user_id: '4', user_name: 'Bonnie Parker')
-Question.create(content: 'Test', user_id: '5', user_name: 'Clyde Barrow')
+Question.create(content: 'Q1', user_id: '1', user_name: 'Billy Bob')
+Question.create(content: 'Q2', user_id: '2', user_name: 'Jane Jean')
+Question.create(content: 'Q3', user_id: '3', user_name: 'Sally Sue')
+Question.create(content: 'Q4', user_id: '4', user_name: 'Bonnie Parker')
+Question.create(content: 'Q5', user_id: '5', user_name: 'Clyde Barrow')
 
 Question.create(content: 'Test', user_id: '1', user_name: 'Billy Bob')
 Question.create(content: 'Test', user_id: '2', user_name: 'Jane Jean')

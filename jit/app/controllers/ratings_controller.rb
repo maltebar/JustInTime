@@ -10,7 +10,6 @@ class RatingsController < ApplicationController
 
   def show
     @ratings = Rating.all
-    
     respond_with(@rating)
   end
 
