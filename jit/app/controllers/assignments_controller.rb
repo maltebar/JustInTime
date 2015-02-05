@@ -8,6 +8,7 @@ class AssignmentsController < ApplicationController
 
   def index
     @assignments = Assignment.all
+    
   end
 
   def show
@@ -61,6 +62,6 @@ end
     end
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due) #added last two parameters; any others?
+      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active) #added last two parameters; any others?
     end
 end

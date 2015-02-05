@@ -11,14 +11,9 @@
 			<% @questions.each do |question| %>
 			<td><%= question.content %></td>
 			<td><% @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
-			<div class="radio">
-  				<label><input type="radio" name="optradio">Discuss</label>
-			</div>
-			<div class="radio">
- 				<label><input type="radio" name="optradio">Pass</label>
-			</div>
-			</td>
-
+			<% form_for(@rating) do |f| %>
+			<%= f.radio_button :discuss, true %>
+			<%= f.radio_button :discuss, false %>
+			<% end %></td>
 		</tbody>
-	
 	<% end %>

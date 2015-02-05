@@ -3,9 +3,9 @@
 
 Rails.application.routes.draw do
 
-  resources :ratings
+  
 
-  get 'ratings/show' => 'ratings#show'
+  resources :ratings
 
   devise_for :users
   get 'sessions/new'

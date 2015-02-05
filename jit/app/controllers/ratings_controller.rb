@@ -4,15 +4,13 @@ class RatingsController < ApplicationController
   respond_to :html
 
   def index
-    if current_user.admin?
-      @ratings = Rating.all
-    end
+    @ratings = Rating.all
     respond_with(@ratings)
   end
 
   def show
-    @rating = Rating.where(:user_id => current_user.id)
-    @question = Question.where(:id=>@rating.question_id)
+    @ratings = Rating.all
+    
     respond_with(@rating)
   end
 
@@ -46,6 +44,6 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.[:rating].permit(:discuss, :rate)
+      params[:rating].permit[:discuss, :user_id, :question_id]
     end
 end

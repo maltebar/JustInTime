@@ -3,6 +3,7 @@ class CreateAssignments < ActiveRecord::Migration
     create_table :assignments do |t|
       t.string :title
       t.text :description
+      t.boolean :active 
 
       t.timestamps
     end
