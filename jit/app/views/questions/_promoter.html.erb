@@ -10,9 +10,31 @@
 			<% @questions.each do |question| %>
 			<td><%= question.content %></td>
 			<td>
+<<<<<<< HEAD
 				<% @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
 				<%= radio_button_tag :discuss, true %> Discuss</p>
 				<%= radio_button_tag :discuss, false %> Pass</p>
+=======
+				<%= form_for(question) do |f| %>
+				<%# @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
+
+				<%# This works but the SAVE button isn't quite right.
+				    It's not creating a Rating object exactly right...
+				    Updated values aren't going into the database %>
+
+				<%= form_for Rating.new do |g| %>
+				<%#= g.hidden_field :user_id, value: @user.id %>
+				<%#= g.hidden_field :question_id, value: question.id %>
+            	<p> <%= g.radio_button :discuss, true %>Discuss </p>
+            	<p> <%= g.radio_button :discuss, false %>Pass </p>
+            	<%= f.hidden_field :id, value: question.id %>
+            	<p> <%= g.submit "Save"%> </p>
+            	
+            	<%end%>
+            		
+            		
+            	<%end%>
+>>>>>>> radiobuttons
 			</td>
 
 		</tbody>
@@ -20,15 +42,3 @@
 	<% end %>
 
 
-
-<%#ignore the stuff below... I think the stuff below is going to be how to do it 
-but 'discuss' isn't a field of question so it's erroring right now
-we need to figure out how to access the discuss field of @rating%>
-
-
-				<%#= form_for(question) do |f| %>
-				<%# @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
-            	<p> <%#= f.radio_button :discuss, true %>Discuss </p>
-            	<p> <%#= f.radio_button :discuss, false %>Pass </p>
-            	<p> <%#= f.submit "Save" %> </p>
-            	<%#end%>

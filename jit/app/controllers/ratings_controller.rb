@@ -23,13 +23,30 @@ class RatingsController < ApplicationController
 
   def create
     @rating = Rating.new(rating_params)
-    @rating.save
-    respond_with(@rating)
+    
+    respond_to do |format|
+      if @rating.save
+        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
+        format.json { render :show, status: :created, location: @rating }
+      else
+        format.html { render :new }
+        format.json { render json: @rating.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   def update
-    @rating.update(rating_params)
-    respond_with(@rating)
+    respond_to do |format|
+      if @rating.update(rating_params)
+        format.html { redirect_to @rating, notice: 'Rating updated. [Applauds]!' }
+        format.json { render :show, status: :ok, location: @rating }
+      else
+        format.html { render :edit }
+        format.json { render json: @rating.errors, status: :unprocessable_entity }
+      end
+    end
+    #respond_with(@rating)
   end
 
   def destroy
