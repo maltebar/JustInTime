@@ -8,8 +8,6 @@ class QuestionsController < ApplicationController
 #    if current_user.admin?
       @questions = Question.all
       @user = current_user
-      
-
 
 #    elses
 #      @questions = Question.where(:user_id => current_user.id)

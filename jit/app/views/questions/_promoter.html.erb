@@ -1,6 +1,5 @@
 <h1> Promoter View </h2>
 
-
 	<table class="table table-striped">
 		<thead>
 			<th>Question</th>
@@ -11,14 +10,13 @@
 			<% @questions.each do |question| %>
 			<td><%= question.content %></td>
 			<td><% @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
-			<div class="radio">
-  				<label><input type="radio" name="optradio">Discuss</label>
-			</div>
-			<div class="radio">
- 				<label><input type="radio" name="optradio">Pass</label>
-			</div>
+				<%= radio_button_tag :discuss, @rating.discuss => 'true' %><%= label_tag :discuss, 'Discuss' %>
+				<%= radio_button_tag :discuss, @rating.discuss => 'false' %><%= label_tag :discuss, 'Pass' %>
 			</td>
 
 		</tbody>
 	
 	<% end %>
+
+
+
