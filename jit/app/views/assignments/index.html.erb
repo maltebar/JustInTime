@@ -6,6 +6,7 @@
       
 <h1>Assignments </h1>
 
+
 <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
   <thead> <%#table header%>
     <tr>
@@ -32,6 +33,12 @@
         <td><%= assignment.writer_due %></td>
         <td><%= assignment.promoter_due %></td>
         <td><%= "link to users' roles" %></td>
+        <td>
+          <%= form_for(assignment) do |f| %>
+            <p> <%= f.radio_button :active, true %>Active </p> <%# not exactly right but almost there!%>
+            <p> <%= f.submit "Save" %> </p>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
         <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'For real?' } %></td> 
