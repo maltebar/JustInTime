@@ -8,7 +8,9 @@ class QuestionsController < ApplicationController
 #    if current_user.admin?
       @questions = Question.all
       @user = current_user
-    
+    @assignment = Assignment.find(1) #CURRENT
+    #GET CURRENT ASSIGNMENT OWKRING FIRST
+    @assignments = Assignment.all
 #    elses
 #      @questions = Question.where(:user_id => current_user.id)
 #    end
@@ -19,8 +21,10 @@ class QuestionsController < ApplicationController
   # 1. need to deal with case where user hasn't written question yet... i.e. if question nil
   # 2. figure out multiple HW assignments: question model can account for that, i.e. question belongs_to assignment)
 
-
+  #semi-fixed!!!!!!!!!
   def show
+    @question = Question.find(2)
+    @questions = Question.where(assignment_id: 1)
     respond_with(@question)
   end
 
@@ -54,6 +58,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:content, :user_id, :user_name) 
+      params.require(:question).permit(:content, :user_id, :user_name, :assignment_id) 
     end
 end

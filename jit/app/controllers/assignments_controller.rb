@@ -6,9 +6,15 @@ class AssignmentsController < ApplicationController
   # re: .html and .json responses... http://stackoverflow.com/questions/20188047/rails-respond-to-json-and-html
   # but what does above/below /do/, in English? 
 
+  def qlist
+    @assignment = Assignment.find(params[:assignment])
+    @questions = @assignment.questions
+
+  end
+
+
   def index
     @assignments = Assignment.all
-    
   end
 
   def show
@@ -62,6 +68,6 @@ end
     end
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active) #added last two parameters; any others?
+      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active)
     end
 end

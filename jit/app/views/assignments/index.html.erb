@@ -28,7 +28,7 @@
         <td>Writing: <%= assignment.writer_due %>
         <br>
         Promoting: <%= assignment.promoter_due %></td>
-        <td> link_to path </td>
+        <td><%= link_to 'Questions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %></td>
 
         <td><%= link_to 'Show', assignment %> <br>
         <%= link_to 'Edit', edit_assignment_path(assignment) %> <br>

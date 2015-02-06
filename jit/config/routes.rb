@@ -12,9 +12,14 @@ Rails.application.routes.draw do
   post 'sessions/create'
   delete 'sessions/destroy'
 
+  get 'questions/show'
+
+  get 'assignments/qlist'
+
   resources :users do
     resources :memberships
     resources :groups
+    resources :questions
   end
 
   resources :memberships
@@ -25,9 +30,12 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :assignments
+  resources :assignments do 
+    resources :questions
+  end
 
   resources :questions
+
 
 
 

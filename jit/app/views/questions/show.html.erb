@@ -1,24 +1,3 @@
 <%# Admin view only %>
 <%# upon selecting specific assignment number from list of assignments page, presents list of questions submitted for desired assignment%>
 
-<h1> Questions Submitted for Assignment </h1>
-
-<br>
-
-	<table class="table table-bordered">
-
-		<thead>
-			<th>Question</th>
-			<th>Writer</th>
-		</thead>
-
-		<%# we want these questions displayed in (relative) ranked order here already, don't we... %>
-		<tbody>
-			<% @questions.each do |question| %>
-			<td><%= question.content %></td>
-			<%# fix below line, obviously %>
-			<td>"name of user that submitted question"</td>
-			<% end %>
-		</tbody>
-
-	</table>

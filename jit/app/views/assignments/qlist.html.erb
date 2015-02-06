@@ -1,0 +1,23 @@
+<h1> Questions Submitted for Assignment </h1>
+
+<br>
+
+	<table class="table table-bordered">
+
+		<thead>
+			<th>Question</th>
+			<th>Writer</th>
+		</thead>
+
+		<%# we want these questions displayed in (relative) ranked order here already, don't we... %>
+		<tbody>
+			<% @questions.each do |question| %>
+			<tr>
+			<td><%= question.content %></td>
+			<%# fix below line, obviously %>
+			<td><%= question.user.name %></td>
+			<% end %>
+		</tr>
+		</tbody>
+
+	</table>
