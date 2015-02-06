@@ -9,7 +9,9 @@
 
 # test data 
 
-Assignment.create(title: 'Testing', description: 'This is just a test', writer_due: '2015-03-01', promoter_due: '2015-04-01')
+Assignment.create(title: 'Assignment 1', description: 'Test.', writer_due: '2015-03-01', promoter_due: '2015-04-01')
+Assignment.create(title: 'Assignment 2', description: 'Testing.', writer_due: '2015-04-02', promoter_due: '2015-04-09')
+Assignment.create(title: 'Assignment 3', description: 'Still Testing.', writer_due: '2015-04-10', promoter_due: '2015-04-21')
 
 Group.create(name: "Group 1")
 Group.create(name: "Group 2")

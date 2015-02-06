@@ -1,23 +1,37 @@
-<h1>Listing users</h1>
+<%# Admin view %>
 
-<table>
-  <thead>
+  <div class="row">
+  <div class="col-md-12">
+    <div style="margin-left:0%">
+      
+<h1>List of students</h1>
+<br>
+
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+
+  <thead> <%#table header%>
     <tr>
-      <th colspan="3"></th>
+      <th>Student</th>
+      <th>E-mail</th>
+      <th>Remove User</th> <%# we could certainly label this something else - or not at all - I just didn't know what %>
+      <th>Assignment</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ <%# how to exclude admins from this list of students %> 
+    <tbody>
+    <% @users.each do |user| %> <%#table content: each row contains...%>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <%# why does it ask me to confirm several times (usually, but not always? %>  
+        <td><% "redirect_to" %></td>
       </tr>
     <% end %>
   </tbody>
+
 </table>
 
-<br>
 
 <%= link_to 'New User', new_user_path %>

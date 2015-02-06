@@ -51,12 +51,12 @@
               <%=if current_user.nil?
                     "Not Logged In"
                   elsif current_user.admin?
-                    "Admin"
+                    "administrator"
                   else
                     if current_user.group.writer?
-                      "Writer"
+                      "writer"
                     else
-                      "Promoter"
+                      "promoter"
                     end
                   end 
                   %></a></li> 
