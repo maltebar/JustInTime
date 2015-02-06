@@ -1,19 +1,36 @@
 <h1> Promoter View </h2>
 
-
-	<table class="table table-striped">
+	<table class="table table-bordered">
 		<thead>
 			<th>Question</th>
-			<th>Rate It!</th>
+			<th>Rating</th>
 		</thead>
 
 		<tbody>
 			<% @questions.each do |question| %>
 			<td><%= question.content %></td>
-			<td><% @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
-			<% form_for(@rating) do |f| %>
-			<%= f.radio_button :discuss, true %>
-			<%= f.radio_button :discuss, false %>
-			<% end %></td>
+			<td>
+				<%#= form_for(question) do |f| %>
+				<%# @rating = Rating.create(user_id: @user.id, question_id: question.id) %>
+
+				<%# This works but the SAVE button isn't quite right.
+				    It's not creating a Rating object exactly right...
+				    Updated values aren't going into the database %>
+
+				<%= form_for(Rating.new) do |g| %>
+				<%= g.hidden_field :user_id, value: @user.id %>
+				<%= g.hidden_field :question_id, value: question.id %>
+            	<p> <%= g.radio_button :discuss, true %>Discuss </p>
+            	<p> <%= g.radio_button :discuss, false %>Pass </p>
+            	<%#= f.hidden_field :id, value: question.id %>
+            	<p> <%= g.submit "Save"%> </p>
+            	
+            	<%#end%>
+            		
+            		
+            	<%end%>
+			</td>
+
 		</tbody>
+	
 	<% end %>
