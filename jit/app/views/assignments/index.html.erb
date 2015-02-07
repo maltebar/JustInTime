@@ -28,7 +28,8 @@
         <td>Writing: <%= assignment.writer_due %>
         <br>
         Promoting: <%= assignment.promoter_due %></td>
-        <td><%= link_to 'Questions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %></td>
+        <td><%= link_to 'Questions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %>
+        </td>
 
         <td><%= link_to 'Show', assignment %> <br>
         <%= link_to 'Edit', edit_assignment_path(assignment) %> <br>
@@ -36,10 +37,16 @@
         <%# why does it ask me to confirm several times (usually, but not always? %>
 
         <%# radio button for current assignment %>
+        <%# The f.submit part needs to be outside the end of the table.
+        But as soon as I end the form_for part, I can't do f.submit
+        I tried creating the form around the whole "@assignments.each" part
+        But that displays everything else weird and I couldn't figure out how to fix that...
+        %>
         <td>
           <%= form_for(assignment) do |f| %>
-            <p> <%= f.radio_button :active, true %> Current Assignment</p> <%# not exactly right but almost there!%>
-            <p> <%= f.submit "Save" %> </p>
+          <%= f.radio_button :active, true %>
+          <%= label :active_assignment, 'Current Assignment' %>
+          <%= f.submit "Save Current Assignment" %>
           <% end %>
         </td>
 
