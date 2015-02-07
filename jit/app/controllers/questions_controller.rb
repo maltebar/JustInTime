@@ -5,23 +5,17 @@ class QuestionsController < ApplicationController
 
   #THIS WHOLE METHOD NEEDS TO BE FIXED URGENTLY!
   def index
-#    if current_user.admin?
-      @questions = Question.all
-      @user = current_user
+
+    @questions = Question.all
+    @user = current_user
     @assignment = Assignment.find(1) #CURRENT
-    #GET CURRENT ASSIGNMENT OWKRING FIRST
+    #GET CURRENT ASSIGNMENT WOKRING FIRST!
     @assignments = Assignment.all
-#    elses
-#      @questions = Question.where(:user_id => current_user.id)
-#    end
-#    respond_with(@questions)
+
+    @question = Question.where(:user_id => current_user.id)
   end
 
-# To do...
-  # 1. need to deal with case where user hasn't written question yet... i.e. if question nil
-  # 2. figure out multiple HW assignments: question model can account for that, i.e. question belongs_to assignment)
-
-  #semi-fixed!!!!!!!!!
+  #semi-fixed!!!!!!!!! NEEDS URGENT WORK!!!!!
   def show
     @question = Question.find(2)
     @questions = Question.where(assignment_id: 1)

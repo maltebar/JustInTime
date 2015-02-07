@@ -9,6 +9,8 @@
 
 # test data 
 
+# 
+
 Assignment.create(title: 'Assignment 1', description: 'Test.', writer_due: '2015-03-01', promoter_due: '2015-04-01')
 Assignment.create(title: 'Assignment 2', description: 'Testing.', writer_due: '2015-04-02', promoter_due: '2015-04-09')
 Assignment.create(title: 'Assignment 3', description: 'Still Testing.', writer_due: '2015-04-10', promoter_due: '2015-04-21')
@@ -25,15 +27,11 @@ User.create(name: 'Sally Sue', email: 'sallysue@gmail.com', password: '12345678'
 User.create(name: 'Bonnie Parker', email: 'bonnieparker@gmail.com', password: '12345678', admin: 'false')
 User.create(name: 'Clyde Barrow', email: 'clydebarrow@gmail.com', password: '12345678', admin: 'false')
 
-
+# questions written by users
 Question.create(content: 'Q1', user_id: '1', assignment_id: '1', user_name: 'Billy Bob')
 Question.create(content: 'Q2', user_id: '2', assignment_id: '1', user_name: 'Jane Jean')
 Question.create(content: 'Q3', user_id: '3', assignment_id: '1', user_name: 'Sally Sue')
 Question.create(content: 'Q4', user_id: '4', assignment_id: '1', user_name: 'Bonnie Parker')
 Question.create(content: 'Q5', user_id: '5', assignment_id: '1', user_name: 'Clyde Barrow')
 
-Question.create(content: 'Test', user_id: '1', user_name: 'Billy Bob')
-Question.create(content: 'Test', user_id: '2', user_name: 'Jane Jean')
-Question.create(content: 'Test', user_id: '3', user_name: 'Sally Sue')
-Question.create(content: 'Test', user_id: '4', user_name: 'Bonnie Parker')
-Question.create(content: 'Test', user_id: '5', user_name: 'Clyde Barrow')
+

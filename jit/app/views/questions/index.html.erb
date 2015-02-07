@@ -1,18 +1,29 @@
 <%# all types of humans will be sent here first; depending on below results, next subsequent view will appear%>
 
+
+
+
+
+
+<%# I'VE SWITCHED render 'view' TO ALL THE WRONG THINGS JUST TO SEE THE VIEWS QUICKLY!!!!!!!!! MUST SWITCH BACK!!!! %>
+
+
+
+
+
 <%= if @user.admin?
       render 'admin'
     elsif @user.group.writer?
-      if @assignment.writer_due < Time.now 
-      	render 'writer' 
-      else 
-      	render 'inactive'
-      end
+      #if @assignment.writer_due < Time.now 
+      	render 'inactive' 
+      #else 
+      #	render 'inactive'
+      #end
     else # user must be promoter
-      if @assignment.promoter_due < Time.now && Time.now < @assignment.writer_due
-      	render 'promoter'
-      else 
-      	render 'inactive'
-      end
+      #if @assignment.promoter_due < Time.now && Time.now < @assignment.writer_due
+      	#render 'writer'
+      #else 
+      	render 'writer'
+      #end
     end 
 %>
