@@ -23,7 +23,7 @@
       #if @assignment.promoter_due < Time.now && Time.now < @assignment.writer_due
       	#render 'writer'
       #else 
-      	render 'writer'
+      	render 'inactive'
       #end
     end 
 %>
