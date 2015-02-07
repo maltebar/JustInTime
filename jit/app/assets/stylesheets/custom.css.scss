@@ -7,12 +7,20 @@ html {
 }
 
 .navbar-inverse {
-	background-color: #313131 !important;
+	background-color: #353536 !important;
+}
+
+a.navbar-nickname {
+	color: #ffffff !important;
+}
+
+a.navbar-brand {
+	color: #f0bb1a !important;
 }
 
 body {
 	padding: 15px;
-	background: #f9f9f9 !important;
+	background: #fbfbfb !important;
 }
 
 
@@ -21,5 +29,6 @@ h1 {
 }
 
 th {
-	color: #ffcf3c !important;
+	color: #f0bb1a !important;
 }
+
