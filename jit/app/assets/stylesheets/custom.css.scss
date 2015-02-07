@@ -6,13 +6,20 @@ html {
   overflow-y: scroll;
 }
 
+.navbar-inverse {
+	background-color: #313131 !important;
+}
+
 body {
 	padding: 15px;
-	background: #ECF2F7 !important;
+	background: #f9f9f9 !important;
 }
 
-.navbar-inverse {
-	background-color: #000080 !important;
 
+h1 {
+	color: #000000 !important;
 }
 
+th {
+	color: #ffcf3c !important;
+}
