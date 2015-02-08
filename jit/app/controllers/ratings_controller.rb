@@ -12,7 +12,7 @@ class RatingsController < ApplicationController
   def show
     #@ratings = Rating.all
     #respond_with(@rating)
-    redirect_to question_path
+    redirect_to questions_path
   end
 
   def new

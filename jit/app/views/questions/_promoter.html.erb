@@ -8,7 +8,7 @@
 
 		<tbody>
 			<% @questions.each do |question| %>
-			<% if question.ratings.where(user_id: current_user.id).nil? %>
+			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>
 				<%#= form_for(question) do |f| %>
@@ -16,16 +16,16 @@
 
 
 					<%= form_for(@rating) do |g| %>
-					<%= g.hidden_field :user_id, value: @user.id %>
-					<%= g.hidden_field :question_id, value: question.id %>
-            		<p> <%= g.radio_button :discuss, true %>Discuss </p>
-            		<p> <%= g.radio_button :discuss, false %>Pass </p>
-            		<%#= f.hidden_field :id, value: question.id %>
-            		<p> <%= g.submit "Save"%> </p>
+						<%= g.hidden_field :user_id, value: @user.id %>
+						<%= g.hidden_field :question_id, value: question.id %>
+            			<p> <%= g.radio_button :discuss, true %>Discuss </p>
+            			<p> <%= g.radio_button :discuss, false %>Pass </p>
+            			<%#= f.hidden_field :id, value: question.id %>
+            			<p> <%= g.submit "Save"%> </p>
             	
-            		<%#end%>
-            		
+            			<%#end%>
             		<% end %>
+
 				</td>
 			<%end%>
 
