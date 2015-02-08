@@ -33,6 +33,10 @@
     <%= f.label :promoting_due %><br>
     <%= f.datetime_select :promoter_due %>
   </div>
+  <div class="field">
+    <%= f.radio_button :active, true %>
+    <%= label :active_assignment, 'Current' %>
+  </div>
 
 <br></br>
 

@@ -29,6 +29,7 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = Assignment.new(assignment_params)
+    @assignments = Assignment.where.not(id: @assignment.id)
     flash[:notice] = "Assignment created. [Applause]!" if @assignment.save
     respond_with(@assignment)
 
@@ -39,10 +40,17 @@ class AssignmentsController < ApplicationController
      Group.update(Group.where(name: 'Group 2'), :writer => false)
      Group.update(Group.where(name: 'Group 1'), :writer => true)
     end
+
+    if @assignment.active?
+      @assignments.each do |assignment|
+        assignment.update(active: false)
+      end
+    end
     
   end
 
   def update # could this action/method also be shortened to the above format? how/why?
+    @assignments = Assignment.where.not(id: @assignment.id)
     respond_to do |format|
       if @assignment.update(assignment_params) #if all went well, assignment now updated
         format.html { redirect_to @assignment, notice: 'Assignment updated. [Applause]!' }
@@ -50,6 +58,12 @@ class AssignmentsController < ApplicationController
       else # otherwise, assignment not updated: throw error
         format.html { render :edit }
         format.json { render json: @assignment.errors, status: :unprocessable_entity }
+      end
+    end
+
+    if @assignment.active?
+      @assignments.each do |assignment|
+        assignment.update(active: false)
       end
     end
   end

@@ -38,17 +38,12 @@
 
         <%# radio button for current assignment %>
         
-        <%# The f.submit part needs to be outside the end of the table.
-        But as soon as I end the form_for part, I can't do f.submit
-        I tried creating the form around the whole "@assignments.each" part
-        But that displays everything else weird and I couldn't figure out how to fix that...
-        %>
         <td>
           <%= form_for(assignment) do |f| %>
           <%= f.radio_button :active, true %>
           <%= label :active_assignment, 'Current' %>
-          <%= f.submit "Save" %>
-          <% end %>
+          <%= f.submit "Save"%>
+          <%end%>
         </td>
 
       </tr>
