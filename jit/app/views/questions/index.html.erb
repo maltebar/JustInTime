@@ -14,16 +14,16 @@
 <%= if @user.admin?
       render 'admin'
     elsif @user.group.writer?
-      #if @assignment.writer_due < Time.now 
-      	render 'inactive' 
-      #else 
-      #	render 'inactive'
-      #end
-    else # user must be promoter
-      #if @assignment.promoter_due < Time.now && Time.now < @assignment.writer_due
-      	#render 'writer'
-      #else 
+      if @assignment.writer_due > Time.now 
+      	render 'writer' 
+      else 
       	render 'inactive'
-      #end
+      end
+    else # user must be promoter
+      if @assignment.promoter_due < Time.now && Time.now < @assignment.writer_due
+      	render 'promoter'
+      else 
+      	render 'inactive'
+      end
     end 
 %>

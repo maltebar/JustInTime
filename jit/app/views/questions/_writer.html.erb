@@ -5,14 +5,16 @@
 <%# note: should only display the current user's question %>
 
 
-		<p id="notice"><%= notice %></p>
-  			<%= @question.content %>
-		<p>
-  		<strong>Content:</strong>
+<%= if Question.exists?(user_id: current_user.id)
+	link_to 'Edit', edit_question_path(@question)
+	else
+	link_to 'New', new_question_path 
+	end%><br>
 
-		</p>
 
-		<%= link_to 'Edit', edit_question_path(@question) %> |
+
+
+		<%#= link_to 'Edit', edit_question_path(@question) %> 
 		<%= link_to 'Back to question index', questions_path %>
 		<br>
 		<br>

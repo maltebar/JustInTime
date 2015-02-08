@@ -8,17 +8,16 @@ class QuestionsController < ApplicationController
 
     @questions = Question.all
     @user = current_user
-    @assignment = Assignment.find(1) #CURRENT
-    #GET CURRENT ASSIGNMENT WOKRING FIRST!
+    @assignment = Assignment.find(Assignment.where(active: true))
     @assignments = Assignment.all
-
-    @question = Question.where(:user_id => current_user.id)
+    @question = Question.find(Question.where(:user_id => current_user.id))
   end
 
   #semi-fixed!!!!!!!!! NEEDS URGENT WORK!!!!!
   def show
-    @question = Question.find(2)
-    @questions = Question.where(assignment_id: 1)
+    @question = @question = Question.find(Question.where(:user_id => current_user.id))
+    @assignment = Assignment.find(Assignment.where(active: true))
+    @questions = Question.where(assignment_id: @assignment.id)
     respond_with(@question)
   end
 

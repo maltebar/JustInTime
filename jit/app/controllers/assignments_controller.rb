@@ -30,20 +30,20 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(assignment_params)
     @assignments = Assignment.where.not(id: @assignment.id)
+
     flash[:notice] = "Assignment created. [Applause]!" if @assignment.save
     respond_with(@assignment)
-
-    if Assignment.count % 2 == 0
-     Group.update(Group.where(name: 'Group 2'), :writer => true)
-     Group.update(Group.where(name: 'Group 1'), :writer => false)
-    else
-     Group.update(Group.where(name: 'Group 2'), :writer => false)
-     Group.update(Group.where(name: 'Group 1'), :writer => true)
-    end
 
     if @assignment.active?
       @assignments.each do |assignment|
         assignment.update(active: false)
+      end
+      if Assignment.count % 2 == 0
+        Group.update(Group.where(name: 'Group 2'), :writer => true)
+        Group.update(Group.where(name: 'Group 1'), :writer => false)
+      else
+        Group.update(Group.where(name: 'Group 2'), :writer => false)
+        Group.update(Group.where(name: 'Group 1'), :writer => true)
       end
     end
     
@@ -64,6 +64,13 @@ class AssignmentsController < ApplicationController
     if @assignment.active?
       @assignments.each do |assignment|
         assignment.update(active: false)
+      end
+      if Assignment.count % 2 == 0
+        Group.update(Group.where(name: 'Group 2'), :writer => true)
+        Group.update(Group.where(name: 'Group 1'), :writer => false)
+      else
+        Group.update(Group.where(name: 'Group 2'), :writer => false)
+        Group.update(Group.where(name: 'Group 1'), :writer => true)
       end
     end
   end
