@@ -13,6 +13,8 @@
 
 <%= if @user.admin?
       render 'admin'
+    elsif @assignments.count == 0
+      render 'noassignment'
     elsif @user.group.writer?
       if @assignment.writer_due > Time.now 
       	render 'writer' 

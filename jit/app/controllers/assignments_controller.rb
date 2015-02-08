@@ -37,7 +37,7 @@ class AssignmentsController < ApplicationController
     if @assignment.active?
       @assignments.each do |assignment|
         assignment.update(active: false)
-      end
+    end
       if Assignment.count % 2 == 0
         Group.update(Group.where(name: 'Group 2'), :writer => true)
         Group.update(Group.where(name: 'Group 1'), :writer => false)

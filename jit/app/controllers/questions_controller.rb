@@ -5,15 +5,18 @@ class QuestionsController < ApplicationController
 
   
   def index
-
-    @questions = Question.all
     @user = current_user
-    @assignment = Assignment.find(Assignment.where(active: true))
+    @questions = Question.all
     @assignments = Assignment.all
+    @rating = Rating.new
+    if @assignments.count != 0
+      @assignment = Assignment.find(Assignment.where(active: true))
+    end
+
     if Question.exists?(user_id: current_user.id)
       @question = Question.find(Question.where(:user_id => current_user.id))
     else 
-      @question = Question.new(user_id: current_user.id, assignment_id: @assignment.id)
+      @question = Question.create(user_id: current_user.id, assignment_id: @assignment.id)
     end
   
   end
@@ -42,7 +45,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update(question_params)
-    respond_with(@question)
+    redirect_to questions_path
   end
 
   def destroy

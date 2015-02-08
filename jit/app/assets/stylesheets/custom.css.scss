@@ -6,8 +6,16 @@ html {
   overflow-y: scroll;
 }
 
+@media (min-width: 768px) {
+	.navbar-fixed-top{
+	float: left;
+	}
+}
+
 .navbar-inverse {
 	background-color: #353536 !important;
+	padding-left: 0px;
+	padding-bottom: 10px;
 }
 
 a.navbar-nickname {
@@ -30,5 +38,40 @@ h1 {
 
 th {
 	color: #f0bb1a !important;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding-top: 45px;
+    padding-bottom: 600px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #f0bb1a;
+    border-right: 1px solid #eee;
+  }
+}
+
+.nav-sidebar{
+	margin-right: -21px;
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+
+.nav-sidebar > li > a {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+	color: #A07C1D;
+	background-color: #A07C1D;
 }
 
