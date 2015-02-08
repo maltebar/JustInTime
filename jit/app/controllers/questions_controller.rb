@@ -3,19 +3,24 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
-  #THIS WHOLE METHOD NEEDS TO BE FIXED URGENTLY!
+  
   def index
 
     @questions = Question.all
     @user = current_user
     @assignment = Assignment.find(Assignment.where(active: true))
     @assignments = Assignment.all
-    @question = Question.find(Question.where(:user_id => current_user.id))
+    if Question.exists?(user_id: current_user.id)
+      @question = Question.find(Question.where(:user_id => current_user.id))
+    else 
+      @question = Question.new(user_id: current_user.id, assignment_id: @assignment.id)
+    end
+  
   end
 
-  #semi-fixed!!!!!!!!! NEEDS URGENT WORK!!!!!
+
   def show
-    @question = @question = Question.find(Question.where(:user_id => current_user.id))
+    @question = Question.find(Question.where(:user_id => current_user.id))
     @assignment = Assignment.find(Assignment.where(active: true))
     @questions = Question.where(assignment_id: @assignment.id)
     respond_with(@question)

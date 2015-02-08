@@ -47,7 +47,7 @@
 
         <nav> <%# navigation bar %>
           <ul class="nav navbar-nav navbar-right"> <%# ul/li tag used for unordered lists? %>
-            <li><a href="#">Role: 
+            <li><a >Role: 
               <%=if current_user.nil?
                     "Not Logged In"
                   elsif current_user.admin?
@@ -73,8 +73,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" style='position:fixed;'>
           <ul class="nav nav-sidebar">
-            <li><a href="<%= @first_link %>"><%= @first_entry %></a></li>
-            <li><a href="<%= @second_link %>"><%= @second_entry %></a></li>
+            <br><br>
+            <%= link_to @first_entry, @first_link %> <br><br>
+            <%= link_to @second_entry, @second_link %> <br>
+
           </ul>
         </div>
         

@@ -20,7 +20,7 @@
       	render 'inactive'
       end
     else # user must be promoter
-      if @assignment.promoter_due < Time.now && Time.now < @assignment.writer_due
+      if @assignment.promoter_due > Time.now && Time.now > @assignment.writer_due
       	render 'promoter'
       else 
       	render 'inactive'

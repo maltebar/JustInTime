@@ -5,6 +5,7 @@
     <div style="margin-left:0%">
       
 <h1>Assignments </h1>
+<h5> Current Assignment is shaded. </h5>
 
 
 <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
@@ -16,35 +17,28 @@
       </th> 
       <th>Questions Submitted</th>
       <th>Editing Buttons</th>
-      <th>Current Assignment</th>
     </tr>
   </thead>
 
   <tbody>
     <% @assignments.each do |assignment| %> <%#table content: each row contains...%>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <% if assignment.active? %>
+        <tr bgcolor="#f0bb1a">
+        <%end%>
         <td><%= assignment.title %></td>
         <td><%= assignment.description %></td>
-        <td>Writing: <%= assignment.writer_due %>
+        <td>Writing: <%= assignment.writer_due.strftime('%m-%d-%Y') %>
         <br>
-        Promoting: <%= assignment.promoter_due %></td>
+        Promoting: <%= assignment.promoter_due.strftime('%m-%d-%Y') %></td>
         <td><%= link_to 'Questions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %>
         </td>
 
         <td><%= link_to 'Show', assignment %> <br>
         <%= link_to 'Edit', edit_assignment_path(assignment) %> <br>
         <%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-        <%# why does it ask me to confirm several times (usually, but not always? %>
+        <%# why does it ask me to confirm several times (usually, but not always? %>        
 
-        <%# radio button for current assignment %>
-        
-        <td>
-          <%= form_for(assignment) do |f| %>
-          <%= f.radio_button :active, true %>
-          <%= label :active_assignment, 'Current' %>
-          <%= f.submit "Save"%>
-          <%end%>
-        </td>
 
       </tr>
     <% end %>
