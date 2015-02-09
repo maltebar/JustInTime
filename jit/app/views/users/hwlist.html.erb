@@ -1,0 +1,25 @@
+<h1> Student's assignments </h1>
+
+<br>
+
+	<table class="table table-bordered">
+
+		<thead>
+			<th>Assignment</th>
+			<th>Writer</th>
+		</thead>
+
+		<tbody>
+			<% @assignments.each do |assignment| %>
+			<tr>
+			<td><%= assignment.content %></td>
+			<td>'Link to student's own work submitted will be here'</td>
+			<% end %>
+		</tr>
+		</tbody>
+
+	</table>
+
+	<br><br>
+
+<%= link_to 'Back to users', assignments_path %>

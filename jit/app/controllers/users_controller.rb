@@ -5,9 +5,16 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]  
 
 
+  #INSERTED TRYING TO MADE HWLIST WORK!
+  def hwlist
+    @assignment = Assignment.find(params[:assignment])
+    #@questions = @assignment.questions USED IN QLIST; MUST BE FIXED STILL
+  end
+
   # GET /users
   # GET /users.json
   def index
+    @assignments = Assignment.all #INSERTED TRYING TO MADE HWLIST WORK!
     @users = User.where(admin: false)
   end
 
