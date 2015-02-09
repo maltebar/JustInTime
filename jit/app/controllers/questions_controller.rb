@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @questions = Question.all
     @assignments = Assignment.all
     @rating = Rating.new
-    if @assignments.count != 0
+    if Assignment.exists?(active: true)
       @assignment = Assignment.find(Assignment.where(active: true))
     end
 

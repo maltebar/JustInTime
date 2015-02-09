@@ -13,7 +13,7 @@
 
 <%= if @user.admin?
       render 'admin'
-    elsif @assignments.count == 0
+    elsif @assignment.nil?
       render 'noassignment'
     elsif @user.group.writer?
       if @assignment.writer_due > Time.now 
