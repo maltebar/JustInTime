@@ -7,6 +7,7 @@
 		<thead>
 			<th>Question</th>
 			<th>Writer</th>
+			<th>Number of Upvotes</th>
 		</thead>
 
 		<%# we want these questions displayed in (relative) ranked order here already, don't we... %>
@@ -16,6 +17,7 @@
 			<td><%= question.content %></td>
 			<%# fix below line, obviously %>
 			<td><%= question.user.name %></td>
+			<td><%= question.ratings.count%> </td>
 			<% end %>
 		</tr>
 		</tbody>
