@@ -28,7 +28,7 @@ a.navbar-brand {
 
 body {
 	padding: 15px;
-	background: #fbfbfb !important;
+	background: #f6f6f6 !important;
 }
 
 
@@ -36,9 +36,15 @@ h1 {
 	color: #000000 !important;
 }
 
+h5 {
+	color: #f0bb1a !important;
+}
+
 th {
 	color: #f0bb1a !important;
 }
+
+
 
 @media (min-width: 768px) {
   .sidebar {
@@ -52,7 +58,7 @@ th {
     padding-bottom: 600px;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #f0bb1a;
+    background-color: #d2d2d2;
     border-right: 1px solid #eee;
   }
 }

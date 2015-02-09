@@ -3,12 +3,13 @@
   <div class="row">
   <div class="col-md-12">
     <div style="margin-left:0%">
-      
-<h1>Assignments </h1>
-<h5> Current Assignment is shaded. </h5>
 
+<h1>Assignments </h1>
+
+<br>
 
 <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
   <thead> <%#table header%>
     <tr>
       <th>Title</th>
@@ -26,24 +27,28 @@
         <% if assignment.active? %>
         <tr bgcolor="#f0bb1a">
         <%end%>
+
         <td><%= assignment.title %></td>
         <td><%= assignment.description %></td>
-        <td>Writing: <%= assignment.writer_due.strftime('%m-%d-%Y') %>
-        <br>
-        Promoting: <%= assignment.promoter_due.strftime('%m-%d-%Y') %></td>
+        <td>Writing: <%= assignment.writer_due.strftime('%-m.%-d.%Y') %>
+            <br>
+            Promoting: <%= assignment.promoter_due.strftime('%-m.%-d.%Y') %></td>
         <td><%= link_to 'Questions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %>
         </td>
 
-        <td><%= link_to 'Show', assignment %> <br>
-        <%= link_to 'Edit', edit_assignment_path(assignment) %> <br>
+        <td><%= link_to 'Edit', edit_assignment_path(assignment) %> <br>
         <%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
         <%# why does it ask me to confirm several times (usually, but not always? %>        
-
-
       </tr>
+
     <% end %>
   </tbody>
+
 </table>
+
+<h5> Current assignment is shaded. </h5>
+
+<br><br>
 
 <%= link_to 'New Assignment', new_assignment_path %>
 

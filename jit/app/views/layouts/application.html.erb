@@ -50,14 +50,14 @@
           <ul class="nav navbar-nav navbar-right"> <%# ul/li tag used for unordered lists? %>
             <li><a >Role: 
               <%=if current_user.nil?
-                    "Not Logged In"
+                    "not Logged In"
                   elsif current_user.admin?
-                    "administrator"
+                    "Administrator"
                   else
                     if current_user.group.writer?
-                      "writer"
+                      "Writer"
                     else
-                      "promoter"
+                      "Promoter"
                     end
                   end 
                   %></a></li> 

@@ -1,6 +1,9 @@
 <%# Admins only %>
 
+
 <p id="notice"><%= notice %></p>
+
+<br>
 
 <p>
   <strong>Title:</strong>
@@ -12,5 +15,6 @@
   <%= @assignment.description %>
 </p>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back to assignments', assignments_path %>
+<br><br>
+
+<%= link_to 'Back to Assignments', assignments_path %>

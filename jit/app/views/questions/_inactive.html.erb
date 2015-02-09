@@ -1,35 +1,20 @@
 <h1>Inactive Phase</h1>
 
 <br>
-<br>
-
-
-
-<body>
-	You don't currently have a task to complete! 
-<br>
 
 <div>
-<% if current_user.group.writer?%>
+<%if current_user.group.writer?%>
 	<div>
-		The writer phase is already complete.
+		<br>
+		The Writer phase has already elapsed!
+		<br><br>
+		No new assignments have been posted.
 	</div>
 	<%else%>
 		<div>
-		The Promoter phase begins on <%= @assignment.writer_due.strftime('%m-%d-%Y')%> <%#should be formatted better%>
+			The Writer phase is currently in session.
+			<br><br>
+			The next Promoter phase begins <%= @assignment.writer_due.strftime('%-m.%-d.%Y')%>.
 		</div>
 <%end%>
 </div>
-
-
-<br>
-
-
-
-
-
-
-
-
-
-</body>
