@@ -28,7 +28,7 @@
         <%# why does it ask me to confirm several times (usually, but not always? %>  
 
         <%# THIS LINE BELOW IS OBVIOUSLY WHAT'S BREAKING THE LIST OF USERS DUE TO THE LAST PARAMETER..! %>
-        <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :assignment => assignment.id} %>
+        <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :user => user.id} %>
         </td>
       </tr>
     <% end %>

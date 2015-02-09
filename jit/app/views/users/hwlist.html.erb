@@ -5,15 +5,18 @@
 	<table class="table table-bordered">
 
 		<thead>
-			<th>Assignment</th>
-			<th>Writer</th>
+			<th>Assignment Title</th>
+			<th>Assignment Content</th>
+			<th>Question Submitted</th>
 		</thead>
 
 		<tbody>
-			<% @assignments.each do |assignment| %>
+			<% @questions.each do |question| %>
 			<tr>
-			<td><%= assignment.content %></td>
-			<td>'Link to student's own work submitted will be here'</td>
+			<td><%=question.assignment.title%></td>
+			<td><%=question.assignment.description%></td>
+			<td><%= question.content %></td>
+			
 			<% end %>
 		</tr>
 		</tbody>
@@ -22,4 +25,4 @@
 
 	<br><br>
 
-<%= link_to 'Back to users', assignments_path %>
+<%= link_to 'Back to users', users_path %>

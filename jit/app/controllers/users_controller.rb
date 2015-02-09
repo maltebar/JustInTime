@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
   #INSERTED TRYING TO MADE HWLIST WORK!
   def hwlist
-    @assignment = Assignment.find(params[:assignment])
-    #@questions = @assignment.questions USED IN QLIST; MUST BE FIXED STILL
+    @user = User.find(params[:user])
+    @questions = Question.where(user_id: @user.id)
   end
 
   # GET /users
