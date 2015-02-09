@@ -4,6 +4,7 @@
 
 html {
   overflow-y: scroll;
+  font-family: "Arial", Arial, sans-serif !important;
 }
 
 @media (min-width: 768px) {
@@ -54,7 +55,7 @@ th {
     left: 0;
     z-index: 1000;
     display: block;
-    padding-top: 45px;
+    padding-top: 55px;
     padding-bottom: 600px;
     overflow-x: hidden;
     overflow-y: hidden;

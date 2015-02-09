@@ -29,7 +29,7 @@
 </head>
 <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
+      <div class="container-fluid">
         <div class="col-md-12">
 
 
@@ -38,7 +38,7 @@
           <a class="navbar-brand" >Just in Time Teaching</a> 
           <a class="navbar-nickname" >Logged in as: <%= 
             if current_user.nil?
-              "not logged in"
+              "Not Logged In"
               else
                 current_user.name 
             end %></a> 
@@ -50,7 +50,7 @@
           <ul class="nav navbar-nav navbar-right"> <%# ul/li tag used for unordered lists? %>
             <li><a >Role: 
               <%=if current_user.nil?
-                    "not Logged In"
+                    "Not Logged In"
                   elsif current_user.admin?
                     "Administrator"
                   else
