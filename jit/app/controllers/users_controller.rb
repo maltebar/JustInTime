@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]  
 
 
-  #INSERTED TRYING TO MADE HWLIST WORK!
   def hwlist
     @user = User.find(params[:user])
     @questions = Question.where(user_id: @user.id)

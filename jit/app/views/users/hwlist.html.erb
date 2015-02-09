@@ -15,8 +15,9 @@
 			<tr>
 			<td><%=question.assignment.title%></td>
 			<td><%=question.assignment.description%></td>
-			<td><%= question.content %></td>
-			
+				<% if !question.content.nil? %>
+					<td><%=question.content%></td>
+				<% end %>
 			<% end %>
 		</tr>
 		</tbody>
@@ -25,4 +26,3 @@
 
 	<br><br>
 
-<%= link_to 'Back to users', users_path %>

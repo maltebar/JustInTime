@@ -38,7 +38,7 @@
           <a class="navbar-brand" >Just in Time Teaching</a> 
           <a class="navbar-nickname" >Logged in as: <%= 
             if current_user.nil?
-              "Not Logged In"
+              "not logged in"
               else
                 current_user.name 
             end %></a> 
@@ -50,7 +50,7 @@
           <ul class="nav navbar-nav navbar-right"> <%# ul/li tag used for unordered lists? %>
             <li><a >Role: 
               <%=if current_user.nil?
-                    "Not Logged In"
+                    "not logged in"
                   elsif current_user.admin?
                     "Administrator"
                   else
