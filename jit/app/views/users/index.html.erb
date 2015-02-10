@@ -13,8 +13,8 @@
     <tr>
       <th>Student</th>
       <th>E-mail</th>
-      <th>Remove User</th> <%# we could certainly label this something else - or not at all - I just didn't know what %>
       <th>Assignments</th>
+      <th>Remove User</th> <%# we could certainly label this something else - or not at all - I just didn't know what %>
     </tr>
   </thead>
 
@@ -24,12 +24,8 @@
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :user => user.id} %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-        <%# why does it ask me to confirm several times (usually, but not always? %>  
-
-        <%# THIS LINE BELOW IS OBVIOUSLY WHAT'S BREAKING THE LIST OF USERS DUE TO THE LAST PARAMETER..! %>
-        <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :user => user.id} %>
-        </td>
       </tr>
     <% end %>
   </tbody>
