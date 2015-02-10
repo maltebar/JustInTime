@@ -1,5 +1,7 @@
-<h1> Promoter view </h1>
+<h1> Promoter Phase </h1>
+<h5>The Promoter phase ends on <%= @assignment.promoter_due.strftime('%-m.%-d.%Y')%>.</h5>
 
+<br>
 <br>
 
 	<table class="table table-bordered">
@@ -9,7 +11,7 @@
 		</thead>
 
 		<tbody>
-			<% @questions.each do |question| %>
+			<% @promoterquestions.each do |question| %>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>

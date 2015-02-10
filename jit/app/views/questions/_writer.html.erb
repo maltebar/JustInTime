@@ -1,8 +1,9 @@
 <%# will contain own question to create/edit%> 
 
-<h1>Writer view</h1>
-<br>
+<h1>Writer Phase</h1>
+<h5>The Writer phase ends on <%= @assignment.writer_due.strftime('%-m.%-d.%Y')%>.</h5>
 
+<br>
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -25,7 +26,7 @@
   <br>
 
   <div class="actions">
-    <%= f.submit :onclick=> "return confirm('Question saved!')" %>
+    <%= f.submit "Save", :onclick=> "return confirm('Question saved!')" %>
   </div>
 <% end %>
 <br>

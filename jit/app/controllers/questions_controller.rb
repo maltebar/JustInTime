@@ -11,10 +11,13 @@ class QuestionsController < ApplicationController
     @rating = Rating.new
     if Assignment.exists?(active: true)
       @assignment = Assignment.find(Assignment.where(active: true))
-      if @assignment.questions.exists?(user_id: current_user.id)
+      @promoterquestions = Question.where(assignment_id: @assignment.id)
+      if @assignment.questions.exists?(user_id: current_user.id) 
         @question = Question.find(@assignment.questions.where(:user_id => current_user.id))
       else 
-        @question = Question.create(user_id: current_user.id, assignment_id: @assignment.id)
+        if @user.group.writer?
+          @question = Question.create(user_id: current_user.id, assignment_id: @assignment.id)
+        end
       end
     end
   end
