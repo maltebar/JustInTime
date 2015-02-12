@@ -65,6 +65,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:content, :user_id, :user_name, :assignment_id, :votes) 
+      params.require(:question).permit(:content, :user_id, :user_name, :assignment_id, :votes, :percentage) 
     end
 end

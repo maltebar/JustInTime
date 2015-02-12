@@ -5,6 +5,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :user_id
       t.string :user_name
       t.integer :assignment_id
+      t.float :percentage
 
       t.timestamps
     end

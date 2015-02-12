@@ -31,6 +31,8 @@ class RatingsController < ApplicationController
       @question = Question.find(Question.where(id: @rating.question_id))
       @question.update(votes: @question.votes += 1)
     end 
+    @question = Question.find(Question.where(id: @rating.question_id))
+    @question.update(percentage: @question.votes.to_f / @question.ratings.count)
     respond_with(@rating)
   end
 

@@ -1,4 +1,5 @@
 <h1> Promoter Phase </h1>
+<h4><%= @assignment.description%></h4>
 <h5>The Promoter phase ends on <%= @assignment.promoter_due.strftime('%-m.%-d.%Y')%>.</h5>
 
 <br>
@@ -11,7 +12,7 @@
 		</thead>
 
 		<tbody>
-			<% @promoterquestions.each do |question| %>
+			<% @promoterquestions.shuffle.each do |question| %>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>

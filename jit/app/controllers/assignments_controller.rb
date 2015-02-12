@@ -8,7 +8,7 @@ class AssignmentsController < ApplicationController
 
   def qlist
     @assignment = Assignment.find(params[:assignment])
-    @questions = @assignment.questions.order('votes desc')
+    @questions = @assignment.questions.order('percentage desc')
   end
 
 

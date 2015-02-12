@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150209163446) do
     t.integer  "user_id"
     t.string   "user_name"
     t.integer  "assignment_id"
+    t.float    "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "votes",         default: 0
