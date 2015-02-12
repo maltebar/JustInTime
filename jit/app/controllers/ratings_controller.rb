@@ -26,8 +26,10 @@ class RatingsController < ApplicationController
   def create
     @rating = Rating.new(rating_params)
     @rating.save
-    @question = Question.find(Question.where(id: @rating.question_id))
-    @question.update(votes: @question.votes += 1)
+    if @rating.discuss?
+      @question = Question.find(Question.where(id: @rating.question_id))
+      @question.update(votes: @question.votes += 1)
+    end 
     respond_with(@rating)
   end
 
