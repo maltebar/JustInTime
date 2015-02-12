@@ -17,7 +17,9 @@
 			<td><%= question.content %></td>
 			<td><%= question.user.name %></td>
 			<td><%= link_to 'Comments', {:controller => "questions", :action => "commentlist", :question => question.id} %></td>
-			<td><%= question.votes %> </td>
+			<td><% if question.ratings.count != 0%>
+				<%=(question.votes / question.ratings.count) * 100%>% 
+				<%end%> </td>
 			<% end %>
 		</tr>
 		</tbody>

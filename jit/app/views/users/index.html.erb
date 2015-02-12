@@ -14,6 +14,8 @@
       <th>Student</th>
       <th>E-mail</th>
       <th>Assignments</th>
+      <th>Number of Questions</th>
+      <th>Number of Promotions</th>
       <th>Remove User</th> <%# we could certainly label this something else - or not at all - I just didn't know what %>
     </tr>
   </thead>
@@ -25,6 +27,8 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :user => user.id} %></td>
+        <td><%= user.questions.count%></td>
+        <td><%= user.ratings.count%></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>
