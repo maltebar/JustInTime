@@ -3,6 +3,7 @@ class RatingsController < ApplicationController
 
   respond_to :html
 
+
   def index
     @ratings = Rating.all
     @questions = Question.all
@@ -49,6 +50,6 @@ class RatingsController < ApplicationController
     end
 
     def rating_params
-      params.require(:rating).permit(:discuss, :user_id, :question_id)
+      params.require(:rating).permit(:discuss, :user_id, :question_id, :comment)
     end
 end

@@ -4,6 +4,7 @@ class CreateRatings < ActiveRecord::Migration
     	t.boolean :discuss
     	t.integer :user_id
     	t.integer :question_id
+    	t.text :comment
 
       t.timestamps
     end

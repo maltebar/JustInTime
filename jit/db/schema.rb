@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150209163446) do
     t.boolean  "discuss"
     t.integer  "user_id"
     t.integer  "question_id"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

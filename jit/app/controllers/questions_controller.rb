@@ -3,7 +3,12 @@ class QuestionsController < ApplicationController
 
   respond_to :html
 
-  
+  def commentlist
+    @question = Question.find(params[:question])
+    @ratings = Rating.where(question_id: @question.id)
+    @assignment = Assignment.find(Assignment.where(id: @question.assignment_id))
+  end
+
   def index
     @user = current_user
     @questions = Question.all

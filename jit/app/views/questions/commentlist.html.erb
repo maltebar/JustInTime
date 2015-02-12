@@ -1,0 +1,28 @@
+<h1> Comment Submitted for Question </h1>
+
+<br>
+
+<%= @question.content%>
+<br><br>
+
+	<table class="table table-bordered">
+
+		<thead>
+			<th style="width: 64%">Comment</th>
+			<th style="width: 19%">Promoter</th>
+		</thead>
+
+		<tbody>
+			<% @ratings.each do |rating| %>
+			<tr>
+			<td><%= rating.comment %></td>
+			<td><%= rating.user.name %></td>
+			</tr>
+			<% end %>
+		</tbody>
+
+	</table>
+
+	<br><br>
+
+<%= link_to 'Back to Questions List', {:controller => "assignments", :action => "qlist", :assignment => @assignment.id} %>

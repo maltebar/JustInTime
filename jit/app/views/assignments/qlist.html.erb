@@ -7,7 +7,8 @@
 		<thead>
 			<th style="width: 64%">Question</th>
 			<th style="width: 19%">Writer</th>
-			<th style="width: 17%">Number of Upvotes</th>
+			<th style="width: 7%">Comments</th>
+			<th style="width: 10%">Number of Upvotes</th>
 		</thead>
 
 		<tbody>
@@ -15,6 +16,7 @@
 			<tr>
 			<td><%= question.content %></td>
 			<td><%= question.user.name %></td>
+			<td><%= link_to 'Comments', {:controller => "questions", :action => "commentlist", :question => question.id} %></td>
 			<td><%= question.votes %> </td>
 			<% end %>
 		</tr>
