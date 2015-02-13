@@ -4,6 +4,9 @@ class CreateAssignments < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.boolean :active 
+      t.boolean :reveal_1
+      t.boolean :reveal_2
+      t.boolean :reveal_3
 
       t.timestamps
     end

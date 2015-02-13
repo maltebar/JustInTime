@@ -35,6 +35,7 @@ class AssignmentsController < ApplicationController
     flash[:notice] = "Assignment created. [Applause]!" if @assignment.save
     respond_with(@assignment)
 
+
     if @assignment.active?
       @assignments.each do |assignment|
         assignment.update(active: false)
@@ -54,7 +55,7 @@ class AssignmentsController < ApplicationController
     @assignments = Assignment.where.not(id: @assignment.id)
     respond_to do |format|
       if @assignment.update(assignment_params) #if all went well, assignment now updated
-        format.html { redirect_to @assignment, notice: 'Assignment updated. [Applause]!' }
+        format.html { redirect_to :action => 'index'}
         format.json { render :show, status: :ok, location: @assignment }
       else # otherwise, assignment not updated: throw error
         format.html { render :edit }
@@ -80,7 +81,7 @@ class AssignmentsController < ApplicationController
     @assignment.destroy
     respond_to do |format|
       format.html { redirect_to assignments_url, notice: 'Assignment destroyed. You monster!' } #doesn't show! why not?
-      format.json { head :no_content } # what's this for again?
+      format.json { head :no_content } 
   end
 end
 
@@ -90,6 +91,6 @@ end
     end
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active, :description_2, :description_3)
+      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active, :description_2, :description_3, :reveal_1, :reveal_2, :reveal_3)
     end
 end
