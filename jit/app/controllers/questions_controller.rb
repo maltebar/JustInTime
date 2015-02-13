@@ -16,7 +16,12 @@ class QuestionsController < ApplicationController
     @rating = Rating.new
     if Assignment.exists?(active: true)
       @assignment = Assignment.find(Assignment.where(active: true))
-      @promoterquestions = Question.where(assignment_id: @assignment.id)
+      @promoterquestions_1 = Question.where(assignment_id: @assignment.id, description_flag: "1")
+
+      @promoterquestions_2 = Question.where(assignment_id: @assignment.id, description_flag: "2")
+
+      @promoterquestions_3 = Question.where(assignment_id: @assignment.id, description_flag: "3")
+
       if @assignment.questions.exists?(user_id: current_user.id) 
         @question = Question.find(@assignment.questions.where(:user_id => current_user.id))
       else 
