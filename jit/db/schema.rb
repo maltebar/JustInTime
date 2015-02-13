@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209163446) do
+ActiveRecord::Schema.define(version: 20150213191936) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150209163446) do
     t.datetime "updated_at"
     t.datetime "writer_due"
     t.datetime "promoter_due"
+    t.text     "description_2"
+    t.text     "description_3"
   end
 
   create_table "groups", force: true do |t|
@@ -43,9 +45,10 @@ ActiveRecord::Schema.define(version: 20150209163446) do
     t.string   "user_name"
     t.integer  "assignment_id"
     t.float    "percentage"
+    t.integer  "description_flag"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "votes",         default: 0
+    t.integer  "votes",            default: 0
   end
 
   create_table "ratings", force: true do |t|

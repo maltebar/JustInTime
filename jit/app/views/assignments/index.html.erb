@@ -13,7 +13,6 @@
   <thead> <%#table header%>
     <tr>
       <th style="width: 16%">Title</th>
-      <th style="width: 36%">Content</th>
       <th style="width: 18%">Due Dates</th> 
       <th style="width: 17%">Questions Submitted</th>
       <th style="width: 13%">Editing Buttons</th>
@@ -28,7 +27,6 @@
         <%end%>
 
         <td><%= assignment.title %></td>
-        <td><%= assignment.description %></td>
         <td>Writing: <%= assignment.writer_due.strftime('%-m.%-d.%Y') %>
             <br>
             Promoting: <%= assignment.promoter_due.strftime('%-m.%-d.%Y') %></td>

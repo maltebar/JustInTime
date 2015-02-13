@@ -8,7 +8,9 @@ class AssignmentsController < ApplicationController
 
   def qlist
     @assignment = Assignment.find(params[:assignment])
-    @questions = @assignment.questions.order('percentage desc')
+    @questions_flag_1 = @assignment.questions.where(description_flag: 1).order('percentage desc')
+    @questions_flag_2 = @assignment.questions.where(description_flag: 2).order('percentage desc')
+    @questions_flag_3 = @assignment.questions.where(description_flag: 3).order('percentage desc')
   end
 
 
@@ -88,6 +90,6 @@ end
     end
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active)
+      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active, :description_2, :description_3)
     end
 end

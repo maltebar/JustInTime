@@ -29,11 +29,11 @@ User.create(name: 'John Jo', email: 'johnjo@gmail.com', password: '12345678', ad
 
 
 # questions written by users
-Question.create(content: 'Can you explain the difference between a keystone species and an indicator species?', user_id: '3', assignment_id: '1', user_name: 'Billy Bob')
-Question.create(content: 'I do not understand what allopatric speciation means.', user_id: '4', assignment_id: '1', user_name: 'Jane Jean')
-Question.create(content: 'How does habitat fragmentation lead to speciation?', user_id: '5', assignment_id: '1', user_name: 'Sally Sue')
-Question.create(content: 'Can habitat conservation efforts help biodiversity that has already been lost?', user_id: '6', assignment_id: '1', user_name: 'Lola Lou')
-Question.create(content: 'How does genetic pollution cause the extinction of a species?', user_id: '7', assignment_id: '1', user_name: 'Betty Bee')
+Question.create(content: 'Can you explain the difference between a keystone species and an indicator species?', user_id: '3', assignment_id: '1', user_name: 'Billy Bob', description_flag: '1')
+Question.create(content: 'I do not understand what allopatric speciation means.', user_id: '4', assignment_id: '1', user_name: 'Jane Jean', description_flag: '1')
+Question.create(content: 'How does habitat fragmentation lead to speciation?', user_id: '5', assignment_id: '1', user_name: 'Sally Sue', description_flag: '2')
+Question.create(content: 'Can habitat conservation efforts help biodiversity that has already been lost?', user_id: '6', assignment_id: '1', user_name: 'Lola Lou', description_flag: '2')
+Question.create(content: 'How does genetic pollution cause the extinction of a species?', user_id: '7', assignment_id: '1', user_name: 'Betty Bee', description_flag: '3')
 
 Question.create(content: 'Is bacteria involved in the carbon cycle? If so, how?', user_id: '6', assignment_id: '2', user_name: 'Lola Lou')
 Question.create(content: 'How do bacteria create and release nitrogen into soil?', user_id: '7', assignment_id: '2', user_name: 'Betty Bee')
