@@ -1,10 +1,9 @@
-<%# will contain own question to create/edit%> 
-
 <h1>Writer Phase</h1>
-<h4><%= @assignment.description%></h4>
-<h5>The Writer phase ends on <%= @assignment.writer_due.strftime('%-m.%-d.%Y')%>.</h5>
 
+<h5>The Writer phase ends on <%= @assignment.writer_due.strftime('%-m.%-d.%Y')%>.</h5>
 <br>
+
+<h4><%= @assignment.description%></h4>
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -21,18 +20,16 @@
 
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content, size: "100x10"%>
+    <%= f.text_area :content, size: "110x8"%>
     <%= hidden_field_tag :description_flag, '1' %>
   </div>
-
-  <br>
 
   <div class="actions">
     <%= f.submit "Save", :onclick=> "return confirm('Question saved!')" %>
   </div>
 <% end %>
 
-
+<br><br>
 
 
 
@@ -56,19 +53,16 @@
 
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content, size: "100x10"%>
+    <%= f.text_area :content, size: "110x8"%>
     <%= hidden_field_tag :description_flag, '2' %>
   </div>
-
-  <br>
-
   <div class="actions">
     <%= f.submit "Save", :onclick=> "return confirm('Question saved!')" %>
   </div>
 <% end %>
 <%end%> <%#FIX SPACING LATER!!!!!!%>
 
-
+<br><br>
 
 <% unless @assignment.description_3 == "" %>
 
@@ -89,20 +83,12 @@
 
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.text_area :content, size: "100x10"%>
+    <%= f.text_area :content, size: "110x8"%>
     <%= hidden_field_tag :description_flag, '3' %>
   </div>
-
-  <br>
-
   <div class="actions">
     <%= f.submit "Save", :onclick=> "return confirm('Question saved!')" %>
   </div>
 <% end %>
 <%end%> <%#FIX SPACING LATER!!!!!!%>
 
-<br>
-
-
-
-		<%#= link_to 'Back to question index', questions_path %>
