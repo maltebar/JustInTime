@@ -5,6 +5,7 @@
 <br>
 <br>
 
+<% if @assignment.reveal_1? %>
 <h4><%= @assignment.description%></h4>
 <br>
 	<table class="table table-bordered">
@@ -37,10 +38,12 @@
 		</tbody>
 	
 	</table>
+	<%end%>
 
 <br>
 <br>
 
+<% if @assignment.reveal_2?%>
 
 <h4><%= @assignment.description_2%></h4>
 <br>
@@ -75,9 +78,13 @@
 	
 	</table>
 
+	<%end%>
+
 <br>
 <br>
 
+
+<% if @assignment.reveal_3? %>
 
 <h4><%= @assignment.description_3%></h4>
 <br>
@@ -111,3 +118,5 @@
 		</tbody>
 	
 	</table>
+
+	<%end%>
