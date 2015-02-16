@@ -4,13 +4,13 @@
 <br>
 
 <h4><%= @assignment.description%></h4>
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
+<%= form_for(@question_1) do |f| %>
+  <% if @question_1.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <h2><%= pluralize(@question_1.errors.count, "error") %> prohibited this question from being saved:</h2>
 
       <ul>
-      <% @question.errors.full_messages.each do |message| %>
+      <% @question_1.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -21,7 +21,7 @@
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content, size: "110x8"%>
-    <%= hidden_field_tag :description_flag, '1' %>
+    <%= f.hidden_field :description_flag, value: "1" %>
   </div>
 
   <div class="actions">
@@ -36,13 +36,13 @@
 <% unless @assignment.description_2 == "" %>
 
 <h4><%= @assignment.description_2%></h4>
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
+<%= form_for(@question_2) do |f| %>
+  <% if @question_2.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <h2><%= pluralize(@question_2.errors.count, "error") %> prohibited this question from being saved:</h2>
 
       <ul>
-      <% @question.errors.full_messages.each do |message| %>
+      <% @question_2.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -54,7 +54,7 @@
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content, size: "110x8"%>
-    <%= hidden_field_tag :description_flag, '2' %>
+    <%= f.hidden_field :description_flag, value: "2" %>
   </div>
   <div class="actions">
     <%= f.submit "Save", :onclick=> "return confirm('Question saved!')" %>
@@ -67,13 +67,13 @@
 <% unless @assignment.description_3 == "" %>
 
 <h4><%= @assignment.description_3%></h4>
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
+<%= form_for(@question_3) do |f| %>
+  <% if @question_3.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <h2><%= pluralize(@question_3.errors.count, "error") %> prohibited this question from being saved:</h2>
 
       <ul>
-      <% @question.errors.full_messages.each do |message| %>
+      <% @question_3.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -84,7 +84,7 @@
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content, size: "110x8"%>
-    <%= hidden_field_tag :description_flag, '3' %>
+    <%= f.hidden_field :description_flag, value: "3" %>
   </div>
   <div class="actions">
     <%= f.submit "Save", :onclick=> "return confirm('Question saved!')" %>

@@ -22,13 +22,30 @@ class QuestionsController < ApplicationController
 
       @promoterquestions_3 = Question.where(assignment_id: @assignment.id, description_flag: "3")
 
-      if @assignment.questions.exists?(user_id: current_user.id) 
-        @question = Question.find(@assignment.questions.where(:user_id => current_user.id))
-      else 
-        if @user.group.writer?
-          @question = Question.create(user_id: current_user.id, assignment_id: @assignment.id)
+      if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
+        @question_1 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "1"))
+      else
+        if @user.group.writer? && @assignment.description != ""
+          @question_1 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "1")
         end
       end
+
+      if @assignment.questions.exists?(user_id: current_user.id, description_flag: "2")
+        @question_2 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "2"))
+      else
+        if @user.group.writer? && @assignment.description_2 != ""
+          @question_2 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "2")
+        end
+      end
+
+      if @assignment.questions.exists?(user_id: current_user.id, description_flag: "3")
+        @question_3 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "3"))
+      else
+        if @user.group.writer? && @assignment.description_3 != ""
+          @question_3 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "3")
+        end
+      end  
+
     end
   end
 
