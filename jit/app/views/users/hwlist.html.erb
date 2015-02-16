@@ -14,7 +14,15 @@
 			<% @questions.each do |question| %>
 			<tr>
 			<td><%=question.assignment.title%></td>
-			<td><%=question.assignment.description%></td>
+			<td><% if question.description_flag == 1%>
+					<%=question.assignment.description%>
+				<% elsif question.description_flag == 2%>
+					<%=question.assignment.description_2%>
+				<% elsif question.description_flag == 3%>
+					<%= question.assignment.description_3%>
+				<%end%>
+				</td>
+				
 				<% if !question.content.nil? %>
 					<td><%=question.content%></td>
 				<% end %>
