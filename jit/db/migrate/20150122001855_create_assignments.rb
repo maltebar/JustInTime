@@ -7,6 +7,9 @@ class CreateAssignments < ActiveRecord::Migration
       t.boolean :reveal_1
       t.boolean :reveal_2
       t.boolean :reveal_3
+      t.float :percent_1
+      t.float :percent_2
+      t.float :percent_3
 
       t.timestamps
     end

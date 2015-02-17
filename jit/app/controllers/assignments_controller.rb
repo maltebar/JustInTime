@@ -91,6 +91,6 @@ end
     end
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active, :description_2, :description_3, :reveal_1, :reveal_2, :reveal_3)
+      params.require(:assignment).permit(:title, :description, :writer_due, :promoter_due, :active, :description_2, :description_3, :reveal_1, :reveal_2, :reveal_3, :percent_1, :percent_2, :percent_3)
     end
 end

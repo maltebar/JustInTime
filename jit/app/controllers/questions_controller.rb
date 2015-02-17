@@ -17,9 +17,9 @@ class QuestionsController < ApplicationController
     if Assignment.exists?(active: true)
       @assignment = Assignment.find(Assignment.where(active: true))
       @promoterquestions_1 = Question.where(assignment_id: @assignment.id, description_flag: "1")
-
+     
       @promoterquestions_2 = Question.where(assignment_id: @assignment.id, description_flag: "2")
-
+      
       @promoterquestions_3 = Question.where(assignment_id: @assignment.id, description_flag: "3")
 
       if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
