@@ -16,8 +16,7 @@
 		</thead>
 
 		<tbody>
-			<% percentrate_1 = @promoterquestions_1.count * @assignment.percent_1 / 100
-			@promoterquestions_1.shuffle.take(percentrate_1).each do |question| %><tr>
+			<%@promotions_1.shuffle.each do |question| %><tr>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>
@@ -56,8 +55,7 @@
 		</thead>
 
 		<tbody>
-			<% percentrate_2 = @promoterquestions_2.count * @assignment.percent_2 / 100
-			@promoterquestions_2.shuffle.take(percentrate_2).each do |question| %><tr>
+			<% @promotions_2.shuffle.each do |question| %><tr>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>
@@ -98,8 +96,7 @@
 		</thead>
 
 		<tbody>
-			<% percentrate_3 = @promoterquestions_3.count * @assignment.percent_3 / 100
-			@promoterquestions_3.shuffle.take(percentrate_3).each do |question| %><tr>
+			<% @promotions_3.shuffle.each do |question| %><tr>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>

@@ -16,11 +16,14 @@ class QuestionsController < ApplicationController
     @rating = Rating.new
     if Assignment.exists?(active: true)
       @assignment = Assignment.find(Assignment.where(active: true))
+
       @promoterquestions_1 = Question.where(assignment_id: @assignment.id, description_flag: "1")
-     
+      @promotions_1 = @promoterquestions_1.sample(@promoterquestions_1.count * @assignment.percent_1 / 100)
       @promoterquestions_2 = Question.where(assignment_id: @assignment.id, description_flag: "2")
-      
+      @promotions_2 = @promoterquestions_2.sample(@promoterquestions_2.count * @assignment.percent_2 / 100)
       @promoterquestions_3 = Question.where(assignment_id: @assignment.id, description_flag: "3")
+      @promotions_3 = @promoterquestions_3.sample(@promoterquestions_3.count * @assignment.percent_3 / 100)
+
 
       if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
         @question_1 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "1"))
