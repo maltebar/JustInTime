@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213191936) do
+ActiveRecord::Schema.define(version: 20150218175516) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150213191936) do
     t.boolean  "reveal_1"
     t.boolean  "reveal_2"
     t.boolean  "reveal_3"
-    t.float    "percent_1",     default: 0.0
-    t.float    "percent_2",     default: 0.0
-    t.float    "percent_3",     default: 0.0
+    t.integer  "percent_1",     default: 0
+    t.integer  "percent_2",     default: 0
+    t.integer  "percent_3",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "writer_due"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 20150213191936) do
     t.text     "description_2"
     t.text     "description_3"
   end
+
+  create_table "evaluations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "assignment_id"
+    t.integer  "description_flag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "evaluations_questions", id: false, force: true do |t|
+    t.integer "evaluation_id"
+    t.integer "question_id"
+  end
+
+  add_index "evaluations_questions", ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id"
+  add_index "evaluations_questions", ["question_id"], name: "index_evaluations_questions_on_question_id"
 
   create_table "groups", force: true do |t|
     t.boolean  "writer"

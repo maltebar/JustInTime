@@ -17,38 +17,57 @@ class QuestionsController < ApplicationController
     if Assignment.exists?(active: true)
       @assignment = Assignment.find(Assignment.where(active: true))
 
-      @promoterquestions_1 = Question.where(assignment_id: @assignment.id, description_flag: "1")
-      @promotions_1 = @promoterquestions_1.sample(@promoterquestions_1.count * @assignment.percent_1 / 100)
-      @promoterquestions_2 = Question.where(assignment_id: @assignment.id, description_flag: "2")
-      @promotions_2 = @promoterquestions_2.sample(@promoterquestions_2.count * @assignment.percent_2 / 100)
-      @promoterquestions_3 = Question.where(assignment_id: @assignment.id, description_flag: "3")
-      @promotions_3 = @promoterquestions_3.sample(@promoterquestions_3.count * @assignment.percent_3 / 100)
-
-
-      if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
-        @question_1 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "1"))
-      else
-        if @user.group.writer? && @assignment.description != ""
-          @question_1 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "1")
+      if !@user.group.writer?
+        if @assignment.promoter_due > Time.now && Time.now > @assignment.writer_due
+          if @assignment.reveal_1?
+            if Evaluation.exists?(user_id: @user.id, assignment_id: @assignment.id, description_flag: 1)
+              @evaluation_1 = Evaluation.find(Evaluation.where(user_id: @user.id, assignment_id: @assignment.id, description_flag: 1))
+            else
+              @evaluation_1 = Evaluation.create(user_id: @user.id, assignment_id: @assignment.id, description_flag: 1)
+            end
+          end
+          if @assignment.reveal_2?
+            if Evaluation.exists?(user_id: @user.id, assignment_id: @assignment.id, description_flag: 2)
+              @evaluation_2 = Evaluation.find(Evaluation.where(user_id: @user.id, assignment_id: @assignment.id, description_flag: 2))
+            else
+              @evaluation_2 = Evaluation.create(user_id: @user.id, assignment_id: @assignment.id, description_flag: 2)
+            end
+          end
+          if @assignment.reveal_3?
+            if Evaluation.exists?(user_id: @user.id, assignment_id: @assignment.id, description_flag: 3)
+              @evaluation_3 = Evaluation.find(Evaluation.where(user_id: @user.id, assignment_id: @assignment.id, description_flag: 3))
+            else
+              @evaluation_3 = Evaluation.create(user_id: @user.id, assignment_id: @assignment.id, description_flag: 3)
+            end
+          end
         end
       end
 
-      if @assignment.questions.exists?(user_id: current_user.id, description_flag: "2")
-        @question_2 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "2"))
-      else
-        if @user.group.writer? && @assignment.description_2 != ""
-          @question_2 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "2")
+      if @user.group.writer?
+        if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
+          @question_1 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "1"))
+        else
+          if @assignment.description != "" && @assignment.writer_due > Time.now 
+            @question_1 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "1")
+          end
+        end
+
+        if @assignment.questions.exists?(user_id: current_user.id, description_flag: "2")
+          @question_2 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "2"))
+        else
+          if @assignment.description_2 != "" && @assignment.writer_due > Time.now 
+            @question_2 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "2")
+          end
+        end
+
+        if @assignment.questions.exists?(user_id: current_user.id, description_flag: "3")
+          @question_3 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "3"))
+        else
+          if @assignment.description_3 != "" && @assignment.writer_due > Time.now 
+            @question_3 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "3")
+          end
         end
       end
-
-      if @assignment.questions.exists?(user_id: current_user.id, description_flag: "3")
-        @question_3 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "3"))
-      else
-        if @user.group.writer? && @assignment.description_3 != ""
-          @question_3 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "3")
-        end
-      end  
-
     end
   end
 
@@ -90,6 +109,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:content, :user_id, :user_name, :assignment_id, :votes, :percentage, :description_flag) 
+      params.require(:question).permit(:content, :user_id, :user_name, :assignment_id, :votes, :percentage, :description_flag, :evaluation_id) 
     end
 end

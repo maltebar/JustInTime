@@ -16,7 +16,7 @@
 		</thead>
 
 		<tbody>
-			<%@promotions_1.shuffle.each do |question| %><tr>
+			<%@evaluation_1.questions.shuffle.each do |question| %><tr>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>
@@ -55,7 +55,7 @@
 		</thead>
 
 		<tbody>
-			<% @promotions_2.shuffle.each do |question| %><tr>
+			<% @evaluation_2.questions.shuffle.each do |question| %><tr>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>
@@ -96,7 +96,7 @@
 		</thead>
 
 		<tbody>
-			<% @promotions_3.shuffle.each do |question| %><tr>
+			<% @evaluation_3.questions.shuffle.each do |question| %><tr>
 			<% if !question.ratings.where(user_id: @user.id).exists? %>
 				<td><%= question.content %></td>
 				<td>

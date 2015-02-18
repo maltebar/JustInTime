@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   
 
+  resources :evaluations do
+    resources :questions
+    resources :users
+  end
+
   resources :ratings
 
   devise_for :users
@@ -41,6 +46,7 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :ratings
+    resources :evaluations
   end
 
 
