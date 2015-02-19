@@ -1,16 +1,5 @@
 <%# all types of humans will be sent here first; depending on below results, next subsequent view will appear%>
 
-
-
-
-
-
-<%# I'VE SWITCHED render 'view' TO ALL THE WRONG THINGS JUST TO SEE THE VIEWS QUICKLY!!!!!!!!! MUST SWITCH BACK!!!! %>
-
-
-
-
-
 <%= if @user.admin?
       render 'admin'
     elsif @assignment.nil?

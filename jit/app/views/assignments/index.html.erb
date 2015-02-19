@@ -12,10 +12,10 @@
   
   <thead> <%#table header%>
     <tr>
-      <th style="width: 16%">Title</th>
-      <th style="width: 18%">Due Dates</th> 
-      <th style="width: 17%">Questions Submitted</th>
-      <th style="width: 13%">Editing Buttons</th>
+      <th style="width: 30%">Title</th>
+      <th style="width: 38%">Due Dates</th> 
+      <th style="width: 18%">Questions Submitted</th>
+      <th style="width: 14%">Editing Buttons</th>
     </tr>
   </thead>
 
@@ -27,9 +27,9 @@
         <%end%>
 
         <td><%= assignment.title %></td>
-        <td>Writing: <%= assignment.writer_due.strftime('%-m.%-d.%Y') %>
+        <td>Writing: <%= assignment.writer_due.strftime('%-B %-d, %Y at %I:%M%p') %>
             <br>
-            Promoting: <%= assignment.promoter_due.strftime('%-m.%-d.%Y') %></td>
+            Promoting: <%= assignment.promoter_due.strftime('%-B %-d, %Y at %I:%M%p') %></td>
         <td><%= link_to 'Questions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %>
         </td>
 
