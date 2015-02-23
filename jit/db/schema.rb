@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150218175516) do
     t.integer  "assignment_id"
     t.float    "percentage"
     t.integer  "description_flag"
+    t.boolean  "prof_choice",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "votes",            default: 0

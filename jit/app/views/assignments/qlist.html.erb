@@ -6,15 +6,19 @@
 	<table class="table table-bordered">
 
 		<thead>
-			<th style="width: 53%">Question</th>
-			<th style="width: 20%">Writer</th>
+			<th style="width: 5%">Show to Class</th>
+			<th style="width: 50%">Question</th>
+			<th style="width: 18%">Writer</th>
 			<th style="width: 10%">Comments</th>
 			<th style="width: 17%">Number of Upvotes</th>
 		</thead>
 
 		<tbody>
 			<% @questions_flag_1.each do |question| %>
+			<%= form_for(question) do |f|%>
 			<tr>
+			<td><%= f.check_box :prof_choice, value: true%>
+				<%= f.submit "Save", :onclick=> "return confirm('Saved!')"%></td>
 			<td><%= question.content %></td>
 			<td><%= question.user.name %></td>
 			<td><%= link_to 'Comments', {:controller => "questions", :action => "commentlist", :question => question.id} %></td>
@@ -22,10 +26,13 @@
 				<%=(question.votes.to_f / question.ratings.count) * 100%>% 
 				<%end%> </td>
 			<% end %>
+			<%end%>
 		</tr>
 		</tbody>
 
 	</table>
+
+
 
 	<br><br>
 	<h4>Prompt 2: <%= @assignment.description_2%></h4> 
@@ -33,15 +40,19 @@
 	<table class="table table-bordered">
 
 		<thead>
-			<th style="width: 53%">Question</th>
-			<th style="width: 20%">Writer</th>
+			<th style="width: 5%">Show to Class</th>
+			<th style="width: 50%">Question</th>
+			<th style="width: 18%">Writer</th>
 			<th style="width: 10%">Comments</th>
 			<th style="width: 17%">Number of Upvotes</th>
 		</thead>
 
 		<tbody>
 			<% @questions_flag_2.each do |question| %>
+			<%= form_for(question) do |f|%>
 			<tr>
+			<td><%= f.check_box :prof_choice, value: true%>
+				<%= f.submit "Save", :onclick=> "return confirm('Saved!')"%></td>
 			<td><%= question.content %></td>
 			<td><%= question.user.name %></td>
 			<td><%= link_to 'Comments', {:controller => "questions", :action => "commentlist", :question => question.id} %></td>
@@ -49,6 +60,7 @@
 				<%=(question.votes.to_f / question.ratings.count) * 100%>% 
 				<%end%> </td>
 			<% end %>
+			<%end%>
 		</tr>
 		</tbody>
 
@@ -60,15 +72,19 @@
 	<table class="table table-bordered">
 
 		<thead>
-			<th style="width: 53%">Question</th>
-			<th style="width: 20%">Writer</th>
+			<th style="width: 5%">Show to Class</th>
+			<th style="width: 50%">Question</th>
+			<th style="width: 18%">Writer</th>
 			<th style="width: 10%">Comments</th>
 			<th style="width: 17%">Number of Upvotes</th>
 		</thead>
 
 		<tbody>
 			<% @questions_flag_3.each do |question| %>
+			<%= form_for(question) do |f|%>
 			<tr>
+			<td><%= f.check_box :prof_choice, value: true%>	
+				<%= f.submit "Save", :onclick=> "return confirm('Saved!')"%></td>
 			<td><%= question.content %></td>
 			<td><%= question.user.name %></td>
 			<td><%= link_to 'Comments', {:controller => "questions", :action => "commentlist", :question => question.id} %></td>
@@ -76,6 +92,7 @@
 				<%=(question.votes.to_f / question.ratings.count) * 100%>% 
 				<%end%> </td>
 			<% end %>
+			<%end%>
 		</tr>
 		</tbody>
 

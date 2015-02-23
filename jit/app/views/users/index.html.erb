@@ -16,6 +16,8 @@
       <th>Assignments</th>
       <th>Number of Questions</th>
       <th>Number of Promotions</th>
+      <th>Percentage of Picking Professor's Choice</th>
+      <th>Percentage of Picking Top Quartile Questions</th>
       <th>Remove User</th> <%# we could certainly label this something else - or not at all - I just didn't know what %>
     </tr>
   </thead>
@@ -29,6 +31,27 @@
         <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :user => user.id} %></td>
         <td><%= user.questions.count%></td>
         <td><%= user.ratings.count%></td>
+        <td><%= prof_choice_seen = 0.0
+               prof_choice_picked = 0.0
+               @questions = Question.where(prof_choice: true)
+               @questions.each do |question|
+                @evaluations = Evaluation.where(user_id: user.id)
+                @evaluations.each do |evaluation|
+                  if evaluation.questions.exists?(question)
+                    prof_choice_seen += 1
+                    if Rating.where(user_id: user.id, question_id: question.id, discuss: true).exists?
+                      prof_choice_picked += 1
+                    end
+                  end
+                end
+              end
+              if prof_choice_seen != 0
+                prof_choice_picked/prof_choice_seen * 100
+              else
+              0
+              end%>%
+          </td>
+        <td>Add in Top Quartile Percentage Here</td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>

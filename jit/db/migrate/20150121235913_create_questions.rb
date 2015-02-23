@@ -7,6 +7,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :assignment_id
       t.float :percentage
       t.integer :description_flag
+      t.boolean :prof_choice, :default => false
 
       t.timestamps
     end

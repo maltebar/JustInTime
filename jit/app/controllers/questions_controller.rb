@@ -95,7 +95,12 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update(question_params)
-    redirect_to questions_path
+    if current_user.admin?
+      @assignment = Assignment.find(Assignment.where(id: @question.assignment_id))
+      redirect_to :controller => "assignments", :action => "qlist", :assignment => @assignment.id
+    else
+      redirect_to questions_path
+    end
   end
 
   def destroy
@@ -109,6 +114,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:content, :user_id, :user_name, :assignment_id, :votes, :percentage, :description_flag, :evaluation_id) 
+      params.require(:question).permit(:content, :user_id, :user_name, :assignment_id, :votes, :percentage, :description_flag, :evaluation_id, :prof_choice) 
     end
 end
