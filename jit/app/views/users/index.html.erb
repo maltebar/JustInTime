@@ -1,5 +1,5 @@
 <%# Admin view %>
-
+<%if current_user.admin?%>
   <div class="row">
   <div class="col-md-12">
     <div style="margin-left:0%">
@@ -31,8 +31,8 @@
         <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :user => user.id} %></td>
         <td><%= user.questions.count%></td>
         <td><%= user.ratings.count%></td>
-        <td><%= prof_choice_seen = 0.0
-               prof_choice_picked = 0.0
+        <td><%= prof_choice_seen = 0
+               prof_choice_picked = 0
                @questions = Question.where(prof_choice: true)
                @questions.each do |question|
                 @evaluations = Evaluation.where(user_id: user.id)
@@ -46,13 +46,13 @@
                 end
               end
               if prof_choice_seen != 0
-                prof_choice_picked/prof_choice_seen * 100
+                prof_choice_picked *100 /prof_choice_seen 
               else
               0
               end%>%
           </td>
-        <td><%= top_quart_seen = 0.0
-               top_quart_picked = 0.0
+        <td><%= top_quart_seen = 0
+               top_quart_picked = 0
                @assignments.each do |assignment|
                 @questions_1 = Question.where(assignment_id: assignment.id, description_flag: 1).order('percentage desc')
                 @questions_2 = Question.where(assignment_id: assignment.id, description_flag: 2).order('percentage desc')
@@ -74,7 +74,7 @@
                 end
               end
               if top_quart_seen != 0
-                top_quart_picked/top_quart_seen * 100
+                top_quart_picked * 100/top_quart_seen 
               else
                 0
               end%>%</td>
@@ -84,3 +84,7 @@
   </tbody>
 
 </table>
+
+<%else%>
+<h3>You do not have access to this page</h3>
+<%end%>
