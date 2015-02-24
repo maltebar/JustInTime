@@ -51,7 +51,33 @@
               0
               end%>%
           </td>
-        <td>Add in Top Quartile Percentage Here</td>
+        <td><%= top_quart_seen = 0.0
+               top_quart_picked = 0.0
+               @assignments.each do |assignment|
+                @questions_1 = Question.where(assignment_id: assignment.id, description_flag: 1).order('percentage desc')
+                @questions_2 = Question.where(assignment_id: assignment.id, description_flag: 2).order('percentage desc')
+                @questions_3 = Question.where(assignment_id: assignment.id, description_flag: 3).order('percentage desc')
+                length_1 = @questions_1.count
+                length_2 = @questions_2.count
+                length_3 = @questions_3.count
+                @questions = @questions_1.limit(length_1/4) + @questions_2.limit(length_2/4) + @questions_3.limit(length_3/4)
+                @questions.each do |question|
+                  @evaluations = Evaluation.where(user_id: user.id)
+                  @evaluations.each do |evaluation|
+                    if evaluation.questions.exists?(question)
+                      top_quart_seen += 1
+                      if Rating.where(user_id: user.id, question_id: question.id, discuss: true).exists?
+                        top_quart_picked += 1
+                      end
+                    end
+                  end
+                end
+              end
+              if top_quart_seen != 0
+                top_quart_picked/top_quart_seen * 100
+              else
+                0
+              end%>%</td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>

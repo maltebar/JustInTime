@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   def index
     @assignments = Assignment.all #INSERTED TRYING TO MADE HWLIST WORK!
     @users = User.where(admin: false)
-    
   end
 
   # GET /users/1
