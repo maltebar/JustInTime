@@ -10,11 +10,11 @@
 
 
 		<thead>
-			<th style="width: 5%">Show to Class</th>
-			<th style="width: 50%">Question</th>
-			<th style="width: 18%">Writer</th>
+			<th style="width: 9%">Favorite</th>
+			<th style="width: 51%">Question</th>
+			<th style="width: 16%">Writer</th>
 			<th style="width: 10%">Comments</th>
-			<th style="width: 17%">Number of Upvotes</th>
+			<th style="width: 24%">Student Rating</th>
 		</thead>
 		<tbody>
 			<% @questions_flag_1.each do |question| %>
@@ -25,13 +25,11 @@
 					<%end%>
 			<td><%if question.prof_choice%>
 					<%= f.hidden_field :prof_choice, value: false%>
-					<button style="background-color:#d2d2d2">
-					<%= f.submit "Don't Show to Class"%>
+					<%= f.submit "Deselect"%>
 				</button>
 				<%else%>
 					<%= f.hidden_field :prof_choice, value: true%>
-					<button style="background-color:#f0bb1a">
-					<%= f.submit "Show to Class"%>
+					<%= f.submit "Select"%>
 				<%end%>
 				</td>
 			<td><%= question.content %></td>
@@ -54,11 +52,11 @@
 	<table class="table table-bordered">
 
 		<thead>
-			<th style="width: 5%">Show to Class</th>
-			<th style="width: 50%">Question</th>
-			<th style="width: 18%">Writer</th>
+			<th style="width: 9%">Favorite</th>
+			<th style="width: 51%">Question</th>
+			<th style="width: 16%">Writer</th>
 			<th style="width: 10%">Comments</th>
-			<th style="width: 17%">Number of Upvotes</th>
+			<th style="width: 24%">Student Rating</th>
 		</thead>
 
 		<tbody>
@@ -70,13 +68,11 @@
 					<%end%>
 			<td><%if question.prof_choice%>
 					<%= f.hidden_field :prof_choice, value: false%>
-					<button style="background-color:#d2d2d2">
-					<%= f.submit "Don't Show to Class"%>
+					<%= f.submit "Deselect"%>
 				</button>
 				<%else%>
 					<%= f.hidden_field :prof_choice, value: true%>
-					<button style="background-color:#f0bb1a">
-					<%= f.submit "Show to Class"%>
+					<%= f.submit "Select"%>
 				<%end%>
 				</td>
 			<td><%= question.content %></td>
@@ -98,11 +94,11 @@
 	<table class="table table-bordered">
 
 		<thead>
-			<th style="width: 5%">Show to Class</th>
-			<th style="width: 50%">Question</th>
-			<th style="width: 18%">Writer</th>
+			<th style="width: 9%">Favorite</th>
+			<th style="width: 51%">Question</th>
+			<th style="width: 16%">Writer</th>
 			<th style="width: 10%">Comments</th>
-			<th style="width: 17%">Number of Upvotes</th>
+			<th style="width: 24%">Student Rating</th>
 		</thead>
 
 		<tbody>
@@ -114,13 +110,11 @@
 					<%end%>
 			<td><%if question.prof_choice%>
 					<%= f.hidden_field :prof_choice, value: false%>
-					<button style="background-color:#d2d2d2">
-					<%= f.submit "Don't Show to Class"%>
+					<%= f.submit "Deselect"%>
 				</button>
 				<%else%>
 					<%= f.hidden_field :prof_choice, value: true%>
-					<button style="background-color:#f0bb1a">
-					<%= f.submit "Show to Class"%>
+					<%= f.submit "Select"%>
 				<%end%>
 				</td>
 			<td><%= question.content %></td>
