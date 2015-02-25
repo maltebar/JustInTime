@@ -12,7 +12,7 @@
 
 
 # assignments created by professor
-Assignment.create(title: 'Assignment 1', description: 'Is the Ecological Footprint too simplistic?', description_2: 'How does the Ecological Footprint address waste flows?', description_3: 'Are there any standards set for Ecological Footprint assessments?', writer_due: '2015-01-01', promoter_due: '2015-02-20')
+Assignment.create(title: 'Assignment 1', description: 'Is the Ecological Footprint too simplistic?', description_2: 'How does the Ecological Footprint address waste flows?', description_3: 'Are there any standards set for Ecological Footprint assessments?', writer_due: '2015-01-01', promoter_due: '2015-02-28')
 Assignment.create(title: 'Assignment 2', description: 'What concept in the chapter on speciation did you find most confusing?', description_2: 'What calculation was most difficult to understand from the ecology chapter?', description_3: 'What questions do you have regarding nutrient cycles?', writer_due: '2015-03-03', promoter_due: '2015-03-10')
 
 
@@ -22,14 +22,15 @@ Group.create(name: "Group 2")
 
 
 # users
-User.create(name: 'Maria Altebarmakian', email:'m.altebarmakian@gmail.com', password: '12345678', admin: 'true')
-User.create(name: 'Anna Yatskar', email:'anyatskar@gmail.com', password: '12345678', admin: 'true')
-User.create(name: 'Billy Bob', email: 'billybob@gmail.com', password: '12345678', admin: 'false') #id3
-User.create(name: 'Jane Jean', email: 'janejean@gmail.com', password: '12345678', admin: 'false') #id4
-User.create(name: 'Sally Sue', email: 'sallysue@gmail.com', password: '12345678', admin: 'false') #id5
-User.create(name: 'Lola Lou', email: 'lolalou@gmail.com', password: '12345678', admin: 'false') #id6
-User.create(name: 'Betty Bee', email: 'bettybee@gmail.com', password: '12345678', admin: 'false') #id7
-User.create(name: 'John Jo', email: 'johnjo@gmail.com', password: '12345678', admin: 'false') #id8
+User.create(name: 'Maria Altebarmakian', email:'m.altebarmakian@brandeis.edu', password: '12345678', admin: 'true')
+User.create(name: 'Anna Yatskar', email:'anyatskar@brandeis.edu', password: '12345678', admin: 'true')
+User.create(name: 'Billy Bob', email: 'billybob@brandeis.edu', password: '12345678', admin: 'false') #id3
+User.create(name: 'Jane Jean', email: 'janejean@brandeis.edu', password: '12345678', admin: 'false') #id4
+User.create(name: 'Sally Sue', email: 'sallysue@brandeis.edu', password: '12345678', admin: 'false') #id5
+User.create(name: 'Lola Lou', email: 'lolalou@brandeis.edu', password: '12345678', admin: 'false') #id6
+User.create(name: 'Betty Bee', email: 'bettybee@brandeis.edu', password: '12345678', admin: 'false') #id7
+User.create(name: 'John Jo', email: 'johnjo@brandeis.edu', password: '12345678', admin: 'false') #id8
+User.create(name: 'Professor X', email:'professorx@brandeis.edu', password: '12345678', admin: 'true')
 
 
 
