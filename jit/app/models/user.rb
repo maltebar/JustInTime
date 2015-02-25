@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, :email, :password, presence: true
   validates :email, uniqueness: true
+  validates :email, format: { with: /\A([^@\s]+)@brandeis.edu/i, on: :create }
   validates_confirmation_of :password
 end
