@@ -25,37 +25,52 @@
   <br><br>
 
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description, "Prompt 1" %><br>
     <%= f.text_area :description, size: "51x5"%>
     <br>
-    <%= f.check_box :reveal_1 %>
-    <%= f.label :reveal_1, "Show  " %>
-    <%= f.text_field :percent_1, size: "4x1"%>
-    <%= f.label :percent_1, "  Percent of Questions to Promoters" %>   
+    <% if @assignment.percent_1 == 0%>
+    <%= f.hidden_field :reveal_1, value: false %>
+    <% else%>
+    <%= f.hidden_field :reveal_1, value: true%>
+    <%end%>
+    <%= f.label :percent_1, "Percentage of Submissions to Show to Promoters" %>  
+    <%= f.text_field :percent_1, size: "4x1"%>% 
+    <h6>For example, if the above percentage is 50 and there are 40 questions submitted for this prompt,
+        <br>promoters will be asked to complete promotions on a subset of 20 of those questions.</h6>
   </div>
 
 <br><br>
 
   <div class="field">
-    <%= f.label :description_2 %><br>
+    <%= f.label :description_2, "Prompt 2" %><br>
     <%= f.text_area :description_2, size: "51x5"%>
     <br>
-    <%= f.check_box :reveal_2 %>
-    <%= f.label :reveal_2, "Show  " %>
-    <%= f.text_field :percent_2, size: "4x1"%>
-    <%= f.label :percent_2, "  Percent of Questions to Promoters" %> 
+    <% if @assignment.percent_2 == 0%>
+    <%= f.hidden_field :reveal_2, value: false %>
+    <% else%>
+    <%= f.hidden_field :reveal_2, value: true%>
+    <%end%>
+    <%= f.label :percent_2, "Percentage of Submissions to Show to Promoters" %>  
+    <%= f.text_field :percent_2, size: "4x1"%>% 
+    <h6>For example, if the above percentage is 50 and there are 40 questions submitted for this prompt,
+        <br>promoters will be asked to complete promotions on a subset of 20 of those questions.</h6>    
   </div>
 
 <br><br>
 
   <div class="field">
-    <%= f.label :description_3 %><br>
+    <%= f.label :description_3, "Prompt 3" %><br>
     <%= f.text_area :description_3, size: "51x5"%>
     <br>
-    <%= f.check_box :reveal_3 %>
-    <%= f.label :reveal_3, "Show  " %>
-    <%= f.text_field :percent_3, size: "4x1"%>
-    <%= f.label :percent_3, "  Percent of Questions to Promoters" %> 
+    <% if @assignment.percent_3 == 0%>
+    <%= f.hidden_field :reveal_3, value: false %>
+    <% else%>
+    <%= f.hidden_field :reveal_3, value: true%>
+    <%end%>
+    <%= f.label :percent_3, "Percentage of Submissions to Show to Promoters" %>  
+    <%= f.text_field :percent_3, size: "4x1"%>% 
+    <h6>For example, if the above percentage is 50 and there are 40 questions submitted for this prompt,
+        <br>promoters will be asked to complete promotions on a subset of 20 of those questions.</h6>
   </div>
 
 <br><br>
