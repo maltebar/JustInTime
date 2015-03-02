@@ -11,36 +11,40 @@
 		</thead>
 
 		<tbody>
-			<% @questions.each do |question| %>
-			<tr>
-			<td><% if question.description_flag == 1%>
-					<%=question.assignment.title%><br>
-					(Prompt 1)
-				<% elsif question.description_flag == 2%>
-					<%=question.assignment.title%><br>
-					(Prompt 2)
-				<% elsif question.description_flag == 3%>
-					<%= question.assignment.title%><br>
-					(Prompt 3)
-				<%end%>
-			</td>
+			<% @assignments.each do |assignment|%>
+				<% row_group_class = cycle('odd','even') %>
+				<% @current_questions = Question.where(assignment_id: assignment.id, user_id: @user.id)%>
+				<% @current_questions.each do |question| %>
+					<tr class=<%= row_group_class %>>
+					<td><% if question.description_flag == 1%>
+							<%=question.assignment.title%><br>
+							(Prompt 1)
+						<% elsif question.description_flag == 2%>
+							<%=question.assignment.title%><br>
+							(Prompt 2)
+						<% elsif question.description_flag == 3%>
+							<%= question.assignment.title%><br>
+							(Prompt 3)
+						<%end%>
+					</td>
 
-			<td><% if question.description_flag == 1%>
-					<%=question.assignment.description%>
-				<% elsif question.description_flag == 2%>
-					<%=question.assignment.description_2%>
-				<% elsif question.description_flag == 3%>
-					<%= question.assignment.description_3%>
-				<%end%>
-				</td>
-				
-				<% if !question.content.nil? %>
-					<td><%=question.content%></td>
-				<%else%>
-					<td> </td>
+					<td><% if question.description_flag == 1%>
+							<%=question.assignment.description%>
+						<% elsif question.description_flag == 2%>
+							<%=question.assignment.description_2%>
+						<% elsif question.description_flag == 3%>
+							<%= question.assignment.description_3%>
+						<%end%>
+					</td>
+						
+						<% if !question.content.nil? %>
+							<td><%=question.content%></td>
+						<%else%>
+							<td> </td>
+						<% end %>
+					</tr>
 				<% end %>
-			<% end %>
-		</tr>
+			<%end%>
 		</tbody>
 
 	</table>

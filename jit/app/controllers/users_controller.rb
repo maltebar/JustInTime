@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def hwlist
     @user = User.find(params[:user])
     @questions = Question.where(user_id: @user.id)
+    @assignments = Assignment.all
   end
 
   # GET /users
