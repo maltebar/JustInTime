@@ -6,14 +6,14 @@
 <br>
 <% if @assignment.reveal_1? %>
 <h3><%= @assignment.description%></h3>
-<% done = true%>
+<% done_1 = true%>
 <%@evaluation_1.questions.shuffle.each do |question| %>
 	<% if !question.ratings.where(user_id: @user.id).exists?
-			done = false
+			done_1 = false
 		end%>
 <%end%>
 
-<%if !done%>
+<%if !done_1%>
 	<table class="table table-bordered">
 
 		<thead>
@@ -48,7 +48,7 @@
 	<%end%>
 	<%end%>
 
-<%if done%>
+<%if done_1%>
 	<h5>You have completed all the promotions for this prompt.</h5>
 <%end%>
 
@@ -59,14 +59,14 @@
 <% if @assignment.reveal_2?%>
 
 <h3><%= @assignment.description_2%></h3>
-<% done = true%>
+<% done_2 = true%>
 <%@evaluation_2.questions.shuffle.each do |question| %>
 	<% if !question.ratings.where(user_id: @user.id).exists?
-			done = false
+			done_2 = false
 		end%>
 <%end%>
 
-<%if !done%>
+<%if !done_2%>
 	<table class="table table-bordered">
 
 		<thead>
@@ -100,7 +100,7 @@
 	<%end%>
 	<%end%>
 
-<%if done%>
+<%if done_2%>
 	<h5>You have completed all the promotions for this prompt.</h5>
 <%end%>
 
@@ -112,15 +112,15 @@
 <% if @assignment.reveal_3? %>
 
 <h3><%= @assignment.description_3%></h3>
-<% done = true%>
+<% done_3 = true%>
 
 <%@evaluation_3.questions.shuffle.each do |question| %>
 	<% if !question.ratings.where(user_id: @user.id).exists?
-			done = false
+			done_3 = false
 		end%>
 <%end%>
 
-<%if !done%>
+<%if !done_3%>
 	<table class="table table-bordered">
 
 		<thead>
@@ -154,6 +154,6 @@
 	<%end%>
 	<%end%>
 
-<%if done%>
+<%if done_3%>
 	<h5>You have completed all the promotions for this prompt.</h5>
 <%end%>

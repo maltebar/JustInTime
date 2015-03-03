@@ -5,6 +5,8 @@
 <%= @question.content%>
 <br><br>
 
+<%if @ratings.exists?%>
+
 	<table class="table table-bordered">
 
 		<thead>
@@ -22,6 +24,9 @@
 		</tbody>
 
 	</table>
+<%else%>
+<h5> No comments for this question</h5>
+<%end%>
 
 	<br><br>
 

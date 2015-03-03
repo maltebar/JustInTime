@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   def commentlist
     @question = Question.find(params[:question])
-    @ratings = Rating.where(question_id: @question.id)
+    @ratings = Rating.where(question_id: @question.id).order("comment desc")
     @assignment = Assignment.find(Assignment.where(id: @question.assignment_id))
   end
 
