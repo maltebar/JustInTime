@@ -10,6 +10,7 @@
 	<table class="table table-bordered">
 
 		<thead>
+			<th style="width: 17%">Discuss</th>
 			<th style="width: 64%">Comment</th>
 			<th style="width: 19%">Promoter</th>
 		</thead>
@@ -17,8 +18,14 @@
 		<tbody>
 			<% @ratings.each do |rating| %>
 			<tr>
-			<td><%= rating.comment %></td>
-			<td><%= rating.user.name %></td>
+				<% if rating.discuss?%>
+					<td>Discuss</td>
+				<%else%>
+					<td>Don't Discuss</td>
+				<%end%>
+
+				<td><%= rating.comment %></td>
+				<td><%= rating.user.name %></td>
 			</tr>
 			<% end %>
 		</tbody>
