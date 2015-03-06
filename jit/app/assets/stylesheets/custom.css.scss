@@ -10,7 +10,7 @@ html {
 a {
   color: #000;
  &:hover {
-    color: #f0bb1a !important;
+    color: #29a6c1 !important;
     background-color: transparent !important;
   }  
 }
@@ -33,12 +33,12 @@ a.navbar-nickname {
 }
 
 a.navbar-brand {
-	color: #f0bb1a !important;
+	color: #29a6c1 !important;
 }
 
 body {
 	padding: 15px;
-	background: #f6f6f6 !important;
+	background: #ffffff !important;
 }
 
 h1 {
@@ -51,15 +51,15 @@ h4 {
 }
 
 h5 {
-	color: #f0bb1a !important;
+	color: #29a6c1 !important;
 }
 
 h6 {
-	color: #f0bb1a !important;
+	color: #29a6c1 !important;
 }
 
 th {
-	color: #f0bb1a !important;
+	color: #29a6c1 !important;
 }
 
 
@@ -104,5 +104,5 @@ table tr.odd{
 }
 
 table tr.even{
-	background-color: #ffff !important;
+	background-color: #ffffff !important;
 }
