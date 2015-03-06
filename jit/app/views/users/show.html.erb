@@ -15,5 +15,42 @@
   <%= @user.group_id %>
 </p>
 
+
+
+
+
+
+
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+    <tr>
+      <th style="width: 30%">Assignment ID</th>
+      <th style="width: 38%">Content</th> 
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %> <%#table content: each row contains...%>
+      
+
+        <td><%= question.assignment_id %></td>
+        <td><%= question.content %>
+      </tr>
+
+    <% end %>
+  </tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

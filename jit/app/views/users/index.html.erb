@@ -86,5 +86,87 @@
 </table>
 
 <%else%>
-<h3>You do not have access to this page</h3>
+
+<p>
+  <strong>Name</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Group</strong>
+     <%= if current_user.group.writer?
+          "Writer"
+        else
+          "Promoter"
+        end %>
+</p>
+<div>
+<%= button_to 'Change Group', :action => 'change' %>
+</div>
+
+
+
+<h3>My Questions</h3>
+
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+    <tr>
+      <th style="width: 30%">My Question</th> 
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %> <%#table content: each row contains...%>
+      
+
+        <td><%= question.assignment.title + " - " + question.assignment.description %></td>
+        <td><%= question.content %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+
+</table>
+
+
+
+<h3>My Ratings</h3>
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+    <tr>
+      <th style="width: 30%">Assignment</th>
+      <th style="width: 30%">Question</th>
+      <th style="width: 38%">My Comment</th>
+      <th style="width: 38%">My Vote</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ratings.each do |rating| %> <%#table content: each row contains...%>
+      
+
+        <td><%= rating.question.assignment.title %></td>
+        <td><%= rating.question.content %></td>
+        <td><%= rating.comment %></td>
+        <td><%= rating.discuss %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+
+</table>
+
+
 <%end%>
+
+
+
+
+

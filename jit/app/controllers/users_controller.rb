@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
 
   def hwlist
-    @user = User.find(params[:user])
+    @user = User.find(params[:id])
     @questions = Question.where(user_id: @user.id)
     @assignments = Assignment.all
   end
@@ -14,13 +14,35 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    
     @assignments = Assignment.all #INSERTED TRYING TO MADE HWLIST WORK!
     @users = User.where(admin: false)
+
+    @user = current_user
+    @evaluations = Evaluation.where(user_id: @user.id)
+    @current_group = @user.group
+    @questions = Question.where(user_id: @user.id)
+    @ratings = Rating.where(user_id: @user.id)
+  end
+
+  def change
+    @user = current_user
+    @memberships = Membership.where(user_id: @user.id)
+    @memberships.destroy_all
+    if @user.group.id == 1
+      @group = Group.find(2)
+      @group.users << @user
+    else
+      @group = Group.find(1)
+      @group.users << @user
+    end
+    redirect_to :back
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    
   end
 
   # GET /users/new
