@@ -18,13 +18,12 @@
         @second_link = '/assignments/'
         @second_entry = 'List of Assignments'
         @last_entry = ''
-        #for some reason the last thing in here is printing to the page so I added just a space to hide it
-        #How do we hide that the real way??
       else
         @first_link = '/users'
-        @first_entry = 'My Home'
+        @first_entry = 'Homework Statistics'
         @second_link = '/questions'
-        @second_entry = 'Assignment Page'
+        @second_entry = 'Assignment'
+
       end%>
 
   <link rel="stylesheet" href="custom.css.scss">
@@ -49,7 +48,7 @@
 
 
         <nav> <%# navigation bar %>
-          <ul class="nav navbar-nav navbar-right"> <%# ul/li tag used for unordered lists? %>
+          <ul class="nav navbar-nav navbar-right"> 
             <li><a >Role: 
               <%=if current_user.nil?
                     "not logged in"
@@ -63,9 +62,8 @@
                     end
                   end 
                   %></a></li> 
-            <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
+            <li><a href="<%= '/users' %>"><%= 'Home' %></a></li>
             <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
-            <%# add links for header here%>
 
           </ul>
         </nav>
