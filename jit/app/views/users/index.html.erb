@@ -48,7 +48,7 @@
               if prof_choice_seen != 0
                 prof_choice_picked *100 /prof_choice_seen 
               else
-              "N/A"
+              "n/a"
               end%>
               <%if prof_choice_seen != 0%>
                 %
@@ -79,7 +79,7 @@
               if top_quart_seen != 0
                 top_quart_picked * 100/top_quart_seen 
               else
-              "N/A"
+              "n/a"
               end%>
               <%if top_quart_seen != 0%>
                 %
@@ -111,7 +111,7 @@
 <br>
 
 <p>
-  <strong>Current role:<br></strong>
+  <strong>Current role: </strong>
      <%= if current_user.group.writer?
           "Writer"
         else
@@ -125,7 +125,7 @@
 
 
 
-<h3>My Questions</h3>
+<h3>Questions</h3>
 
 <%if @questions.exists?%>
 
@@ -148,7 +148,7 @@
           elsif question.description_flag == 3
               prompt = question.assignment.description_3
           end%>
-          <td><%= question.assignment.title + " - " + prompt %></td>
+          <td><%= question.assignment.title + ": " + prompt %></td>
           <td><%= question.content %></td>
         </tr>
 
@@ -163,7 +163,7 @@
 <br>
 
 
-<h3>My Ratings</h3>
+<h3>Ratings</h3>
 
 <%if @ratings.exists?%>
   <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
@@ -172,14 +172,13 @@
       <tr>
         <th style="width: 30%">Assignment</th>
         <th style="width: 30%">Question</th>
-        <th style="width: 38%">My Comment</th>
-        <th style="width: 38%">My Vote</th>
+        <th style="width: 38%">Comment</th>
+        <th style="width: 38%">Vote</th>
       </tr>
     </thead>
 
     <tbody>
       <% @ratings.each do |rating| %> <%#table content: each row contains...%>
-        
 
           <td><%= rating.question.assignment.title %></td>
           <td><%= rating.question.content %></td>
