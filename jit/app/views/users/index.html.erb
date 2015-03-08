@@ -48,8 +48,11 @@
               if prof_choice_seen != 0
                 prof_choice_picked *100 /prof_choice_seen 
               else
-              0
-              end%>%
+              "N/A"
+              end%>
+              <%if prof_choice_seen != 0%>
+                %
+              <%end%>
           </td>
         <td><%= top_quart_seen = 0
                top_quart_picked = 0
@@ -76,8 +79,11 @@
               if top_quart_seen != 0
                 top_quart_picked * 100/top_quart_seen 
               else
-                0
-              end%>%</td>
+              "N/A"
+              end%>
+              <%if top_quart_seen != 0%>
+                %
+              <%end%></td>
         <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>
