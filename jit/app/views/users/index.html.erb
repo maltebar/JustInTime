@@ -28,7 +28,7 @@
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :user => user.id} %></td>
+        <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :id => user.id} %></td>
         <td><%= user.questions.count%></td>
         <td><%= user.ratings.count%></td>
         <td><%= prof_choice_seen = 0
@@ -112,58 +112,77 @@
 
 
 <h3>My Questions</h3>
+<%if @questions.exists?%>
 
-<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
-  
-  <thead> <%#table header%>
-    <tr>
-      <th style="width: 30%">Assignment</th>
-      <th> My Question</th> 
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %> <%#table content: each row contains...%>
-      
-
-        <td><%= question.assignment.title + " - " + question.assignment.description %></td>
-        <td><%= question.content %></td>
+  <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+    
+    <thead> <%#table header%>
+      <tr>
+        <th style="width: 30%">Assignment</th>
+        <th> My Question</th> 
       </tr>
+    </thead>
 
-    <% end %>
-  </tbody>
+    <tbody>
+      <% @questions.each do |question| %> <%#table content: each row contains...%>
+        <tr>
+        <% if question.description_flag == 1
+              prompt = question.assignment.description
+          elsif question.description_flag == 2
+              prompt = question.assignment.description_2
+          elsif question.description_flag == 3
+              prompt = question.assignment.description_3
+          end%>
+        
 
-</table>
+          <td><%= question.assignment.title + " - " + prompt %></td>
+          <td><%= question.content %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+
+<%else%>
+  <h5>You have not submitted any questions yet!</h5>
+<%end%>
 
 
 
 <h3>My Ratings</h3>
-<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
-  
-  <thead> <%#table header%>
-    <tr>
-      <th style="width: 30%">Assignment</th>
-      <th style="width: 30%">Question</th>
-      <th style="width: 38%">My Comment</th>
-      <th style="width: 38%">My Vote</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @ratings.each do |rating| %> <%#table content: each row contains...%>
-      
-
-        <td><%= rating.question.assignment.title %></td>
-        <td><%= rating.question.content %></td>
-        <td><%= rating.comment %></td>
-        <td><%= rating.discuss %></td>
+<%if @ratings.exists?%>
+  <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+    
+    <thead> <%#table header%>
+      <tr>
+        <th style="width: 30%">Assignment</th>
+        <th style="width: 30%">Question</th>
+        <th style="width: 38%">My Comment</th>
+        <th style="width: 38%">My Vote</th>
       </tr>
+    </thead>
 
-    <% end %>
-  </tbody>
+    <tbody>
+      <% @ratings.each do |rating| %> <%#table content: each row contains...%>
+        
 
-</table>
+          <td><%= rating.question.assignment.title %></td>
+          <td><%= rating.question.content %></td>
+          <td><%= rating.comment %></td>
+          <% if rating.discuss? %> 
+              <td>Discuss</td>
+          <%elsif !rating.discuss?%>
+              <td>Don't Discuss</td>
+          <%end%>
+        </tr>
 
+      <% end %>
+    </tbody>
+
+  </table>
+<%else%>
+  <h5>You have not submitted any promotions yet!</h5>
+<%end%>
 
 <%end%>
 
