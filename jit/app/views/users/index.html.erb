@@ -87,18 +87,25 @@
 
 <%else%>
 
+<%# I don't think we need these things here, Ken
+
 <p>
   <strong>Name</strong>
   <%= @user.name %>
-</p>
+<%#</p>
 
 <p>
   <strong>Email</strong>
   <%= @user.email %>
-</p>
+<%#</p> 
+
+%>
+
+<h1>Homework Statistics</h1>
+<br>
 
 <p>
-  <strong>Group</strong>
+  <strong>Current role: (Maria, do we really need this displayed here (the role, no the button)? It's in the header and I'm all for minimalism...) <br></strong>
      <%= if current_user.group.writer?
           "Writer"
         else
@@ -108,6 +115,7 @@
 <div>
 <%= button_to 'Change Group', :action => 'change' %>
 </div>
+<br><br>
 
 
 
@@ -117,16 +125,16 @@
   
   <thead> <%#table header%>
     <tr>
-      <th style="width: 30%">Assignment</th>
-      <th> My Question</th> 
+      <th style="width: 45%">Assignment</th>
+      <th style="width: 55%">Question</th> 
     </tr>
   </thead>
 
   <tbody>
-    <% @questions.each do |question| %> <%#table content: each row contains...%>
+    <% @questions.each do |question| %>
       
 
-        <td><%= question.assignment.title + " - " + question.assignment.description %></td>
+        <td><%= question.assignment.title + ": " + question.assignment.description %></td>
         <td><%= question.content %></td>
       </tr>
 
@@ -135,6 +143,7 @@
 
 </table>
 
+<br>
 
 
 <h3>My Ratings</h3>
@@ -144,8 +153,8 @@
     <tr>
       <th style="width: 30%">Assignment</th>
       <th style="width: 30%">Question</th>
-      <th style="width: 38%">My Comment</th>
-      <th style="width: 38%">My Vote</th>
+      <th style="width: 25%">Comment</th>
+      <th style="width: 15%">Vote</th>
     </tr>
   </thead>
 
