@@ -15,13 +15,13 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     
-    @assignments = Assignment.all #INSERTED TRYING TO MADE HWLIST WORK!
+    @assignments = Assignment.all 
     @users = User.where(admin: false)
 
     @user = current_user
     @evaluations = Evaluation.where(user_id: @user.id)
     @current_group = @user.group
-    @questions = Question.where(user_id: @user.id)
+    @questions = Question.where(user_id: @user.id).order('assignment_id')
     @ratings = Rating.where(user_id: @user.id)
   end
 

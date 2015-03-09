@@ -29,7 +29,7 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Student homework', {:controller => "users", :action => "hwlist", :id => user.id} %></td>
-        <td><%= user.questions.count%></td>
+        <td><%= user.questions.where.not(content: "").count%></td>
         <td><%= user.ratings.count%></td>
         <td><%= prof_choice_seen = 0
                prof_choice_picked = 0
@@ -135,20 +135,24 @@
   </thead>
 
     <tbody>
-      <% @questions.each do |question| %> <%#table content: each row contains...%>
-        <tr>
-        <% if question.description_flag == 1
-              prompt = question.assignment.description
-          elsif question.description_flag == 2
-              prompt = question.assignment.description_2
-          elsif question.description_flag == 3
-              prompt = question.assignment.description_3
-          end%>
-          <td><%= question.assignment.title + ": " + prompt %></td>
-          <td><%= question.content %></td>
-        </tr>
+      <% @assignments.each do |assignment|%>
+        <% row_group_class = cycle('odd','even') %>
+        <% @questions = Question.where(assignment_id: assignment.id, user_id: @user.id)%>
+        <% @questions.each do |question| %> <%#table content: each row contains...%>
+          <tr class=<%= row_group_class %>>
+          <% if question.description_flag == 1
+                prompt = question.assignment.description
+            elsif question.description_flag == 2
+                prompt = question.assignment.description_2
+            elsif question.description_flag == 3
+                prompt = question.assignment.description_3
+            end%>
+            <td><%= question.assignment.title + ": " + prompt %></td>
+            <td><%= question.content %></td>
+          </tr>
 
-      <% end %>
+        <% end %>
+      <%end%>
     </tbody>
   </table>
 
