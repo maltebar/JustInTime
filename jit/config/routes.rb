@@ -26,8 +26,7 @@ Rails.application.routes.draw do
   get 'questions/commentlist'
 
   get 'users/hwlist' # Anna made a route! 9 February 2015
-  # we'll need another route here to get links going from hwlist page to the actual HW page for each student (which we haven't yet figure out the look of)
-
+  
   resources :users do
     resources :memberships
     resources :groups
