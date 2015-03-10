@@ -14,7 +14,7 @@
     <tr>
       <th style="width: 30%">Title</th>
       <th style="width: 38%">Due Dates</th> 
-      <th style="width: 18%">Questions Submitted</th>
+      <th style="width: 18%">Submissions</th>
       <th style="width: 14%">Editing Buttons</th>
     </tr>
   </thead>
@@ -31,7 +31,7 @@
         <td>Writing: <%= assignment.writer_due.strftime('%-B %-d, %Y at %I:%M%p') %>
             <br>
             Promoting: <%= assignment.promoter_due.strftime('%-B %-d, %Y at %I:%M%p') %></td>
-        <td><%= link_to 'Questions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %>
+        <td><%= link_to 'Submissions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %>
         </td>
 
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %> <br>

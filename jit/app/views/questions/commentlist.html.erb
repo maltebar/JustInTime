@@ -1,4 +1,4 @@
-<h1> Comments Submitted for Question </h1>
+<h1> Comments Submitted for Thought/Question </h1>
 
 <br>
 
@@ -32,9 +32,9 @@
 
 	</table>
 <%else%>
-<h5> No comments were submitted for this question!</h5>
+<h5> No comments were submitted for this thought/question!</h5>
 <%end%>
 
 	<br><br>
 
-<%= link_to 'Back to Questions List', {:controller => "assignments", :action => "qlist", :assignment => @assignment.id} %>
+<%= link_to 'Back to Submissions List', {:controller => "assignments", :action => "qlist", :assignment => @assignment.id} %>
