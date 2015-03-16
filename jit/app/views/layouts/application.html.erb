@@ -60,15 +60,14 @@
                   end 
                   %></a></li> 
 
-            <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
-
             <li><a>Logged in as: <%= 
             if current_user.nil?
               "not logged in"
               else
                 current_user.name 
             end %></a></li>
-            
+
+            <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
             
             <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
             <br><br><br>
