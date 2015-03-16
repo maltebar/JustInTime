@@ -4,7 +4,7 @@
        <p class="alert"><%= alert %></p>
 <head>
 
-  <title>Just In Time</title> <%# Internet tab title %>
+  <title>Thoughts and Questions</title> <%# Internet tab title %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -36,19 +36,21 @@
 
 
         <div class="navbar-header">
-          <a class="navbar-brand" >Just in Time Teaching</a> 
-          <a class="navbar-nickname" >Logged in as: <%= 
-            if current_user.nil?
-              "not logged in"
-              else
-                current_user.name 
-            end %></a> 
+          <a class="navbar-brand" >Thoughts and Questions
+            <h6>An Application to Support Just-in-Time Teaching</h6></a>
+     
         </div>
 
 
 
         <nav> <%# navigation bar %>
           <ul class="nav navbar-nav navbar-right"> 
+            <li><a>Logged in as: <%= 
+            if current_user.nil?
+              "not logged in"
+              else
+                current_user.name 
+            end %></a></li>
             <li><a >Role: 
               <%=if current_user.nil?
                     "not logged in"
@@ -64,7 +66,7 @@
                   %></a></li> 
             <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
             <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
-
+            <br><br><br>
           </ul>
         </nav>
       </div>
