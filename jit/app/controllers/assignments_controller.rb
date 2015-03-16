@@ -8,9 +8,9 @@ class AssignmentsController < ApplicationController
 
   def qlist
     @assignment = Assignment.find(params[:assignment])
-    @questions_flag_1 = @assignment.questions.where(description_flag: 1 && !:content.nil?).order('percentage desc')
-    @questions_flag_2 = @assignment.questions.where(description_flag: 2 && !:content.nil?).order('percentage desc')
-    @questions_flag_3 = @assignment.questions.where(description_flag: 3 && !:content.nil?).order('percentage desc')
+    @questions_flag_1 = @assignment.questions.where(description_flag: 1).where.not(content: "").order('percentage desc')
+    @questions_flag_2 = @assignment.questions.where(description_flag: 2).where.not(content: "").order('percentage desc')
+    @questions_flag_3 = @assignment.questions.where(description_flag: 3).where.not(content: "").order('percentage desc')
   end
 
 
