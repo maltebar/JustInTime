@@ -36,7 +36,7 @@
 
 
         <div class="navbar-header">
-          <a class="navbar-brand" >Thoughts and Questions
+          <a class="navbar-brand"><bold>Thoughts and Questions</bold>
             <h6>An Application to Support Just-in-Time Teaching</h6></a>
      
         </div>
@@ -45,13 +45,8 @@
 
         <nav> <%# navigation bar %>
           <ul class="nav navbar-nav navbar-right"> 
-            <li><a>Logged in as: <%= 
-            if current_user.nil?
-              "not logged in"
-              else
-                current_user.name 
-            end %></a></li>
-            <li><a >Role: 
+
+              <li><a >Role: 
               <%=if current_user.nil?
                     "not logged in"
                   elsif current_user.admin?
@@ -64,7 +59,17 @@
                     end
                   end 
                   %></a></li> 
+
             <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
+
+            <li><a>Logged in as: <%= 
+            if current_user.nil?
+              "not logged in"
+              else
+                current_user.name 
+            end %></a></li>
+            
+            
             <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
             <br><br><br>
           </ul>
