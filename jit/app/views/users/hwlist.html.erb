@@ -17,7 +17,7 @@
 				<% @current_questions.each do |question| %>
 					<tr class=<%= row_group_class %>>
 					<td><% if question.description_flag == 1%>
-							<%=question.assignment.title%><br>
+							<%=question.assignment.title %><br>
 							(Prompt 1)
 						<% elsif question.description_flag == 2%>
 							<%=question.assignment.title%><br>

@@ -127,14 +127,18 @@
         <% @questions = Question.where(assignment_id: assignment.id, user_id: @user.id)%>
         <% @questions.each do |question| %> <%#table content: each row contains...%>
           <tr class=<%= row_group_class %>>
-          <% if question.description_flag == 1
-                prompt = question.assignment.description
-            elsif question.description_flag == 2
-                prompt = question.assignment.description_2
-            elsif question.description_flag == 3
-                prompt = question.assignment.description_3
-            end%>
-            <td><%= question.assignment.title + ": " + prompt %></td>
+          
+          <td><% if question.description_flag == 1%>
+              <%= question.assignment.title + " (Prompt 1): " + question.assignment.description%><br>
+            <% elsif question.description_flag == 2%>
+              <%= question.assignment.title + " (Prompt 2): " + question.assignment.description_2%><br>
+            <% elsif question.description_flag == 3%>
+              <%= question.assignment.title + " (Prompt 3): " + question.assignment.description_3%><br>
+            <%end%>
+          </td>
+
+
+
             <td><%= question.content %></td>
           </tr>
 
@@ -157,10 +161,10 @@
     
     <thead> <%#table header%>
       <tr>
-        <th style="width: 30%">Assignment</th>
-        <th style="width: 30%">Submission</th>
-        <th style="width: 38%">Comment</th>
-        <th style="width: 38%">Vote</th>
+        <th style="width: 20%">Assignment</th>
+        <th style="width: 50%">Submission</th>
+        <th style="width: 19%">Comment</th>
+        <th style="width: 11%">Vote</th>
       </tr>
     </thead>
 
