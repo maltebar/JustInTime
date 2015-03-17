@@ -129,11 +129,11 @@
           <tr class=<%= row_group_class %>>
           
           <td><% if question.description_flag == 1%>
-              <%= question.assignment.title + " (Prompt 1): " + question.assignment.description%><br>
+              <%= question.assignment.title + ": " + question.assignment.description%><br>
             <% elsif question.description_flag == 2%>
-              <%= question.assignment.title + " (Prompt 2): " + question.assignment.description_2%><br>
+              <%= question.assignment.title + ": " + question.assignment.description_2%><br>
             <% elsif question.description_flag == 3%>
-              <%= question.assignment.title + " (Prompt 3): " + question.assignment.description_3%><br>
+              <%= question.assignment.title + ": " + question.assignment.description_3%><br>
             <%end%>
           </td>
 
