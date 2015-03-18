@@ -1,5 +1,0 @@
-# JustInTime
-
-Hello, World!
-
-Testing
