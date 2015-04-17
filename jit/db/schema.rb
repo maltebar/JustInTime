@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20150218175516) do
     t.integer "question_id"
   end
 
-  add_index "evaluations_questions", ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id"
-  add_index "evaluations_questions", ["question_id"], name: "index_evaluations_questions_on_question_id"
+  add_index "evaluations_questions", ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id", using: :btree
+  add_index "evaluations_questions", ["question_id"], name: "index_evaluations_questions_on_question_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.boolean  "writer"
@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(version: 20150218175516) do
     t.integer  "user_id"
     t.string   "user_name"
     t.integer  "assignment_id"
-    t.float    "percentage"
+    t.float    "percentage",       limit: 24
     t.integer  "description_flag"
-    t.boolean  "prof_choice",      default: false
+    t.boolean  "prof_choice",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "votes",            default: 0
+    t.integer  "votes",                       default: 0
   end
 
   create_table "ratings", force: true do |t|
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20150218175516) do
     t.boolean  "admin",                  default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
