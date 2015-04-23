@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:shibboleth]
+
   validates :name, :email, :password, presence: true
   validates :email, uniqueness: true
   validates :email, format: { with: /\A([^@\s]+)@brandeis.edu/i, on: :create }

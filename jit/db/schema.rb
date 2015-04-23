@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218175516) do
+ActiveRecord::Schema.define(version: 20150423192133) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 20150218175516) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  default: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

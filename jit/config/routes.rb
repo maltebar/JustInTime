@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :ratings
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   get 'sessions/new'
   post 'sessions/create'
   delete 'sessions/destroy'
