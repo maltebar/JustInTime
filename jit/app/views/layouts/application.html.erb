@@ -37,7 +37,7 @@
 
         <div class="navbar-header">
           <a class="navbar-brand"><bold>Thoughts and Questions</bold>
-            <h6>An Application to Support Just-in-Time Teaching</h6></a>
+            <h6 class="top-bar-title">An Application to Support Just-in-Time Teaching</h6></a>
      
         </div>
 
@@ -46,7 +46,7 @@
         <nav> <%# navigation bar %>
           <ul class="nav navbar-nav navbar-right"> 
 
-              <li><a >Role: 
+              <li><a class="topbar-link" >Role: 
               <%=if current_user.nil?
                     "not logged in"
                   elsif current_user.admin?
@@ -60,16 +60,16 @@
                   end 
                   %></a></li> 
 
-            <li><a>Logged in as: <%= 
+            <li><a class="topbar-link">Logged in as: <%= 
             if current_user.nil?
               "not logged in"
               else
                 current_user.name 
             end %></a></li>
 
-            <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
+            <li><a class="topbar-link" href="<%= root_path %>"><%= 'Home' %></a></li>
             
-            <li><a <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
+            <li><a class="topbar-link" <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
             <br><br><br>
           </ul>
         </nav>
@@ -82,8 +82,8 @@
         <div class="col-sm-3 col-md-2 sidebar" style='position:fixed;'>
           <ul class="nav nav-sidebar">
             <br><br>
-            <li><a href="<%= @first_link %>"><%= @first_entry %></a></li>
-            <li><a href="<%= @second_link %>"><%= @second_entry %></a></li>
+            <li><a class="sidebar-link" href="<%= @first_link %>"><%= @first_entry %></a></li>
+            <li><a class="sidebar-link" href="<%= @second_link %>"><%= @second_entry %></a></li>
 
           </ul>
         </div>

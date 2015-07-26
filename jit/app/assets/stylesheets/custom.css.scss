@@ -9,11 +9,12 @@ html {
 
 
 a {
-  color: #000;
+ color: #000000;
+ text-decoration: underline; 
  &:hover {
-    color: #29a6c1 !important;
+    color: #cc0000 !important;
     background-color: transparent !important;
-    text-decoration: none; 
+    text-decoration: underline; 
   }  
 }
 
@@ -27,7 +28,7 @@ a {
 .navbar-inverse {
 	background-color: #353536 !important;
 	padding-left: 0px;
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 }
 
 a.navbar-nickname {
@@ -35,7 +36,8 @@ a.navbar-nickname {
 }
 
 a.navbar-brand {
-	color: #29a6c1 !important;
+	color: #ffd700 !important;
+	text-decoration: none; 
 }
 
 body {
@@ -53,15 +55,39 @@ h4 {
 }
 
 h5 {
-	color: #29a6c1 !important;
+	color: #cc0000 !important;
 }
 
 h6 {
-	color: #29a6c1 !important;
+	color: #cc0000 !important;
 }
 
 th {
-	color: #29a6c1 !important;
+	color: #cc0000 !important;
+}
+
+.top-bar-title {
+	color: #ffd700 !important; 
+	text-decoration: none; 
+}
+
+.sidebar-link{
+	color: #ffd700 !important;
+	text-decoration: none; 
+	&:hover {
+    	color: #000000 !important;
+    	text-decoration: none; 
+    }
+}
+
+.topbar-link{
+	color: #ffd700 !important;
+	text-decoration: none; 
+ 	&:hover {
+    	color: #cc0000 !important;
+    	background-color: transparent !important;
+    	text-decoration: none; 
+  	}  
 }
 
 
@@ -78,7 +104,7 @@ th {
     padding-bottom: 600px;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: #d2d2d2;
+    background-color: #cc0000;
     border-right: 1px solid #eee;
   }
 }
@@ -102,7 +128,7 @@ th {
 }
 
 table tr.odd{
-	background-color: #d2d2d2 !important;
+	background-color: #ededed !important;
 }
 
 table tr.even{
