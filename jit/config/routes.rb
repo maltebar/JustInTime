@@ -3,7 +3,7 @@
 
 Rails.application.routes.draw do
 
-  
+  devise_for :users
 
   resources :evaluations do
     resources :questions
@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   resources :ratings
 
-  devise_for :users
+  
+  delete 'sessions/destroy'
   get 'sessions/new'
   post 'sessions/create'
-  delete 'sessions/destroy'
+  
 
   post 'users/change'
 

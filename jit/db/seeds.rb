@@ -23,7 +23,7 @@ Group.create(name: "Group 2")
 User.create(name: 'Maria Altebarmakian', email:'m.altebarmakian@brandeis.edu', password: '12345678', admin: 'true')
 User.create(name: 'Anna Yatskar', email:'anyatskar@brandeis.edu', password: '12345678', admin: 'true')
 User.create(name: 'Ken Harsch', email:'kharsch@brandeis.edu', password: 'antilles', admin: 'true')
-
+User.create(name: 'Kathrin Seidl-Gomez', email:'kseidlgo@brandeis.edu', password: '12345678', admin: 'true')
 
 
 
