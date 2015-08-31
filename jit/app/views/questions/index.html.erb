@@ -5,13 +5,13 @@
     elsif @assignment.nil?
       render 'noassignment'
     elsif @user.group.writer?
-      if @assignment.writer_due > Time.now 
+      if @assignment.writer_due > Time.zone.now 
       	render 'writer' 
       else 
       	render 'inactive'
       end
     else # user must be promoter
-      if @assignment.promoter_due > Time.now && Time.now > @assignment.writer_due
+      if @assignment.promoter_due > Time.zone.now && Time.zone.now > @assignment.writer_due
       	render 'promoter'
       else 
       	render 'inactive'
