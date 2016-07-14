@@ -29,18 +29,5 @@ class User < ActiveRecord::Base
   end
 
 
-  def switch_group
-    current_group = self.group
-
-    if current_group.id == 1
-      self.group = Group.find(2)
-    else
-      self.group = Group.find(1)
-    end
-
-    self.save
-  end
-
-
 
 end
