@@ -17,8 +17,8 @@ Assignment.create(title: 'Assignment 2', description: 'What concept in the chapt
 
 
 #groups
-Group.create(name: "Group 1")
-Group.create(name: "Group 2")
+Group.create(name: "Group 1", writer:false)
+Group.create(name: "Group 2", writer:true)
 
 
 # users

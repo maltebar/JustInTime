@@ -24,7 +24,23 @@ class User < ActiveRecord::Base
         else
           group_id = 2
         end
-        Membership.create(user_id: self.id, group_id: group_id)
+        self.create_membership(group_id: group_id).save()
     end
   end
+
+
+  def switch_group
+    current_group = self.group
+
+    if current_group.id == 1
+      self.group = Group.find(2)
+    else
+      self.group = Group.find(1)
+    end
+
+    self.save
+  end
+
+
+
 end
