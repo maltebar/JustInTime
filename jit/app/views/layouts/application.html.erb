@@ -9,22 +9,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= if current_user.nil?
-        @first_entry = ''
-        @second_entry = ''
-      elsif current_user.admin?
-        @first_link = '/users/'
-        @first_entry = 'List of Users'
-        @second_link = '/assignments/'
-        @second_entry = 'List of Assignments'
-        @last_entry = ''
-      else
-        @first_link = '/users'
-        @first_entry = 'Homework Statistics'
-        @second_link = '/questions'
-        @second_entry = 'Assignment'
 
-      end%>
 
   <link rel="stylesheet" href="custom.css.scss">
 </head>
@@ -82,8 +67,18 @@
         <div class="col-sm-3 col-md-2 sidebar" style='position:fixed;'>
           <ul class="nav nav-sidebar">
             <br><br>
-            <li><a class="sidebar-link" href="<%= @first_link %>"><%= @first_entry %></a></li>
-            <li><a class="sidebar-link" href="<%= @second_link %>"><%= @second_entry %></a></li>
+              <% if !current_user.nil?
+                  if current_user.admin? %>
+                    <li><%= link_to "List of users", users_path, :class=>'sidebar-link'%>
+                    <li><%= link_to "List of assignments", assignments_path, :class=>'sidebar-link'%>
+
+                 <% else %>
+                    <li><%= link_to "Homework statistics", users_path, :class=>'sidebar-link'%>
+                    <li><%= link_to "Assignment", questions_path, :class=>'sidebar-link'%>
+                <% end %>
+              <%  end %>
+
+                      
 
           </ul>
         </div>

@@ -12,8 +12,8 @@
 
 
 # assignments created by professor
-Assignment.create(title: 'Assignment 1', description: 'Is the Ecological Footprint too simplistic?', description_2: 'How does the Ecological Footprint address waste flows?', description_3: 'Are there any standards set for Ecological Footprint assessments?', writer_due: '2015-01-01', promoter_due: '2015-02-28')
-Assignment.create(title: 'Assignment 2', description: 'What concept in the chapter on speciation did you find most confusing?', description_2: 'What calculation was most difficult to understand from the ecology chapter?', description_3: 'What questions do you have regarding nutrient cycles?', writer_due: '2015-03-03', promoter_due: '2015-03-10')
+Assignment.create(title: 'Assignment 1', description: 'Is the Ecological Footprint too simplistic?', description_2: 'How does the Ecological Footprint address waste flows?', description_3: 'Are there any standards set for Ecological Footprint assessments?', writer_due: '2018-01-01', promoter_due: '2018-02-28')
+Assignment.create(title: 'Assignment 2', description: 'What concept in the chapter on speciation did you find most confusing?', description_2: 'What calculation was most difficult to understand from the ecology chapter?', description_3: 'What questions do you have regarding nutrient cycles?', writer_due: '2018-03-03', promoter_due: '2018-03-10')
 
 
 #groups
