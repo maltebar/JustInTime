@@ -7,7 +7,7 @@ class Evaluation < ActiveRecord::Base
 	private
 
 	def assign
-      @assignment = Assignment.find(Assignment.where(active: true))
+      @assignment = Assignment.current
       @questions = Question.where(assignment_id: @assignment.id, description_flag: self.description_flag)
       if self.description_flag == 1
         percent = @assignment.percent_1

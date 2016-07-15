@@ -22,7 +22,7 @@
   <tbody>
     <% @assignments.each do |assignment| %> <%#table content: each row contains...%>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <% if assignment.active? %>
+        <% if assignment.current? %>
         <tr bgcolor="#ededed">
 
         <%end%>

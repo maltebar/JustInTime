@@ -14,8 +14,8 @@ class QuestionsController < ApplicationController
     @questions = Question.all
     @assignments = Assignment.all
     @rating = Rating.new
-    if Assignment.exists?(active: true)
-      @assignment = Assignment.find(Assignment.where(active: true))
+    if !Assignment.current.nil?
+      @assignment = Assignment.current
 
       if !@user.group.writer?
         if @assignment.promoter_due > Time.now && Time.now > @assignment.writer_due
@@ -74,7 +74,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(Question.where(:user_id => current_user.id))
-    @assignment = Assignment.find(Assignment.where(active: true))
+    @assignment = Assignment.current
     @questions = Question.where(assignment_id: @assignment.id)
     respond_with(@question)
   end
