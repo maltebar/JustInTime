@@ -2,93 +2,28 @@
 
 <h5>The Writer phase ends on <%= @assignment.writer_due.strftime('%-B %-d, %Y at %I:%M%p')%>.</h5>
 <br>
+<p id="notice"><%= flash[:notice] %></p>
+<div class='row'>
+  <div class='col-md-8'>
+    <%= form_tag controller: "questions", action:"save_all" do %>
 
-<h4><%= @assignment.description%></h4>
-<%= form_for(@question_1) do |f| %>
-  <% if @question_1.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question_1.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% @question_1.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @questions.each do |question| %>
+        <%
+          if question.description_flag == 1
+            label = @assignment.description
+          else
+            label = @assignment["description_#{question.description_flag}"]
+          end
+          %>
+        <div class='form-group'>
+          <%= label_tag "content["+question.id.to_s+"]", label, class:'control-label' %>
+          <%= text_area_tag "content["+question.id.to_s+"]", question.content, :class=>"form-control", :rows=>4 %>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <div class="field">
-    <br>
-    <%= f.text_area :content, size: "110x8"%>
-    <%= f.hidden_field :description_flag, value: "1" %>
+      <div class='form-group'>
+        <%= submit_tag "Save", class:'btn btn-primary' %>
+      </div>
+    <%end%>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Save", :onclick=> "return confirm('Submission saved!')" %>
-  </div>
-<% end %>
-
-<br><br>
-
-
-
-<% unless @assignment.description_2 == "" %>
-
-<h4><%= @assignment.description_2%></h4>
-<%= form_for(@question_2) do |f| %>
-  <% if @question_2.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question_2.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% @question_2.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-
-  <div class="field">
-    <br>
-    <%= f.text_area :content, size: "110x8"%>
-    <%= f.hidden_field :description_flag, value: "2" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Save", :onclick=> "return confirm('Submission saved!')" %>
-  </div>
-<% end %>
-<%end%> 
-
-<br><br>
-
-<% unless @assignment.description_3 == "" %>
-
-<h4><%= @assignment.description_3%></h4>
-<%= form_for(@question_3) do |f| %>
-  <% if @question_3.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question_3.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% @question_3.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <div class="field">
-    <br>
-    <%= f.text_area :content, size: "110x8"%>
-    <%= f.hidden_field :description_flag, value: "3" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Save", :onclick=> "return confirm('Submission saved!')" %>
-  </div>
-<% end %>
-<%end%> 
+</div>
 

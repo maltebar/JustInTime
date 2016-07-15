@@ -44,31 +44,52 @@ class QuestionsController < ApplicationController
       end
 
       if @user.group.writer?
-        if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
-          @question_1 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "1"))
-        else
-          if @assignment.description != "" && @assignment.writer_due > Time.now 
-            @question_1 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "1")
+        @questions=[]
+        for i in 1..3
+          if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
+            @questions << Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: i))
+          elsif @assignment.description != "" && @assignment.writer_due > Time.now
+            @questions << Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: i)
           end
         end
 
-        if @assignment.questions.exists?(user_id: current_user.id, description_flag: "2")
-          @question_2 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "2"))
-        else
-          if @assignment.description_2 != "" && @assignment.writer_due > Time.now 
-            @question_2 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "2")
-          end
-        end
+            
 
-        if @assignment.questions.exists?(user_id: current_user.id, description_flag: "3")
-          @question_3 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "3"))
-        else
-          if @assignment.description_3 != "" && @assignment.writer_due > Time.now 
-            @question_3 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "3")
-          end
-        end
+        # if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
+        #   @question_1 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "1"))
+        # else
+        #   if @assignment.description != "" && @assignment.writer_due > Time.now 
+        #     @question_1 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "1")
+        #   end
+        # end
+
+        # if @assignment.questions.exists?(user_id: current_user.id, description_flag: "2")
+        #   @question_2 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "2"))
+        # else
+        #   if @assignment.description_2 != "" && @assignment.writer_due > Time.now 
+        #     @question_2 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "2")
+        #   end
+        # end
+
+        # if @assignment.questions.exists?(user_id: current_user.id, description_flag: "3")
+        #   @question_3 = Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: "3"))
+        # else
+        #   if @assignment.description_3 != "" && @assignment.writer_due > Time.now 
+        #     @question_3 = Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: "3")
+        #   end
+        # end
+
       end
     end
+  end
+
+  def save_all
+    testArray = []
+    params[:content].each do |id, value|
+      Question.find(id).update({content: value})
+    end
+
+    redirect_to questions_path, :flash=>{:notice=>"Questions have been saved"}
   end
 
 
