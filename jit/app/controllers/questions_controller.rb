@@ -84,7 +84,6 @@ class QuestionsController < ApplicationController
   end
 
   def save_all
-    testArray = []
     params[:content].each do |id, value|
       Question.find(id).update({content: value})
     end
