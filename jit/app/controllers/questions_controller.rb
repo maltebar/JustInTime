@@ -89,7 +89,7 @@ class QuestionsController < ApplicationController
       Question.find(id).update({content: value})
     end
 
-    redirect_to questions_path, :flash=>{:notice=>"Questions have been saved"}
+    redirect_to questions_path, :flash=>{:notice=>"Questions have been saved."}
   end
 
 

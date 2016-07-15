@@ -2,7 +2,6 @@
 
 <h5>The Writer phase ends on <%= @assignment.writer_due.strftime('%-B %-d, %Y at %I:%M%p')%>.</h5>
 <br>
-<p id="notice"><%= flash[:notice] %></p>
 <div class='row'>
   <div class='col-md-8'>
     <%= form_tag controller: "questions", action:"save_all" do %>
