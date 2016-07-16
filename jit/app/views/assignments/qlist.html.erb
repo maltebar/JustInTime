@@ -1,14 +1,18 @@
-<h1> Submissions for Assignment </h1>
-<h5> Favorite submissions are shaded. </h5>
+<div class='page-header'>
+	<h1> Submissions for Assignment </h1>
+</div>
+<p> Favorite submissions are shaded. </p>
 
-<br><br>
-<h4>Prompt 1: <%= @assignment.description%></h4> 
-<br>
-
+<% for i in 1..3 %>
+<h2 class='h4'>Prompt <%= i %>: <%=
+	if i==1
+		@assignment.description
+	else
+		@assignment["description_#{i}"]
+	end
+	%></h4> 
 
 <table class="table table-bordered">
-
-
 		<thead>
 			<th style="width: 9%">Favorite</th>
 			<th style="width: 51%">Submission</th>
@@ -18,7 +22,7 @@
 			<th style="width: 24%">Student Rating</th>
 		</thead>
 		<tbody>
-			<% @questions_flag_1.each do |question| %>
+			<% @question_flags[i].each do |question| %>
 			<%= form_for(question) do |f| %>
 			<tr>
 				<%if question.prof_choice%>
@@ -26,11 +30,11 @@
 					<%end%>
 			<td><%if question.prof_choice%>
 					<%= f.hidden_field :prof_choice, value: false%>
-					<%= f.submit "Deselect"%>
+					<%= f.submit "Deselect", class:'btn btn-default'%>
 				</button>
 				<%else%>
 					<%= f.hidden_field :prof_choice, value: true%>
-					<%= f.submit "Select"%>
+					<%= f.submit "Select", class:'btn btn-default'%>
 				<%end%>
 				</td>
 			<td><%= question.content %></td>
@@ -47,102 +51,7 @@
 		</tbody>
 		<% end %>
 </table>
-
-	<br><br>
-	<h4>Prompt 2: <%= @assignment.description_2%></h4> 
-	<br>
-	<table class="table table-bordered">
-
-		<thead>
-			<th style="width: 9%">Favorite</th>
-			<th style="width: 51%">Submission</th>
-			<th style="width: 16%">Writer</th>
-			<th style="width: 16%">Email</th>
-			<th style="width: 10%">Comments</th>
-			<th style="width: 24%">Student Rating</th>
-		</thead>
-
-		<tbody>
-			<% @questions_flag_2.each do |question| %>
-			<%= form_for(question) do |f|%>
-			<tr>
-				<%if question.prof_choice%>
-				<tr bgcolor="#ededed">
-					<%end%>
-			<td><%if question.prof_choice%>
-					<%= f.hidden_field :prof_choice, value: false%>
-					<%= f.submit "Deselect"%>
-				</button>
-				<%else%>
-					<%= f.hidden_field :prof_choice, value: true%>
-					<%= f.submit "Select"%>
-				<%end%>
-				</td>
-			<td><%= question.content %></td>
-			<td><%= question.user.name %></td>
-			<td><%= question.user.email %> </td>
-			<td><%= link_to 'Comments', {:controller => "questions", :action => "commentlist", :question => question.id} %></td>
-			<td><% if question.ratings.count != 0%>
-				<%=question.votes * 100 / question.ratings.count%>% 
-				<%end%> </td>
-			<% end %>
-			<%end%>
-		</tr>
-		</tbody>
-
-	</table>
-
-	<br><br>
-	<h4>Prompt 3: <%= @assignment.description_3 %></h4> 
-	<br>
-	<table class="table table-bordered">
-
-		<thead>
-			<th style="width: 9%">Favorite</th>
-			<th style="width: 51%">Submission</th>
-			<th style="width: 16%">Writer</th>
-			<th style="width: 16%">Email</th>
-			<th style="width: 10%">Comments</th>
-			<th style="width: 24%">Student Rating</th>
-		</thead>
-
-		<tbody>
-			<% @questions_flag_3.each do |question| %>
-			<%= form_for(question) do |f|%>
-			<tr>
-				<%if question.prof_choice%>
-				<tr bgcolor="#ededed">
-					<%end%>
-			<td><%if question.prof_choice%>
-					<%= f.hidden_field :prof_choice, value: false%>
-					<%= f.submit "Deselect"%>
-				</button>
-				<%else%>
-					<%= f.hidden_field :prof_choice, value: true%>
-					<%= f.submit "Select"%>
-				<%end%>
-				</td>
-			<td><%= question.content %></td>
-			<td><%= question.user.name %></td>
-			<td><%= question.user.email %> </td>
-			<td><%= link_to 'Comments', {:controller => "questions", :action => "commentlist", :question => question.id} %></td>
-			<td><% if question.ratings.count != 0%>
-				<%=question.votes * 100 / question.ratings.count%>% 
-				<%end%> </td>
-			<% end %>
-			<%end%>
-		</tr>
-		</tbody>
-
-	</table>
-	<br><br>
-
-
-
-
-
-
-
+<% end %>
 
 
 <%= link_to 'Back to Assignments', assignments_path %>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'sessions/create'
   delete 'sessions/destroy'
 
-  post 'users/change'
+  get 'users/change'
 
   get 'questions/show'
 
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get 'questions/commentlist'
 
   get 'users/hwlist' # Anna made a route! 9 February 2015
+                     
+  post 'questions/save_all'
   
   resources :users do
     resources :memberships

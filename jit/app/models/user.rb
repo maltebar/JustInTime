@@ -13,4 +13,21 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :email, format: { with: /\A([^@\s]+)@brandeis.edu/i, on: :create }
   validates_confirmation_of :password
+
+  after_create :assign_group
+
+  def assign_group
+     if !self.admin?
+        membership = Membership.order("created_at").last
+        if membership.nil? || membership.group_id == 2
+          group_id = 1
+        else
+          group_id = 2
+        end
+        self.create_membership(group_id: group_id).save()
+    end
+  end
+
+
+
 end

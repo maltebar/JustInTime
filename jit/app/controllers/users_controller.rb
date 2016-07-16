@@ -2,7 +2,7 @@
 
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]  
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
   def hwlist
@@ -26,16 +26,21 @@ class UsersController < ApplicationController
   end
 
   def change
+
     @user = current_user
-    @memberships = Membership.where(user_id: @user.id)
-    @memberships.destroy_all
-    if @user.group.id == 1
-      @group = Group.find(2)
-      @group.users << @user
+    
+    current_group = @user.group
+
+    if current_group.id == 1
+      @user.group = Group.find(2)
     else
-      @group = Group.find(1)
-      @group.users << @user
+      @user.group = Group.find(1)
     end
+
+    @user.save
+
+    current_user.group.reload
+
     redirect_to :back
   end
 
@@ -58,8 +63,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -70,6 +73,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  
   
 
   # PATCH/PUT /users/1
