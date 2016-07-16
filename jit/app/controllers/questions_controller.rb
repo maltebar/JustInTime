@@ -46,8 +46,8 @@ class QuestionsController < ApplicationController
       if @user.group.writer?
         @questions=[]
         for i in 1..3
-          if @assignment.questions.exists?(user_id: current_user.id, description_flag: "1")
-            @questions << Question.find(@assignment.questions.where(user_id: current_user.id, description_flag: i))
+          if @assignment.questions.exists?(user_id: current_user.id, description_flag: i)
+            @questions << @assignment.questions.where(user_id: current_user.id, description_flag: i).first
           elsif @assignment.description != "" && @assignment.writer_due > Time.now
             @questions << Question.create(user_id: current_user.id, assignment_id: @assignment.id, description_flag: i)
           end

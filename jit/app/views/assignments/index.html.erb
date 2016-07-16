@@ -1,25 +1,22 @@
 <%# Admins only %> 
 <%if current_user.admin?%>
-  <div class="row">
-  <div class="col-md-12">
-    <div style="margin-left:0%">
+  <div class='page-header'>
+    <h1>Assignments </h1>
 
-<h1>Assignments </h1>
-
-<br>
-
+  </div>
+  <p><%= link_to 'New Assignment', new_assignment_path, class:'btn btn-primary' %></p>  
 <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
   
   <thead> <%#table header%>
     <tr>
-      <th style="width: 30%">Title</th>
-      <th style="width: 38%">Due Dates</th> 
-      <th style="width: 18%">Submissions</th>
-      <th style="width: 14%">Editing Buttons</th>
+      <th>Title</th>
+      <th>Due Dates</th> 
+      <th class='text-center'>Submissions</th>
+      <th class='text-center'>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class='table-center'>
     <% @assignments.each do |assignment| %> <%#table content: each row contains...%>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <% if assignment.current? %>
@@ -31,11 +28,11 @@
         <td>Writing: <%= assignment.writer_due.strftime('%-B %-d, %Y at %I:%M%p') %>
             <br>
             Promoting: <%= assignment.promoter_due.strftime('%-B %-d, %Y at %I:%M%p') %></td>
-        <td><%= link_to 'Submissions List', {:controller => "assignments", :action => "qlist", :assignment => assignment.id} %>
+        <td class='text-center'><%= link_to 'See all', {:controller => "assignments", :action => "qlist", :assignment => assignment.id}, class:'btn btn-link' %>
         </td>
 
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %> <br>
-        <%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <td class='text-center'><%= link_to "<i class='glyphicon glyphicon-pencil'></i>".html_safe, edit_assignment_path(assignment), class:'btn btn-warning' %>
+        <%= link_to "<i class='glyphicon glyphicon-trash'></i>".html_safe, assignment, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td> 
         <%# why does it ask me to confirm several times (usually, but not always? %>        
       </tr>
 
@@ -44,17 +41,10 @@
 
 </table>
 
-<h5> Current assignment is shaded. </h5>
+<p> Current assignment is shaded. </p>
 
-<br><br>
 
-<%= link_to 'New Assignment', new_assignment_path %>
 
-  </div>
-</div>
-</div>
-
-<br>
 
 <%else%>
 <h3>You do not have access to this page</h3>

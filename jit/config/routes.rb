@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'sessions/create'
   delete 'sessions/destroy'
 
-  post 'users/change'
+  get 'users/change'
 
   get 'questions/show'
 

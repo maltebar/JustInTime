@@ -12,85 +12,66 @@
 
 </head>
 <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container-fluid">
-        <div class="col-md-12">
-
-
-
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand"><bold>Thoughts and Questions</bold>
-            <h6 class="top-bar-title">An Application to Support Just-in-Time Teaching</h6></a>
-     
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Thoughts and Questions", root_path, class: 'navbar-brand' %>
         </div>
-
-
-
-        <nav> <%# navigation bar %>
-          <ul class="nav navbar-nav navbar-right"> 
-
-              <li><a class="topbar-link" >Role: 
-              <%=if current_user.nil?
-                    "not logged in"
-                  elsif current_user.admin?
-                    "Administrator"
-                  else
-                    if current_user.group.writer?
-                      "Writer"
-                    else
-                      "Promoter"
-                    end
-                  end 
-                  %></a></li> 
-
-            <li><a class="topbar-link">Logged in as: <%= 
-            if current_user.nil?
-              "not logged in"
-              else
-                current_user.name 
-            end %></a></li>
-
-            <li><a class="topbar-link" href="<%= root_path %>"><%= 'Home' %></a></li>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if !current_user.nil? %>
+              <li> <p class='navbar-text'>Logged in as <%= current_user.name %></p></li>
+              <li>
+                <p class='navbar-text'>
+                  Role: 
+                  <%=if current_user.admin?
+                        "Administrator"
+                      elsif current_user.group.writer?
+                        "Writer"
+                      else
+                        "Promoter"
+                    end 
+                      %>
+                    
+                  </p>
+              </li>
+            <% end %>
+            <li><a href="<%= root_path %>"><%= 'Home' %></a></li>
             
-            <li><a class="topbar-link" <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
-            <br><br><br>
+            <li><%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></li>
           </ul>
-        </nav>
+        </div><!--/.nav-collapse -->
       </div>
-    </div>
-    </header>
+    </nav>
 
-    <div class="container-fluid">
+
+    <div class="container">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" style='position:fixed;'>
-          <ul class="nav nav-sidebar">
-            <br><br>
+        <div class="col-sm-3 col-md-2" id='sidebar'>
+          <ul class="nav nav-stacked">
               <% if !current_user.nil?
                   if current_user.admin? %>
-                    <li><%= link_to "List of users", users_path, :class=>'sidebar-link'%>
-                    <li><%= link_to "List of assignments", assignments_path, :class=>'sidebar-link'%>
+                    <li><%= link_to "List of users", users_path, :class=>'sidebar-link'%></li>
+                    <li><%= link_to "List of assignments", assignments_path, :class=>'sidebar-link'%></li>
 
                  <% else %>
-                    <li><%= link_to "Homework statistics", users_path, :class=>'sidebar-link'%>
-                    <li><%= link_to "Assignment", questions_path, :class=>'sidebar-link'%>
+                    <li><%= link_to "Homework statistics", users_path, :class=>'sidebar-link'%></li>
+                    <li><%= link_to "Assignment", questions_path, :class=>'sidebar-link'%></li>
                 <% end %>
               <%  end %>
-
-                      
-
           </ul>
         </div>
-        
-      </div>
+        <div class='col-sm-9 col-md-10 col-sm-offset-3 col-md-offset-2'>
+          <%= yield %>
+        </div>
+
 </div>
-
-<div class="container">
-  <div class="row">
-      <div class="col-md-12">
-    <div style="margin-left:15%">
-
-	<%= yield %>
-
 </div>
 
 </body>

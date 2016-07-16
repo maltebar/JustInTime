@@ -34,7 +34,7 @@ $text-color:            $gray-dark !default;
 //** Global textual link color.
 $link-color:            $brand-primary !default;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-color:      darken($link-color,10%) !default;
 //** Link hover decoration.
 $link-hover-decoration: underline !default;
 
@@ -80,7 +80,7 @@ $headings-color:          inherit !default;
 
 // [converter] If $bootstrap-sass-asset-helper if used, provide path relative to the assets load path.
 // [converter] This is because some asset helpers, such as Sprockets, do not work with file-relative paths.
-$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/") !default;
+$icon-font-path: "bootstrap/" !default;
 
 //** File name for all font files.
 $icon-font-name:          "glyphicons-halflings-regular" !default;
@@ -362,7 +362,7 @@ $container-lg:                 $container-large-desktop !default;
 //##
 
 // Basics of a navbar
-$navbar-height:                    50px !default;
+$navbar-height:                    80px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
@@ -395,13 +395,13 @@ $navbar-default-toggle-border-color:       #ddd !default;
 
 //=== Inverted navbar
 // Reset inverted navbar basics
-$navbar-inverse-color:                      lighten($gray-light, 15%) !default;
-$navbar-inverse-bg:                         #222 !default;
+$navbar-inverse-color:                      darken(#ffd700,2%) !default;
+$navbar-inverse-bg:                         #353536 !default;
 $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
 
 // Inverted navbar links
-$navbar-inverse-link-color:                 lighten($gray-light, 15%) !default;
-$navbar-inverse-link-hover-color:           #fff !default;
+$navbar-inverse-link-color:                 $navbar-inverse-color !default;
+$navbar-inverse-link-hover-color:           #cc0000 !default;
 $navbar-inverse-link-hover-bg:              transparent !default;
 $navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default;
 $navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 10%) !default;
@@ -410,7 +410,7 @@ $navbar-inverse-link-disabled-bg:           transparent !default;
 
 // Inverted navbar brand label
 $navbar-inverse-brand-color:                $navbar-inverse-link-color !default;
-$navbar-inverse-brand-hover-color:          #fff !default;
+$navbar-inverse-brand-hover-color:          $navbar-inverse-link-hover-color !default;
 $navbar-inverse-brand-hover-bg:             transparent !default;
 
 // Inverted navbar toggle

@@ -1,19 +1,10 @@
-<h1>Inactive Phase</h1>
-<br>
-<div>
-
-<%if current_user.group.writer?%>
-	<div>
-		<br>
-		The Writer phase has already elapsed!
-		<br><br>
-		No new assignments have been posted.
-	</div>
-	<%else%>
-		<div>
-			The Writer phase is currently in session.
-			<br><br>
-			The next Promoter phase begins <%= @assignment.writer_due.strftime('%-B %-d, %Y at %I:%M%p')%>
-		</div>
-<%end%>
+<div class='page-header'>
+	<h1>Inactive Phase</h1>
 </div>
+<%if current_user.group.writer?%>
+	<p>The Writer phase has already elapsed!</p>
+	<p>No new assignments have been posted.</p>
+<%else%>
+	<p>The Writer phase is currently in session.</p>
+	<p>The next Promoter phase begins <%= @assignment.writer_due.strftime('%-B %-d, %Y at %I:%M%p')%></p>
+<%end%>
